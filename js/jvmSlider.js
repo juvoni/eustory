@@ -214,7 +214,7 @@ $.reject({
 	}
 
 
-	$.getJSON('ajax/Data.json', function(data) {
+	$.getJSON('ajax/SOV_DATA_EU.json', function(data) {
 		
 		var i = 0;
 		var n = 0;
@@ -260,6 +260,24 @@ $.reject({
 		$.getJSON('ajax/World_Data_GDP.json', function(gdp) {
 		$.each(gdp, function(){
 			for(startYear = 2000; startYear<=endDate; startYear++){
+				for(var x = 0; x<Cl.length;x++){
+					if(Cl[x].hasYear(startYear)){
+						if(Cl[x].countryName() === this['Country Name']){
+							Cl[x].getDebtOfYear(startYear).GdP(this[startYear]);
+							break;
+						}
+					}
+				
+				}
+			}
+
+		});
+		
+	});
+
+	$.getJSON('ajax/GDP_per_capita.json', function(gdp) {
+		$.each(gdp, function(){
+			for(startYear = 1999; startYear<=endDate; startYear++){
 				for(var x = 0; x<Cl.length;x++){
 					if(Cl[x].hasYear(startYear)){
 						if(Cl[x].countryName() === this['Country Name']){

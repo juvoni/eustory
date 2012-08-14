@@ -18,7 +18,10 @@ function Debt(rt, rd, ra, rs, aoy){
 			year = ''; 
 
 		var GdP,
-			GdpPer;
+			GdpPer,
+			GdpPerCapita,
+			NetGdpRatio,
+			libGdp;
 		
 		this.GdP = function(g){
 			if(!arguments.length)return GdP;
@@ -29,6 +32,16 @@ function Debt(rt, rd, ra, rs, aoy){
 		this.GdpPer = function(gPer){
 			if(!arguments.length)return GdpPer;
 				GdpPer = gPer;
+				return this;
+		};
+		this.GdpPerCapita = function(gPerC){
+			if(!arguments.length)return GdpPerCapita;
+				GdpPerCapita = gPerC;
+				return this;
+		};
+		this.NetGdpRatio = function(netG){
+			if(!arguments.length)return NetGdpRatio;
+				NetGdpRatio = netG;
 				return this;
 		};
 
