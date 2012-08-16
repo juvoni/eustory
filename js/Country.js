@@ -34,9 +34,10 @@ function Debt(rt, rd, ra, rs, aoy){
 				GdpPer = gPer;
 				return this;
 		};
-		this.GdpPerCapita = function(gPerC){
-			if(!arguments.length)return GdpPerCapita;
-				GdpPerCapita = gPerC;
+
+		this.NetGdpRatio = function(netG){
+			if(!arguments.length)return NetGdpRatio;
+				NetGdpRatio = netG;
 				return this;
 		};
 		this.NetGdpRatio = function(netG){
@@ -44,6 +45,12 @@ function Debt(rt, rd, ra, rs, aoy){
 				NetGdpRatio = netG;
 				return this;
 		};
+		this.libGdp = function(lGdp){
+			if(!arguments.length)return libGdp;
+				libGdp = lGdp;
+				return this;
+		};
+
 
 		this.rating = function(r){
 			if(!arguments.length)return rating;
@@ -160,6 +167,78 @@ function Score(poli, fisc, exter, monet, econ){
 
 
 };
+function Economic(ye, gdpC, na){
+		var gdpCapita = gdpC, year = ye, name = na;
+
+		this.gdpCapita = function(gdpCapita){
+			if(!arguments.length)return gdpCapita;
+				this.gdpCapita = gdpCapita;
+				return this;
+		};
+
+		this.year = function(year){
+			if(!arguments.length)return year;
+				this.year = year;
+				return this;
+		};
+		this.name = function(name){
+			if(!arguments.length)return name;
+				this.name = name;
+				return this;
+		};
+
+};
+
+
+function Fiscal(y, debtT, n){
+		var debtToGdp = debtT,
+			year = y,
+			name = n;
+
+		this.debtToGdp = function(debtToGdp){
+			if(!arguments.length)return debtToGdp;
+				this.debtToGdp = debtToGdp;
+				return this;
+		};
+
+		this.year = function(year){
+			if(!arguments.length)return year;
+				this.year = year;
+				return this;
+		};
+
+		this.name = function(name){
+			if(!arguments.length)return name;
+				this.name = name;
+				return this;
+		};
+};
+
+function External(y, lib, n){
+		var year = y,
+			libToGdp = lib,
+			name = n;
+		
+	
+		this.libToGdp = function(libToGdp){
+			if(!arguments.length)return libToGdp;
+				this.libToGdp = libToGdp;
+				return this;
+		};
+
+		this.year = function(year){
+			if(!arguments.length)return year;
+				this.year = year;
+				return this;
+		};
+
+		this.name = function(name){
+			if(!arguments.length)return name;
+				this.name = name;
+				return this;
+		};
+};
+
 function Country( ID, LegalName, cName, cr , deb, sc, valueSco){
 	var orgID = ID,
 	countryLegalName = LegalName,
@@ -168,15 +247,14 @@ function Country( ID, LegalName, cName, cr , deb, sc, valueSco){
 	var debtB = [];
 	var ratingScore = sc;
 	var valuRating;
+	var economicInfo, fiscalInfo, externalInfo;
 
 	debtB.push(deb);
-
 
 	var orgType = "Sovereign";
 	var latitude,
 		longitude,
 		countryCode;
-	//this.ratingScore = function
 
 	this.debtB = function(deb){
 		if(!arguments.length)return debtB;
@@ -185,6 +263,22 @@ function Country( ID, LegalName, cName, cr , deb, sc, valueSco){
 			return this;
 	};
 
+	this.economicInfo = function(econ){
+		if(!arguments.length)return economicInfo;
+			economicInfo = econ;
+			return this;
+	};
+
+	this.fiscalInfo = function(fisc){
+		if(!arguments.length)return fiscalInfo;
+			fiscalInfo = fisc;
+			return this;
+	};
+	this.externalInfo = function(ex){
+		if(!arguments.length)return externalInfo;
+			externalInfo.push(ex);
+			return this;
+	};
 	this.getDebtOfYear = function(ye){
 		var yearInt = parseInt(ye,10);
 		var debtResult;
@@ -197,8 +291,8 @@ function Country( ID, LegalName, cName, cr , deb, sc, valueSco){
 		return debtResult;
 	};
 
-	this.hasYear = function(y){
-		var yearIntc = parseInt(y,10);
+	this.hasYear = function(yy){
+		var yearIntc = parseInt(yy,10);
 		var status;
 		for(var i = 0; i<debtB.length;i++){
 			if(debtB[i].getYear() === yearIntc){

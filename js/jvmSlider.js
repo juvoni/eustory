@@ -12,7 +12,7 @@
 	/*!
     * EDIT THIS PORTION PRIOR TO USING
     */
-//SP Radar Commit
+
 
 $(window).load(function(){
 // $.fn.sparkline.defaults.common.lineColor = '#CC0033';
@@ -63,23 +63,14 @@ $.reject({
 
 	//------Edit Start---
 	var Cl = [];
-	var debtObj = []; 
+	var debtObj = [];
+	var economicObj = [], fiscalObj = [], externalObj = [];
 	var countrylimit = [];
 	var mapValues = {};
 	var mapLabels = {};
 	mapRatingAction = {};
 	var scoreValN = [];
 	
-
-	var numOfAff,
-	numOfDown,
-	numOfUp,
-	numOfNew,
-	numOfNewFromConfid,
-	numOfNewFromNr;
-
-
-	AffB = [],DowB = [],UpB = [],NewB = [],ConfB = [],NrB = [], gdpHist = [], gdpChg = [], gdpPerChg = [], radValu = [];
 
 	uiVal = '';
 	//checkVersion_Init();
@@ -103,7 +94,6 @@ $.reject({
 
 	var getThisCountry = function(conName){
 		var c = conName.toUpperCase();
-		
 		var nameOfCon;
 		for(var conSelect = 0; conSelect<Cl.length; conSelect++){
 			if(Cl[conSelect].countryCode() !== 'undefined'){
@@ -256,66 +246,98 @@ $.reject({
 			i++;
 			countrylimit.push(this['Name']);
 
-		});
-		$.getJSON('ajax/World_Data_GDP.json', function(gdp) {
-		$.each(gdp, function(){
-			for(startYear = 2000; startYear<=endDate; startYear++){
-				for(var x = 0; x<Cl.length;x++){
-					if(Cl[x].hasYear(startYear)){
-						if(Cl[x].countryName() === this['Country Name']){
-							Cl[x].getDebtOfYear(startYear).GdP(this[startYear]);
-							break;
-						}
-					}
-				
+	  	});
+	  	
+	/*	$.getJSON('ajax/GDP_per_capita.json', function(data) {
+	  	
+	  		var i = 0;
+	  		var n = 0;
+	  		
+	  		$.each(data, function(){
+	  			var s = this['GDP per capita (US$)'];
+	  			var stringToRemove = s.slice(s.indexOf("("),s.lastIndexOf(")")+1);
+	  			var name = s.replace(stringToRemove,"");
+	  			economicObj[name]= {};
+	  			for(startYear = 1999; startYear<=endDate; startYear++){
+
+					var yearValue = this[startYear];
+					//console.log(startYear+":"+y);
+					//var year = (this[startYear].indexOf('e') === -1 )?this[startYear]: this[startYear].replace('e',"");
+					
+					economicObj[name][startYear] = yearValue;
+					//economicObj.push({year:y});
 				}
-			}
 
-		});
-		
-	});
-
-	$.getJSON('ajax/GDP_per_capita.json', function(gdp) {
-		$.each(gdp, function(){
-			for(startYear = 1999; startYear<=endDate; startYear++){
-				for(var x = 0; x<Cl.length;x++){
-					if(Cl[x].hasYear(startYear)){
-						if(Cl[x].countryName() === this['Country Name']){
-							Cl[x].getDebtOfYear(startYear).GdP(this[startYear]);
-							break;
-						}
-					}
-				
+				if($.inArray(name,countrylimit) === -1 ){
+					Cl[n] = new Country();
+					Cl[n].countryName(name);
+					// for(var i = 0; i<economicObj.length;i++){
+					//	if(economicObj[i].)
+					// }
+					Cl[n].economicInfo(economicObj);
+					n++;
 				}
-			}
+				else{
+					for(var x = 0; x<Cl.length;x++){
+					 	if(Cl[x].countryName() === name){
+					 		Cl[x].economicInfo(economicObj);
+					 		break;
+					 	}
+					}	
+				}
+				i++;
+				countrylimit.push(name);
+				//console.log(Cl[3].economicInfo());
+				//console.log(name);
 
-		});
+	  		});
+	*/		
+	  	//console.log(Cl[5].countryName());
+	  	//console.log(economicObj[2]);
+
 		
-	});
 
-	// $.getJSON('ajax/World_Data_GDP_Per_Gov_Debt.json', function(perGdp) {
-	//	$.each(perGdp, function(){
-	//	   	for(startYear = 2000; startYear<=endDate; startYear++){
-	//	   		for(var x = 0; x<Cl.length;x++){
-	//	   			if(Cl[x].hasYear(startYear)){
-	//	   				if(Cl[x].countryName() === this['Country Name']){
-	//	   					Cl[x].getDebtOfYear(startYear).GdpPer(this[startYear]);
-	//	   					break;
-	//	   				}
-	//	   			}
-	  	   		
-	//	   		}
-	//	   	}
-	//	});	
+
+	//	$.getJSON('ajax/World_Data_GDP.json', function(gdp) {
+	//	$.each(gdp, function(){
+	//		for(startYear = 2000; startYear<=endDate; startYear++){
+	//			for(var x = 0; x<Cl.length;x++){
+	//				if(Cl[x].hasYear(startYear)){
+	//					if(Cl[x].countryName() === this['Country Name']){
+	//						Cl[x].getDebtOfYear(startYear).GdP(this[startYear]);
+	//						break;
+	//					}
+	//				}
+	  			
+	//			}
+	//		}
+
+	//	});
+	  	
 	// });
+
+	// $.getJSON('ajax/GDP_per_capita.json', function(gdpC) {
+	//	$.each(gdC, function(){
+	//		for(startYear = 2000; startYear<=endDate; startYear++){
+	//			for(var x = 0; x<Cl.length;x++){
+	//				if(Cl[x].hasYear(startYear)){
+	//					if(Cl[x].countryName().toString().indexOf(this['GDP per capita (US$)']) !=-1){
+	//						Cl[x].getDebtOfYear(startYear).GdpPer(this[startYear]);
+	//						break;
+	//					}
+	//				}
+	//			}
+	//		}
+
+	//	});
+	  	
+	// });
+
+
 			
-		
-
-
-			yearCountMin = 2000; 
 			
 			(function(){
-				for(var cYear = yearCountMin; cYear<=endDate; cYear++){
+				for(var cYear = 2000; cYear<=2011; cYear++){
 					mapValues[cYear] = {};
 					mapLabels[cYear] = {};
 					mapRatingAction[cYear] = {};
@@ -323,7 +345,6 @@ $.reject({
 					var typeOfAction;
 
 					numOfAff = 0,numOfDown = 0,numOfUp = 0,numOfNew = 0,numOfNewFromConfid = 0,numOfNewFromNr = 0;
-
 
 			
 				for(var cIndex = 0; cIndex<Cl.length;cIndex++){
@@ -338,46 +359,6 @@ $.reject({
 						mapValues[cYear][CC] = RS;
 						mapLabels[cYear][CC] = Cl[cIndex].countryName().concat(": ",rate);
 
-						switch (action){
-							case "New": numOfNew++;
-								break;
-							case "Affirmation": numOfAff++;
-								break;
-							case "Upgrade": numOfUp++;
-								break;
-							case "Downgrade": numOfDown++;
-								break;
-							case "New from NR": numOfNewFromNr++;
-								break;
-							case "New from Confid": numOfNewFromConfid++;
-								break;
-							default:
-						}
-
-					}
-				}
-
-				for(var typeActCount = 0; typeActCount<=5; typeActCount++){
-					switch(typeActCount){
-						case 0: mapRatingAction[cYear]['New'] = numOfNew;
-								NewB.push(numOfNew);
-							break;
-						case 1: mapRatingAction[cYear]['Affirmation'] = numOfAff;
-								AffB.push(numOfNew);
-							break;
-						case 2: mapRatingAction[cYear]['Upgrade'] = numOfUp;
-								UpB.push(numOfUp);
-							break;
-						case 3: mapRatingAction[cYear]['Downgrade'] = numOfDown;
-								DowB.push(numOfDown);
-							break;
-						case 4: mapRatingAction[cYear]['New from NR'] = numOfNewFromNr;
-								NrB.push(numOfNewFromNr);
-							break;
-						case 5: mapRatingAction[cYear]['New from Confid'] = numOfNewFromConfid;
-								ConfB.push(numOfNewFromConfid);
-							break;
-						default:
 					}
 				}
 
@@ -387,22 +368,27 @@ $.reject({
 
 			
 		for (property in mapValues) timePeriods++;
-
-			//var cnt = false;
 	        // jVectorMap Options
 			
 			$(function() {
 				   	$map.vectorMap({
 				   		map:'europe_mill_en',
-				   		//values: mapValues[startDate],
-				   		// scaleColors: ['#538347','#70a056','#629022','#639022','#729421','#899921','#A0961F','#CC2820', '#BD1810'],
-				   		//scaleColors: ['#bdcb2a','#ffda00','#e31837'],//S&P Colors
-				   		backgroundColor:'#adadad',
-				   		//normalizeFunction: 'polynomial',
-				   		// color:'#aaaaaa',
-				   		color:'#666',
+				   		values: mapValues[startDate],
+				   		//scaleColors: ['#538347','#70a056','#629022','#639022','#729421','#899921','#A0961F','#CC2820', '#BD1810'],
+				   		scaleColors: ['#bdcb2a','#ffda00','#e31837'],//S&P Colors
+				   		backgroundColor:'#fff',
+				   		normalizeFunction: 'polynomial',
+				   		color:'#ccc',
 				   		hoverOpacity: 0.8,
-				   		hoverColor: 'black',
+				   		hoverColor: false,
+				   		onRegionClick: function (event,code) {
+				   			if(typeof getThisCountryIndex(code) !=='undefined'){
+				   				currentCon = Cl[ getThisCountryIndex(code)];
+				   				var num = currentCon.getDebtOfYear('2001').GdpPer();
+				   				//console.log(currentCon.getDebtOfYear('2001').GdP());
+				   				//console.log(num);
+				   			}
+				   		}
 				   	});
 				});	
         // Initializing labels, play/pause button on front page
@@ -410,12 +396,8 @@ $.reject({
 			$period.html(periodPrefix + '<h2 class = "big">'+startDate+'</h2>');
 			
 
-			//$rtgSect.html(ticketInit(startDate));
-			//$('.line').sparkline();
-
 			$play.button({text: false,label:"play",icons: {primary: "ui-icon-play"}})
 			.click(function() {playPause();});
-			$('#loadingDiv').remove();
 
 	});
 
@@ -433,34 +415,10 @@ $.reject({
 						selectedYear = ui.value + startDate;
 
 						if(ui.value -1 >=0 ){
-							perNew = Math.floor((((mapRatingAction[ui.value+(startDate)]['New']-mapRatingAction[(startDate)+ui.value-1]['New'])/mapRatingAction[(startDate)+ui.value-1]['New']).toFixed(2))*100);
-							perAff = Math.floor((((mapRatingAction[ui.value+(startDate)]['Affirmation']-mapRatingAction[(startDate)+ui.value-1]['Affirmation'])/mapRatingAction[(startDate)+ui.value-1]['Affirmation']).toFixed(2))*100);
-							perUp = Math.floor((((mapRatingAction[ui.value+(startDate)]['Upgrade']-mapRatingAction[(startDate)+ui.value-1]['Upgrade'])/mapRatingAction[(startDate)+ui.value-1]['Upgrade']).toFixed(2))*100);
-							perDown = Math.floor((((mapRatingAction[ui.value+(startDate)]['Downgrade']-mapRatingAction[(startDate)+ui.value-1]['Downgrade'])/mapRatingAction[(startDate)+ui.value-1]['Downgrade']).toFixed(2))*100); 
-							Nr = ((mapRatingAction[ui.value+(startDate)]['New from NR']-mapRatingAction[(startDate)+ui.value-1]['New from NR'])/mapRatingAction[(startDate)+ui.value-1]['New from NR']);
-							if(isNaN(Nr)){
-								var ze = 0;
-								Nr = ze;
-							}
-							else{
-								Nr = Math.floor(Nr.toFixed(2)*100);
-							}
-							
-							Conf = ((mapRatingAction[ui.value+(startDate)]['New from Confid']-mapRatingAction[(startDate)+ui.value-1]['New from Confid'])/mapRatingAction[(startDate)+ui.value-1]['New from Confid']);
-							if(isNaN(Conf)){
-								var ze = 0;
-								perCon = ze;
-							}
-							else{
-								perCon = Math.floor(Conf.toFixed(2)*100);
-							}
 							
 						}
-						genGdpHist();
-						$rtgSect.html(ticketInit(ui.value+(startDate),'slide'));
-
-						colorIndiPerCent();
-						$('.line').sparkline();															
+						;
+							
 						$map.vectorMap('set', 'values', mapValues[(ui.value+(startDate))]);
 					},
 					change: function(event, ui) {
@@ -469,18 +427,10 @@ $.reject({
 							label.text(mapLabels[(ui.value+(startDate))][code]);
 						});
 						if(currentCon !== ''){
-								var num = currentCon.getDebtOfYear(selectedYear).GdP();
-								
-								$gdp.html('GDP: '+'<span>'+formatCurrency(num)+'</span>');
-								$gdpChange.text(formatCurrency(gdpChg[ui.value]));
-								$gdpPerChange.text(gdpPerChg[ui.value].toFixed(2));
-								colorIndiGdp();
 									
-							}
+						}
 							uiVal = ui.value;
 							
-							
-						
 					}
 				}
 			}).next();
@@ -493,149 +443,87 @@ $.reject({
 
 
     
-//     /*!
-//     * FUNCTION FOR CONTINOUSLY MOVING SLIDER UNTIL REACHES END
-//     */
-//     function slideThrough() {
+     /*!
+    * FUNCTION FOR CONTINOUSLY MOVING SLIDER UNTIL REACHES END
+     */
+     function slideThrough() {
     
-//         //getting data of current position of slider and map parameters
-//         var s = $date.next(), val = (+(s.slider("values"))), min = 0, max = timePeriods;
+         //getting data of current position of slider and map parameters
+         var s = $date.next(), val = (+(s.slider("values"))), min = 0, max = timePeriods;
         
-//         // if we haven't yet reached the end of the time periods
-//         if (val<max) {
-//             s.slider("values", 0, (val+1));
-//             $period.html(periodPrefix + '<h2 class ="big">'+(val+startDate+1)+'</h2>'); // setting the subtitle displaying a total for all countries on the map
-//         // we have reached the end of the slider
-//			selectedYear= val+startDate+1;
-//			if(currentCon !== ''){
-//				var num = currentCon.getDebtOfYear(selectedYear).GdP();
-//				$gdp.html('GDP: '+'<span>'+formatCurrency(num)+'</span>');
-//				$gdpChange.text(formatCurrency(gdpChg[val+1]));
-//				$gdpPerChange.text(gdpPerChg[val+1].toFixed(2));
-//				colorIndiGdp();
-//			}
-  			
+         // if we haven't yet reached the end of the time periods
+        if (val<max) {
+            s.slider("values", 0, (val+1));
+            $period.html(periodPrefix + '<h2 class ="big">'+(val+startDate+1)+'</h2>'); // setting the subtitle displaying a total for all countries on the map
+         // we have reached the end of the slider
+			selectedYear= val+startDate+1;
+			if(currentCon !== ''){
 
-  						
-//			perNew = Math.floor((((mapRatingAction[val+startDate+1]['New']-mapRatingAction[val+startDate]['New'])/mapRatingAction[val+startDate]['New']).toFixed(2))*100);
-//			perAff = Math.floor((((mapRatingAction[val+startDate+1]['Affirmation']-mapRatingAction[val+startDate]['Affirmation'])/mapRatingAction[val+startDate]['Affirmation']).toFixed(2))*100);
-//			perUp = Math.floor((((mapRatingAction[val+startDate+1]['Upgrade']-mapRatingAction[val+startDate]['Upgrade'])/mapRatingAction[val+startDate]['Upgrade']).toFixed(2))*100);
-//			perDown = Math.floor((((mapRatingAction[val+startDate+1]['Downgrade']-mapRatingAction[val+startDate]['Downgrade'])/mapRatingAction[val+startDate]['Downgrade']).toFixed(2))*100); 
-//			Nr = ((mapRatingAction[val+startDate+1]['New from NR']-mapRatingAction[val+startDate]['New from NR'])/mapRatingAction[val+startDate]['New from NR']);
+			}
+			
 
-//			if(isNaN(Nr)){
-//				var ze = 0;
-//				Nr = ze;
-//			}
-//			else{
-//				Nr = Math.floor(Nr.toFixed(2)*100);
-//			}
-  			
-//			Conf = ((mapRatingAction[val+startDate+1]['New from Confid']-mapRatingAction[val+startDate]['New from Confid'])/mapRatingAction[val+startDate]['New from Confid']);
-//			if(isNaN(Conf)){
-//				var ze = 0;
-//				perCon = ze;
-//			}
-//			else{
-//				perCon = Math.floor(Conf.toFixed(2)*100);
-//			}
+	
+	
 
-//				$rtgSect.html(ticketInit(val+startDate+1,'slide'));
-  				
-//				$('.line').sparkline();
-  				
-//				colorIndiPerCent();
-  	
+        } else if (val=max) {
+            s.slider("values", 0, val);
+            selectedYear = val+startDate;
+			if(currentCon !== ''){
 
-//         } else if (val=max) {
-//             s.slider("values", 0, val);
-//             selectedYear = val+startDate;
-//			if(currentCon !== ''){
-//				var num = currentCon.getDebtOfYear(selectedYear).GdP();
-//				$gdp.html('GDP: '+'<span>'+formatCurrency(num)+'</span>');
-//				$gdpChange.text(formatCurrency(gdpChg[val]));
-//				$gdpPerChange.text(gdpPerChg[val].toFixed(2));
-//				colorIndiGdp();
-//			}
-            
-//							perNew = Math.floor((((mapRatingAction[val+startDate]['New']-mapRatingAction[val+startDate-1]['New'])/mapRatingAction[val+startDate-1]['New']).toFixed(2))*100);
-//							perAff = Math.floor((((mapRatingAction[val+startDate]['Affirmation']-mapRatingAction[val+startDate-1]['Affirmation'])/mapRatingAction[val+startDate-1]['Affirmation']).toFixed(2))*100);
-//							perUp = Math.floor((((mapRatingAction[val+startDate]['Upgrade']-mapRatingAction[val+startDate-1]['Upgrade'])/mapRatingAction[val+startDate-1]['Upgrade']).toFixed(2))*100);
-//							perDown = Math.floor((((mapRatingAction[val+startDate]['Downgrade']-mapRatingAction[val+startDate-1]['Downgrade'])/mapRatingAction[val+startDate-1]['Downgrade']).toFixed(2))*100); 
-//							Nr = ((mapRatingAction[val+startDate]['New from NR']-mapRatingAction[val+startDate-1]['New from NR'])/mapRatingAction[val+startDate-1]['New from NR']);
-//							if(isNaN(Nr)){
-//								var ze = 0;
-//								Nr = ze;
-//							}
-//							else{
-//								Nr = Math.floor(Nr.toFixed(2)*100);
-//							}
-  							
-//							Conf = ((mapRatingAction[val+startDate]['New from Confid']-mapRatingAction[val+startDate-1]['New from Confid'])/mapRatingAction[val+startDate-1]['New from Confid']);
-//							if(isNaN(Conf)){
-//								var ze = 0;
-//								perCon = ze;
-//							}
-//							else{
-//								perCon = Math.floor(Conf.toFixed(2)*100);
-//							}
-  				
-//             $period.html(periodPrefix + '<h2 class ="big">'+(val+startDate)+'</h2>');
+			}				
+            $period.html(periodPrefix + '<h2 class ="big">'+(val+startDate)+'</h2>');
 
-//			$rtgSect.html(ticketInit(val+startDate,'slide'));
-//			$('.line').sparkline();
-//			colorIndiPerCent();
-//             clearInterval( startSlide );
+            clearInterval( startSlide );
             
 //             //setting options for play/pause button to change appearance
-//             var Options;
-//             Options = {label:"play",icons:{primary: "ui-icon-play"}};
-//             $play.button("option",Options);
-//         }
-//     };
+            var Options;
+            Options = {label:"play",icons:{primary: "ui-icon-play"}};
+            $play.button("option",Options);
+        }
+    };
         
 //     /*!
 //     * FUNCTION FOR THE PLAY/PAUSE BUTTON
 //     */
-//     function playPause() {
-//         if ($play.text() === "play") {
+    function playPause() {
+        if ($play.text() === "play") {
             
 //             //setting Options for play/pause button to change appearance
-//             var Options;
-//             Options = {label:"pause",icons:{primary: "ui-icon-pause"}};
-//             $play.button("option",Options);
+            var Options;
+            Options = {label:"pause",icons:{primary: "ui-icon-pause"}};
+            $play.button("option",Options);
             
 //             //getting data of current position of slider and map parameters
-//             var s = $date.next(), val = (+(s.slider("values"))), min = 0, max = timePeriods;
+            var s = $date.next(), val = (+(s.slider("values"))), min = 0, max = timePeriods;
             
 //             //starting the slide
-//             if (val<max) {
-//                 startSlide = setInterval("slideThrough()", slideSpeed);
+            if (val<max) {
+                startSlide = setInterval("slideThrough()", slideSpeed);
 //             //stopping the slide because it reached the end
-//             } else {
-//                 s.slider("values", 0, min);
-//                 $period.html(periodPrefix +'<h2 class ="big">'+ (min+startDate)+'</h2>');
-//                 startSlide = setInterval("slideThrough()", slideSpeed);
-//             }
+            } else {
+                s.slider("values", 0, min);
+                $period.html(periodPrefix +'<h2 class ="big">'+ (min+startDate)+'</h2>');
+                startSlide = setInterval("slideThrough()", slideSpeed);
+            }
             
-//         } else {
+        } else {
             
 //             //stopping the slide if user hits play button again
-//             clearInterval( startSlide );
+            clearInterval( startSlide );
             
 //             //setting Options for play/pause button to change appearance
-//             var Options;
-//             Options = {label:"play", icons:{primary: "ui-icon-play"}};
-//             $play.button("option", Options);
+            var Options;
+            Options = {label:"play", icons:{primary: "ui-icon-play"}};
+            $play.button("option", Options);
                             
 //             //getting data of current position of slider and map parameters
-//             var s = $date.next(), val = (+(s.slider("values"))), min = 0, max = timePeriods;
+            var s = $date.next(), val = (+(s.slider("values"))), min = 0, max = timePeriods;
                                 
 //             //setting the value at the current place
-//             s.slider("values", 0, val);
-//             $period.html(periodPrefix + '<h2 class ="big">'+(val+startDate)+'</h2>');
-//         }
-//     };
+            s.slider("values", 0, val);
+            $period.html(periodPrefix + '<h2 class ="big">'+(val+startDate)+'</h2>');
+        }
+    };
 
     
 
@@ -851,24 +739,24 @@ function colorIndiGdp(){
 		});
 };
 
-function genGdpHist(){
-		var i = 0;
-		gdpChg[0] = '--';
-		gdpPerChg[0] = 0;
+// function genGdpHist(){
+//		var i = 0;
+//		gdpChg[0] = '--';
+//		gdpPerChg[0] = 0;
 
-		for(var id = startDate; id<=endDate;id++){
-			if(currentCon!== ''){
-				gdpHist[i] = currentCon.getDebtOfYear(id).GdP();
+//		for(var id = startDate; id<=endDate;id++){
+//			if(currentCon!== ''){
+//				gdpHist[i] = currentCon.getDebtOfYear(id).GdP();
 
-			if(i>=1){
-				gdpChg[i] = (gdpHist[i] && gdpHist[i-1])?gdpHist[i] - gdpHist[i-1]: '--';
-				gdpPerChg[i] = (gdpHist[i] && gdpHist[i-1])?((gdpHist[i] - gdpHist[i-1])/gdpHist[i-1])*100:'--';
-			}
-			i++;
-			}
-	
-		}
-};
+//			if(i>=1){
+//				gdpChg[i] = (gdpHist[i] && gdpHist[i-1])?gdpHist[i] - gdpHist[i-1]: '--';
+//				gdpPerChg[i] = (gdpHist[i] && gdpHist[i-1])?((gdpHist[i] - gdpHist[i-1])/gdpHist[i-1])*100:'--';
+//			}
+//			i++;
+//			}
+  	
+//		}
+// };
 
 // function radarInit(a_,b_,c_,d_,e_){
 //			var valu = [];
