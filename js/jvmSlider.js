@@ -298,40 +298,40 @@ $.reject({
 		
 
 
-	//	$.getJSON('ajax/World_Data_GDP.json', function(gdp) {
-	//	$.each(gdp, function(){
-	//		for(startYear = 2000; startYear<=endDate; startYear++){
-	//			for(var x = 0; x<Cl.length;x++){
-	//				if(Cl[x].hasYear(startYear)){
-	//					if(Cl[x].countryName() === this['Country Name']){
-	//						Cl[x].getDebtOfYear(startYear).GdP(this[startYear]);
-	//						break;
-	//					}
-	//				}
-	  			
-	//			}
-	//		}
+		$.getJSON('ajax/World_Data_GDP.json', function(gdp) {
+			$.each(gdp, function(){
+				for(startYear = 2000; startYear<=endDate; startYear++){
+					for(var x = 0; x<Cl.length;x++){
+						if(Cl[x].hasYear(startYear)){
+						 	if(Cl[x].countryName() === this['Country Name']){
+						 		Cl[x].getDebtOfYear(startYear).GdP(this[startYear]);
+						 		break;
+						 	}
+						}	
+					}
+				}
+			});
+		});
 
-	//	});
-	  	
-	// });
+	$.getJSON('ajax/GDP_per_capita.json', function(gdpC) {
 
-	// $.getJSON('ajax/GDP_per_capita.json', function(gdpC) {
-	//	$.each(gdC, function(){
-	//		for(startYear = 2000; startYear<=endDate; startYear++){
-	//			for(var x = 0; x<Cl.length;x++){
-	//				if(Cl[x].hasYear(startYear)){
-	//					if(Cl[x].countryName().toString().indexOf(this['GDP per capita (US$)']) !=-1){
-	//						Cl[x].getDebtOfYear(startYear).GdpPer(this[startYear]);
-	//						break;
-	//					}
-	//				}
-	//			}
-	//		}
+		$.each(gdpC, function(){
+				var s = this['GDP per capita (US$)'];
+				var stringToRemove = s.slice(s.indexOf("("),s.lastIndexOf(")")+1);
+				var name = s.replace(stringToRemove,"");
 
-	//	});
-	  	
-	// });
+			for(startYear = 2000; startYear<=endDate; startYear++){
+					for(var x = 0; x<Cl.length;x++){
+						if(Cl[x].hasYear(startYear)){
+						 	if(name.indexOf(Cl[x].countryName())!=-1){
+						 		Cl[x].getDebtOfYear(startYear).GdpPer(this[startYear]);
+						 		break;
+						 	}
+						}	
+					}
+			}
+		});
+	});
 
 
 			
@@ -384,9 +384,9 @@ $.reject({
 				   		onRegionClick: function (event,code) {
 				   			if(typeof getThisCountryIndex(code) !=='undefined'){
 				   				currentCon = Cl[ getThisCountryIndex(code)];
-				   				var num = currentCon.getDebtOfYear('2001').GdpPer();
+				   				var num = currentCon.getDebtOfYear(selectedYear).GdpPer();
 				   				//console.log(currentCon.getDebtOfYear('2001').GdP());
-				   				//console.log(num);
+				   				console.log(num);
 				   			}
 				   		}
 				   	});
