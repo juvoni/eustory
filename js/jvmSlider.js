@@ -35,6 +35,8 @@ $.reject({
 
 	$three = $('#three');						
 	$map = $('#map');
+	$map_past = $('#map_past');
+
 	$three_p = $('#three p');
 	$ConId = $('#counName');
 	$gdp = $('.gdp');
@@ -208,7 +210,6 @@ $.reject({
 		
 		var i = 0;
 		var n = 0;
-		
 		var scoreO;
 
 			for(var de = 0; de<13; de++){
@@ -370,27 +371,50 @@ $.reject({
 		for (property in mapValues) timePeriods++;
 	        // jVectorMap Options
 			
-			$(function() {
-				   	$map.vectorMap({
-				   		map:'europe_mill_en',
-				   		values: mapValues[startDate],
-				   		//scaleColors: ['#538347','#70a056','#629022','#639022','#729421','#899921','#A0961F','#CC2820', '#BD1810'],
-				   		scaleColors: ['#bdcb2a','#ffda00','#e31837'],//S&P Colors
-				   		backgroundColor:'#fff',
-				   		normalizeFunction: 'polynomial',
-				   		color:'#ccc',
-				   		hoverOpacity: 0.8,
-				   		hoverColor: false,
-				   		onRegionClick: function (event,code) {
-				   			if(typeof getThisCountryIndex(code) !=='undefined'){
-				   				currentCon = Cl[ getThisCountryIndex(code)];
-				   				var num = currentCon.getDebtOfYear(selectedYear).GdpPer();
-				   				//console.log(currentCon.getDebtOfYear('2001').GdP());
-				   				console.log(num);
-				   			}
-				   		}
-				   	});
-				});	
+			(function() {
+					$map.vectorMap({
+						map:'europe_mill_en',
+						values: mapValues['2011'],
+						//scaleColors: ['#538347','#70a056','#629022','#639022','#729421','#899921','#A0961F','#CC2820', '#BD1810'],
+						scaleColors: ['#bdcb2a','#ffda00','#e31837'],//S&P Colors
+						backgroundColor:'#fff',
+						normalizeFunction: 'polynomial',
+						color:'#ccc',
+						hoverOpacity: 0.8,
+						hoverColor: false,
+						onRegionClick: function (event,code) {
+							if(typeof getThisCountryIndex(code) !=='undefined'){
+								currentCon = Cl[ getThisCountryIndex(code)];
+								var num = currentCon.getDebtOfYear('2011').GdpPer();
+								//console.log(currentCon.getDebtOfYear('2001').GdP());
+								console.log(num);
+							}
+						}
+					});
+
+				     	
+				})();	
+			(function() {
+				$map_past.vectorMap({
+						map:'europe_mill_en',
+						values: mapValues[startDate],
+						//scaleColors: ['#538347','#70a056','#629022','#639022','#729421','#899921','#A0961F','#CC2820', '#BD1810'],
+						scaleColors: ['#bdcb2a','#ffda00','#e31837'],//S&P Colors
+						backgroundColor:'#fff',
+						normalizeFunction: 'polynomial',
+						color:'#ccc',
+						hoverOpacity: 0.8,
+						hoverColor: false,
+						onRegionClick: function (event,code) {
+							if(typeof getThisCountryIndex(code) !=='undefined'){
+								currentCon = Cl[ getThisCountryIndex(code)];
+								var num = currentCon.getDebtOfYear(selectedYear).GdpPer();
+								//console.log(currentCon.getDebtOfYear('2001').GdP());
+								console.log(num);
+							}
+						}
+					});
+			})();
         // Initializing labels, play/pause button on front page
 		// DOES NOT NEED TO BE EDITED FOR PLUG IN TO WORK
 			$period.html(periodPrefix + '<h2 class = "big">'+startDate+'</h2>');
@@ -417,13 +441,12 @@ $.reject({
 						if(ui.value -1 >=0 ){
 							
 						}
-						;
 							
-						$map.vectorMap('set', 'values', mapValues[(ui.value+(startDate))]);
+						$map_past.vectorMap('set', 'values', mapValues[(ui.value+(startDate))]);
 					},
 					change: function(event, ui) {
-						$map.vectorMap('set', 'values', mapValues[(ui.value+(startDate))]);
-						$map.bind('labelShow.jvectormap', function(event, label, code) {
+						$map_past.vectorMap('set', 'values', mapValues[(ui.value+(startDate))]);
+						$map_past.bind('labelShow.jvectormap', function(event, label, code) {
 							label.text(mapLabels[(ui.value+(startDate))][code]);
 						});
 						if(currentCon !== ''){
@@ -460,11 +483,6 @@ $.reject({
 			if(currentCon !== ''){
 
 			}
-			
-
-	
-	
-
         } else if (val=max) {
             s.slider("values", 0, val);
             selectedYear = val+startDate;

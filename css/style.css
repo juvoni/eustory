@@ -1,10 +1,4 @@
-div#map{
-    width: 500px; 
-    height: 445px;
-    display: block;
-    margin-left: 155px;
-    padding:0;
-}
+
 body { 
     font-family:"Segoe UI","Helvetica Neue", Helvetica, Arial, sans-serif;
     margin:0px;
@@ -31,11 +25,22 @@ html{
     left: 380px;
     z-index: 4;
 }
-div#map.content {
-    width: 905px; 
-    height: 450px;
-    display: block;
-    margin-left: 155px;
+div.row-fluid{
+    height: 500px;
+    display:inline;
+}
+div#map{  
+    width: 500px; 
+    height: 445px;
+    float: right;  
+}
+div#map_past{
+    width: 500px; 
+    height: 445px;
+    overflow: visible;
+}
+div.historicalSlider{
+    float:left;
 }
 h1.title{
     display: inline;
@@ -50,7 +55,12 @@ fieldset {
     border:0;
     display:inline;
 }
-
+footer{
+    margin:0 auto;
+    position:absolute;
+    bottom:0;
+    width:90%;
+}
 form{
     display:inline;
     padding: 0px;
@@ -79,7 +89,7 @@ button#play {
     width: 25px;
     height: 25px;
     position:relative;
-    margin-left: 190px;
+    padding-bottom: 10px;
     top: 5px;
     left: 5px;
 }
