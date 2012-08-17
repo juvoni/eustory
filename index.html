@@ -47,7 +47,10 @@
   </header>
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span6"><div id="map_past"></div>
+        <div class="span5">
+          <!-- Dyanmic labels for period and totals -->
+          <div id="period">Year:</div> 
+          <div id="map_past"></div>
           <div class = "historicalSlider">
             <button id="play"></button>
             <form action="#">
@@ -70,15 +73,23 @@
             </form>
           </div>
         </div>
-        <div class="span6">
+        <div id = "graph" class="span3">
+          
+        </div>
+        <div class="span4" class = "Present">
+          <div id="periodNow">Year:<h2 class = "big">2011</h2></div> 
           <div id="map"></div>
         </div> 
     </div>
-    <hr>
-
+    <div class="row-fluid">
+      <hr>
+    </div>
+    <div class="row-fluid">
       <footer>
         <p>&copy; Standard and Poor's 2012</p>
       </footer>
+    </div>
+    
     </div><!--/.fluid-container-->
 
     <!-- Le javascript
