@@ -42,8 +42,18 @@ div#map_past{
     padding: 0;
 }
 #graph{
+    min-height: 10em;
     border: 1px solid #000;
-    margin: 0 auto;
+    margin: 60px 10px 0 10px;
+    
+
+}
+div.bar {
+                display: inline-block;
+                width: 20px;
+                height: 75px;   /* Gets overriden by D3-assigned height below */
+                margin-right: 2px;
+                background-color: teal;
 }
 .span4 .Present{
     float:right;

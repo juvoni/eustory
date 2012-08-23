@@ -372,6 +372,7 @@ $.reject({
 	        // jVectorMap Options
 			
 			(function() {
+					
 					$map.vectorMap({
 						map:'europe_mill_en',
 						values: mapValues['2011'],
@@ -388,6 +389,7 @@ $.reject({
 								var num = currentCon.getDebtOfYear('2011').GdpPer();
 								//console.log(currentCon.getDebtOfYear('2001').GdP());
 								console.log(num);
+
 							}
 						}
 					});

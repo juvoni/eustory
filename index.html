@@ -38,6 +38,7 @@
 
     <script src="js/selectToUISlider.jQuery.js"></script>
     <script src="js/Country.js"></script>
+    <script src="js/d3.v2.js"></script>
   </head>
 
   <body>
@@ -78,7 +79,35 @@
           </div>
         </div>
         <div id = "graph" class="span3">
-          
+
+          <script type="text/javascript">
+//Width and height
+      var w = 500;
+      var h = 50;
+      
+      //Data
+      var dataset = [ 5, 10, 15, 20, 25 ];
+      
+      //Create SVG element
+      var svg = d3.select("#graph")
+            .append("svg")
+            .attr("width", 500)
+            .attr("height", 50);
+
+      var circles = svg.selectAll("circle")
+          .data(dataset)
+          .enter()
+          .append("circle");
+
+      circles.attr("cx", function(d, i) {
+            return (i * 50) + 25;
+          })
+           .attr("cy", h/2)
+           .attr("r", function(d) {
+            return d;
+           });
+      
+    </script>
         </div>
         <div class="span4" class = "Present">
           <div id="periodNow">Year:<h2 class = "big">2011</h2></div> 
@@ -100,7 +129,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery-ui-1.8.22.custom.min.js"></script>
-    <script src ="http://cdnjs.cloudflare.com/ajax/libs/d3/2.10.0/d3.v2.min.js"></script>
+    <!--<script src ="http://cdnjs.cloudflare.com/ajax/libs/d3/2.10.0/d3.v2.min.js"></script>-->
    
 
 
