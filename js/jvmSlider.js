@@ -373,49 +373,67 @@ $.reject({
 			
 			(function() {
 					
-					$map.vectorMap({
-						map:'europe_mill_en',
-						values: mapValues['2011'],
-						//scaleColors: ['#538347','#70a056','#629022','#639022','#729421','#899921','#A0961F','#CC2820', '#BD1810'],
-						scaleColors: ['#bdcb2a','#ffda00','#e31837'],//S&P Colors
-						backgroundColor:'#fff',
-						normalizeFunction: 'polynomial',
-						color:'#ccc',
-						hoverOpacity: 0.8,
-						hoverColor: false,
-						onRegionClick: function (event,code) {
-							if(typeof getThisCountryIndex(code) !=='undefined'){
-								currentCon = Cl[ getThisCountryIndex(code)];
-								var num = currentCon.getDebtOfYear('2011').GdpPer();
-								//console.log(currentCon.getDebtOfYear('2001').GdP());
-								console.log(num);
+					// $map.vectorMap({
+					//	map:'europe_mill_en',
+					//	values: mapValues['2011'],
+					//	//scaleColors: ['#538347','#70a056','#629022','#639022','#729421','#899921','#A0961F','#CC2820', '#BD1810'],
+					//	scaleColors: ['#bdcb2a','#ffda00','#e31837'],//S&P Colors
+					//	backgroundColor:'#fff',
+					//	normalizeFunction: 'polynomial',
+					//	color:'#ccc',
+					//	hoverOpacity: 0.8,
+					//	hoverColor: false,
+					//	onRegionClick: function (event,code) {
+					//		if(typeof getThisCountryIndex(code) !=='undefined'){
+					//			currentCon = Cl[ getThisCountryIndex(code)];
+					//			var num = currentCon.getDebtOfYear('2011').GdpPer();
+					//			//console.log(currentCon.getDebtOfYear('2001').GdP());
+					//			console.log(num);
 
-							}
-						}
-					});
+					//		}
+					//	}
+					// });
+			
 
-				     	
 				})();	
 			(function() {
 				$map_past.vectorMap({
-						map:'europe_mill_en',
-						values: mapValues[startDate],
-						//scaleColors: ['#538347','#70a056','#629022','#639022','#729421','#899921','#A0961F','#CC2820', '#BD1810'],
-						scaleColors: ['#bdcb2a','#ffda00','#e31837'],//S&P Colors
-						backgroundColor:'#fff',
-						normalizeFunction: 'polynomial',
-						color:'#ccc',
-						hoverOpacity: 0.8,
-						hoverColor: false,
-						onRegionClick: function (event,code) {
-							if(typeof getThisCountryIndex(code) !=='undefined'){
-								currentCon = Cl[ getThisCountryIndex(code)];
-								var num = currentCon.getDebtOfYear(selectedYear).GdpPer();
-								//console.log(currentCon.getDebtOfYear('2001').GdP());
-								console.log(num);
-							}
-						}
-					});
+				    map: 'europe_mill_en',
+				    backgroundColor: '#FFFFFF',
+				    values: mapValues['2002'],
+				    scaleColors: ['#bdcb2a','#ffda00','#e31837'],//S&P Colors
+				    regionStyle: {
+				        initial: {
+				            fill: '#CCCCCC',
+				            "fill-opacity": 1,
+				            stroke: 'none',
+				            "stroke-width": 0,
+				            "stroke-opacity": 1
+				        },
+				        hover: {
+				            "fill-opacity": 0.8
+				        }
+				    }
+				});	
+				// $map_past.vectorMap({
+				//		map:'europe_mill_en',
+				//		values: mapValues[startDate],
+				//		//scaleColors: ['#538347','#70a056','#629022','#639022','#729421','#899921','#A0961F','#CC2820', '#BD1810'],
+				//		scaleColors: ['#bdcb2a','#ffda00','#e31837'],//S&P Colors
+				//		backgroundColor:'#fff',
+				//		normalizeFunction: 'polynomial',
+				//		color:'#ccc',
+				//		hoverOpacity: 0.8,
+				//		hoverColor: false,
+				//		onRegionClick: function (event,code) {
+				//			if(typeof getThisCountryIndex(code) !=='undefined'){
+				//				currentCon = Cl[ getThisCountryIndex(code)];
+				//				var num = currentCon.getDebtOfYear(selectedYear).GdpPer();
+				//				//console.log(currentCon.getDebtOfYear('2001').GdP());
+				//				console.log(num);
+				//			}
+				//		}
+				//	});
 			})();
         // Initializing labels, play/pause button on front page
 		// DOES NOT NEED TO BE EDITED FOR PLUG IN TO WORK

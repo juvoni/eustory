@@ -31,7 +31,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
      <script src="js/jquery-1.8.0.min.js"></script>
-    <script src="js/jquery-jvectormap.js"></script>
+    <script src="js/jquery-jvectormap-1.0.min.js"></script>
     <script src="js/jquery-jvectormap-europe-mill-en.js"></script>
     <script src="js/jvmSlider.js"></script>
     <script src="js/jquery.reject.js"></script>
@@ -78,41 +78,7 @@
             </form>
           </div>
         </div>
-        <div id = "graph" class="span3">
 
-          <script type="text/javascript">
-//Width and height
-      var w = 500;
-      var h = 50;
-      
-      //Data
-      var dataset = [ 5, 10, 15, 20, 25 ];
-      
-      //Create SVG element
-      var svg = d3.select("#graph")
-            .append("svg")
-            .attr("width", 500)
-            .attr("height", 50);
-
-      var circles = svg.selectAll("circle")
-          .data(dataset)
-          .enter()
-          .append("circle");
-
-      circles.attr("cx", function(d, i) {
-            return (i * 50) + 25;
-          })
-           .attr("cy", h/2)
-           .attr("r", function(d) {
-            return d;
-           });
-      
-    </script>
-        </div>
-        <div class="span4" class = "Present">
-          <div id="periodNow">Year:<h2 class = "big">2011</h2></div> 
-          <div id="map"></div>
-        </div> 
     </div>
     <div class="row-fluid">
       <hr>
