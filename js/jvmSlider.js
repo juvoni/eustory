@@ -393,7 +393,7 @@ $.reject({
 					//		}
 					//	}
 					// });
-			
+			console.log(mapValues['2002']);
 
 				})();	
 			(function() {
@@ -607,75 +607,6 @@ $.reject({
 //		}
 // };
 
-
-// function ticketInit(val,type)
-// {
-//		var renderTicker = '<p class = tickInfo>Sovereign Rating Actions</p>';
-//		renderTicker += '<ul class = "ticker">';
-//		for(var i = 0; i<6;i++){
-  			
-//				renderTicker+= '<li>'+'<div class = "actionStat">'+'<p class = "tickTitle">'
-//				switch(i){
-//					case 0: renderTicker+='Upgrade:'+'</p>'+'&nbsp;'+mapRatingAction[val]['Upgrade'];
-//					break;
-//					case 1: renderTicker+='Downgrade:'+'</p>'+'&nbsp;'+mapRatingAction[val]['Downgrade'];
-//					break;
-//					case 2: renderTicker+='New Rating:'+'</p>'+'&nbsp;'+mapRatingAction[val]['New'];
-//					break;
-//					case 3: renderTicker+='Affirmations:'+'</p>'+'&nbsp;'+mapRatingAction[val]['Affirmation'];
-//					break;
-//					case 4: renderTicker+='New from NR:'+'</p>'+'&nbsp;'+mapRatingAction[val]['New from NR'];
-//					break;
-//					case 5: renderTicker+='New from Confid:'+'</p>'+'&nbsp;'+mapRatingAction[val]['New from Confid'];
-//					break;
-//					default:
-//				}
-//				renderTicker +='</div>';
-//				if(type === 'slide'){
-//					switch(i){
-//						case 0: renderTicker+= '<span class = "percent">'+perUp+'</span>'+' &nbsp<span class="line">';
-//						break;
-//						case 1: renderTicker+='<span class = "percent">'+perDown+'</span>'+' &nbsp<span class="line">';
-//						break;
-//						case 2: renderTicker+='<span class = "percent">'+perNew+'</span>'+' &nbsp<span class="line">';
-//						break;
-//						case 3: renderTicker+='<span class = "percent">'+perAff+'</span>'+' &nbsp<span class="line">';
-//						break;
-//						case 4: renderTicker+='<span class = "percent">'+Nr+'</span>'+' &nbsp<span class="line">';
-//						break;
-//						case 5: renderTicker+='<span class = "percent">'+perCon+'</span>'+' &nbsp<span class="line">';
-//						break;
-//						default:
-//					}
-//				}
-//				else{
-//					renderTicker+='<span class = "percent">'+'--'+'</span>'+' &nbsp<span class="line">';
-//				}
-  				
-//				for(var x = 0; x<UpB.length;x++){
-//					switch(i){
-//						case 0: renderTicker+= (x<11)?UpB[x]+',':UpB[x];
-//						break;
-//						case 1: renderTicker+=(x<11)?DowB[x]+',':DowB[x];
-//						break;
-//						case 2: renderTicker+=(x<11)?NewB[x]+',':NewB[x];
-//						break;
-//						case 3: renderTicker+=(x<11)?AffB[x]+',':AffB[x];
-//						break;
-//						case 4: renderTicker+=(x<11)?NrB[x]+',':NrB[x];
-//						break;
-//						case 5: renderTicker+=(x<11)?ConfB[x]+',':ConfB[x];
-//						break;
-//						default:
-//					}
-//				}
-//				renderTicker+='</span>'+'</li>';
-//		}
-//		renderTicker+='</ul>';
-
-//	return renderTicker;
-// };
-
 function formatCurrency(num) {
     num = num.toString().replace(/\$|\,/g,'');
 	if(isNaN(num))
@@ -776,54 +707,3 @@ function colorIndiGdp(){
 			$(this).append('&#37;');
 		});
 };
-
-// function genGdpHist(){
-//		var i = 0;
-//		gdpChg[0] = '--';
-//		gdpPerChg[0] = 0;
-
-//		for(var id = startDate; id<=endDate;id++){
-//			if(currentCon!== ''){
-//				gdpHist[i] = currentCon.getDebtOfYear(id).GdP();
-
-//			if(i>=1){
-//				gdpChg[i] = (gdpHist[i] && gdpHist[i-1])?gdpHist[i] - gdpHist[i-1]: '--';
-//				gdpPerChg[i] = (gdpHist[i] && gdpHist[i-1])?((gdpHist[i] - gdpHist[i-1])/gdpHist[i-1])*100:'--';
-//			}
-//			i++;
-//			}
-  	
-//		}
-// };
-
-// function radarInit(a_,b_,c_,d_,e_){
-//			var valu = [];
-//			var valuToString = [];
-//			$('#three2D').html('<canvas id="myRadar" width = "353px" height = "340px">[No canvas support]</canvas>');
-//			if (arguments.length == 0){
-//				valu = [0,0,0,0,0];
-//				radar2 = new RGraph.Radar('myRadar', valu);
-//				radar2.Set('chart.tooltips', ['0', '0', '0','0','0']);
-//			}
-//			else{
-//				valu = [a_,b_,c_,d_,e_];
-//				for(var i = 0; i<valu.length;i++){
-//					valuToString[i] = valu[i].toString();
-//				}
-//				radar2 = new RGraph.Radar('myRadar', [valu[2],valu[3],valu[1],valu[4],valu[0]]);
-//				radar2.Set('chart.tooltips', [valuToString[2],valuToString[3],valuToString[1],valuToString[4],valuToString[0]]);
-//			}
-//             radar2.Set('chart.labels', ['Monetary', 'Political', 'Fiscal','External','Economic']);
-//             radar2.Set('chart.background.circles.poly', true);
-//             radar2.Set('chart.background.circles.spacing', 30);
-//             radar2.Set('chart.colors', ['rgba(255,0,0,0.50)']);
-//             radar2.Set('chart.zoom.factor', 1.0);
-//             radar2.Set('chart.axes.color', 'transparent');
-//             radar2.Set('chart.highlights', true);
-//             radar2.Set('chart.strokestyle', ['#FFCC00']);
-//             radar2.Set('chart.ymax', 6);
-
-           
-
-//             RGraph.Effects.Radar.Grow(radar2);
-// };
