@@ -137,7 +137,6 @@ $.reject({
 
 	getScores = function(conName){
 		var c = conName.toUpperCase();
-		
 		var scoreArray = [];
 		for(var conSelect = 0; conSelect<Cl.length; conSelect++){
 			if(Cl[conSelect].countryCode() !== 'undefined'){
@@ -299,40 +298,7 @@ $.reject({
 		
 
 
-		$.getJSON('ajax/World_Data_GDP.json', function(gdp) {
-			$.each(gdp, function(){
-				for(startYear = 2000; startYear<=endDate; startYear++){
-					for(var x = 0; x<Cl.length;x++){
-						if(Cl[x].hasYear(startYear)){
-						 	if(Cl[x].countryName() === this['Country Name']){
-						 		Cl[x].getDebtOfYear(startYear).GdP(this[startYear]);
-						 		break;
-						 	}
-						}	
-					}
-				}
-			});
-		});
 
-	$.getJSON('ajax/GDP_per_capita.json', function(gdpC) {
-
-		$.each(gdpC, function(){
-				var s = this['GDP per capita (US$)'];
-				var stringToRemove = s.slice(s.indexOf("("),s.lastIndexOf(")")+1);
-				var name = s.replace(stringToRemove,"");
-
-			for(startYear = 2000; startYear<=endDate; startYear++){
-					for(var x = 0; x<Cl.length;x++){
-						if(Cl[x].hasYear(startYear)){
-						 	if(name.indexOf(Cl[x].countryName())!=-1){
-						 		Cl[x].getDebtOfYear(startYear).GdpPer(this[startYear]);
-						 		break;
-						 	}
-						}	
-					}
-			}
-		});
-	});
 
 
 			
@@ -393,48 +359,9 @@ $.reject({
 					//		}
 					//	}
 					// });
-			console.log(mapValues['2002']);
 
 				})();	
-			(function() {
-				$map_past.vectorMap({
-				    map: 'europe_mill_en',
-				    backgroundColor: '#FFFFFF',
-				    values: mapValues['2002'],
-				    scaleColors: ['#bdcb2a','#ffda00','#e31837'],//S&P Colors
-				    regionStyle: {
-				        initial: {
-				            fill: '#CCCCCC',
-				            "fill-opacity": 1,
-				            stroke: 'none',
-				            "stroke-width": 0,
-				            "stroke-opacity": 1
-				        },
-				        hover: {
-				            "fill-opacity": 0.8
-				        }
-				    }
-				});	
-				// $map_past.vectorMap({
-				//		map:'europe_mill_en',
-				//		values: mapValues[startDate],
-				//		//scaleColors: ['#538347','#70a056','#629022','#639022','#729421','#899921','#A0961F','#CC2820', '#BD1810'],
-				//		scaleColors: ['#bdcb2a','#ffda00','#e31837'],//S&P Colors
-				//		backgroundColor:'#fff',
-				//		normalizeFunction: 'polynomial',
-				//		color:'#ccc',
-				//		hoverOpacity: 0.8,
-				//		hoverColor: false,
-				//		onRegionClick: function (event,code) {
-				//			if(typeof getThisCountryIndex(code) !=='undefined'){
-				//				currentCon = Cl[ getThisCountryIndex(code)];
-				//				var num = currentCon.getDebtOfYear(selectedYear).GdpPer();
-				//				//console.log(currentCon.getDebtOfYear('2001').GdP());
-				//				console.log(num);
-				//			}
-				//		}
-				//	});
-			})();
+
         // Initializing labels, play/pause button on front page
 		// DOES NOT NEED TO BE EDITED FOR PLUG IN TO WORK
 			$period.html(periodPrefix + '<h2 class = "big">'+startDate+'</h2>');
