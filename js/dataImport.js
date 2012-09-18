@@ -66,8 +66,12 @@ CountryObj.prototype ={
 		if(year<1999)
 			return console.log("Invalid Year");
 		return this.Economic['Nominal_GDP'][year];
+	},
+	getPerCapita: function(year){
+		if(year<1999)
+			return console.log("Invalid Year");
+		return this.Economic['Per_capita_GDP'][year];
 	}
-
 };
 Object.size = function(obj) {
     var size = 0, key;
@@ -103,8 +107,11 @@ $.getJSON('ajax/economic_data.json', function(data) {
 			n++;
 			//console.log(this['Data']['Nominal GDP (bil. $)'][1999]));
 		});
+		var countryNumber = 16;
+		console.log("Country:"+EU[countryNumber].getName());
+		console.log("Per Capita GDP:")
 		for(var i = 1999; i<=2012; i++){
-			//console.log(i+":"+EU[0].getNomGDP(i));
+			console.log(i+":"+EU[countryNumber].getPerCapita(i));
 			//console.log(i+":"+EU[1].getNomGDP(i));
 		}
 

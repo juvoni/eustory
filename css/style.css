@@ -68,7 +68,9 @@ div.data_overview ul li.selected{
     font-size: 18px;
     color: red;
 }
-
+p.info{
+    margin-left: 15px;
+}
 h1.title{
     display: inline;
     position:relative;
