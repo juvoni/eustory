@@ -111,8 +111,7 @@ CountryObj.prototype ={
 		if(year<1999)
 			return console.log("Invalid Year");
 		return this.Economic['Unemployment_rate'][year];
-	},
-
+	}
 };
 Object.size = function(obj) {
     var size = 0, key;
