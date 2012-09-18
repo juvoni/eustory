@@ -53,13 +53,11 @@
 <h1 class ="title">The Eurozone Story</h1>
     <!-- Dyanmic labels for period and totals -->
   </header>
-    <script type="text/javascript">
-      $('ul.historical li')
-    </script>
+
     <div class="container-fluid">
-          <div class="row-fluid">
+          <div class="span1">
       <ul class = "historical">
-        <li><a href="">1999</a></li>
+        <li><a class = "selected" href="">1999</a></li>
         <li><a href="">2000</a></li>
         <li><a href="">2001</a></li>
         <li><a href="">2002</a></li>
@@ -75,7 +73,13 @@
         <li><a href="">2012</a></li>
       </ul>
     </div>
-
+    <script type="text/javascript">
+      $('ul.historical li a').each(function(){
+        if($(this).attr('class') == 'selected'){
+          $(this).prepend('&#9654;');
+        }
+      });
+    </script>
       <div class="row-fluid">
         <div class="span5">
           <!-- Dyanmic labels for period and totals -->
