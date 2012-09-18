@@ -104,8 +104,8 @@ $.getJSON('ajax/economic_data.json', function(data) {
 			//console.log(this['Data']['Nominal GDP (bil. $)'][1999]));
 		});
 		for(var i = 1999; i<=2012; i++){
-			console.log(i+":"+EU[0].getNomGDP(i));
-			console.log(i+":"+EU[1].getNomGDP(i));
+			//console.log(i+":"+EU[0].getNomGDP(i));
+			//console.log(i+":"+EU[1].getNomGDP(i));
 		}
 
 });

@@ -33,58 +33,64 @@
    <!--
     <script src="js/Country.js"></script>
 
-    <script src="js/jquery-jvectormap-1.0.min.js"></script>
-    <script src="js/jquery-jvectormap-europe-mill-en.js"></script>
+
     <script src="js/jvmSlider.js"></script>
     <script src="js/jquery.reject.js"></script>
 
     <script src="js/selectToUISlider.jQuery.js"></script>
   -->
+      <script src="js/jquery-jvectormap-1.0.min.js"></script>
+    <script src="js/jquery-jvectormap-europe-mill-en.js"></script>
     <script src="js/dataImport.js"></script>
+    <script src="js/render.js"></script>
   </head>
 
   <body>
 
     
       <header>
-
     <img class = "logo"src="img/SP_RatingsService_1.png" alt="S&amp;P Rating's Logo">
-<h1 class ="title">Sovereign Ratings World View - EU</h1>
+<h1 class ="title">The Eurozone Story</h1>
     <!-- Dyanmic labels for period and totals -->
   </header>
+    <script type="text/javascript">
+      $('ul.historical li')
+    </script>
     <div class="container-fluid">
+          <div class="row-fluid">
+      <ul class = "historical">
+        <li><a href="">1999</a></li>
+        <li><a href="">2000</a></li>
+        <li><a href="">2001</a></li>
+        <li><a href="">2002</a></li>
+        <li><a href="">2003</a></li>
+        <li><a href="">2004</a></li>
+        <li><a href="">2005</a></li>
+        <li><a href="">2006</a></li>
+        <li><a href="">2007</a></li>
+        <li><a href="">2008</a></li>
+        <li><a href="">2009</a></li>
+        <li><a href="">2010</a></li>
+        <li><a href="">2011</a></li>
+        <li><a href="">2012</a></li>
+      </ul>
+    </div>
+
       <div class="row-fluid">
         <div class="span5">
           <!-- Dyanmic labels for period and totals -->
-          <div id="period">Year:</div> 
           <div id="map"></div>
-          <div class = "historicalSlider">
-            <!--<button id="play"></button>-->
-            <form action="#">
-                <fieldset>
-                    <select name="date" id="date">
-              <option value="2000" selected="selected">2000</option>
-              <option value="2001">2001</option>
-              <option value="2002">2002</option>
-              <option value="2003">2003</option>
-              <option value="2004">2004</option>
-              <option value="2005">2005</option>
-              <option value="2006">2006</option>
-              <option value="2007">2007</option>
-              <option value="2008">2008</option>
-              <option value="2009">2009</option>
-              <option value="2010">2010</option>
-              <option value="2011">2011</option>
-                    </select>
-                </fieldset>
-            </form>
-          </div>
         </div>
 
     </div>
+    <div class="row-fuild">
+      <div class="span3"></div>
+    </div>
+
     <div class="row-fluid">
       <hr>
     </div>
+
     <div class="row-fluid">
       <footer>
         <p>&copy; Standard and Poor's 2012</p>

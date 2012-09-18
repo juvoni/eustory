@@ -30,6 +30,7 @@ div#map{
     width: 460px;
     height: 405px;
     margin-top: 10px;
+    visibility: visible;
     display:block;
     padding: 0;
     float: right;
