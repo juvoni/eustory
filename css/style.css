@@ -47,37 +47,35 @@ ul.historical li a{
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
+    text-shadow: 1px 1px 3px #c2c2c2;
+        filter: dropshadow(color=#c2c2c2, offx=1, offy=1);
 }
 ul.historical li a.selected{
     font-size: 24px;
+    color: red;
 }
-#graph{
-    min-height: 10em;
-    border: 1px solid #000;
-    margin: 60px 10px 0 10px;
+div.data_overview ul li{
+    color:#999999;
+    list-style: none;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform:uppercase;
+    margin-bottom: 5px;
 
+}
+div.data_overview ul li.selected{
+    font-size: 18px;
+    color: red;
+}
 
-}
-div.bar {
-                display: inline-block;
-                width: 20px;
-                height: 75px;   /* Gets overriden by D3-assigned height below */
-                margin-right: 2px;
-                background-color: teal;
-}
-.span4 .Present{
-    float:right;
-}
-div.historicalSlider{
-    float:left;
-}
 h1.title{
     display: inline;
     position:relative;
     margin-bottom:10px;
-    margin-left: 100px;
+    margin-left: 130px;
     font-size: 30px;
-    color: #333333;
+    color: #505050;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     text-transform: capitalize;
 }
@@ -94,10 +92,6 @@ footer{
 form{
     display:inline;
     padding: 0px;
-}
-.jvectormap-region {
-    stroke: #fff; /*adadad*/
-    stroke-width: 0.4;
 }
 
 
@@ -138,6 +132,7 @@ header {
     padding-top: 0;
     margin-top: 0;
     padding-bottom: 5px;
+    margin-bottom: 20px;
 }
 p.tickInfo{
     text-align: center;
