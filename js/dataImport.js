@@ -71,7 +71,48 @@ CountryObj.prototype ={
 		if(year<1999)
 			return console.log("Invalid Year");
 		return this.Economic['Per_capita_GDP'][year];
-	}
+	},
+	getGross_d_Saving: function(key,val){
+		if(year<1999)
+			return console.log("Invalid Year");
+		return this.Economic['Gross_domestic_savings'][year];
+	},
+	getGross_d_Investment: function(key,val){
+		if(year<1999)
+			return console.log("Invalid Year");
+		return this.Economic['Gross_domestic_investment'][year];
+	},
+	getReal_GDP_G: function(key,val){
+		if(year<1999)
+			return console.log("Invalid Year");
+		return this.Economic['Real_GDP_growth'][year];
+	},
+	getRealInvestment: function(key,val){
+		if(year<1999)
+			return console.log("Invalid Year");
+		return this.Economic['Real_investment'][year];
+	},
+	getCPI: function(key,val){
+		if(year<1999)
+			return console.log("Invalid Year");
+		return this.Economic['Consumer_price_index'][year];
+	},
+	getNFPE: function(key,val){
+		if(year<1999)
+			return console.log("Invalid Year");
+		return this.Economic['Oth_DC_claims_on_private_NFPEs'][year];
+	},
+	getBank_Claim_res: function(key,val){
+		if(year<1999)
+			return console.log("Invalid Year");
+		return this.Economic['Bank_claims_on_resident_non_govt_sectors'][year];
+	},
+	getUN: function(key,val){
+		if(year<1999)
+			return console.log("Invalid Year");
+		return this.Economic['Unemployment_rate'][year];
+	},
+
 };
 Object.size = function(obj) {
     var size = 0, key;
@@ -107,7 +148,7 @@ $.getJSON('ajax/economic_data.json', function(data) {
 			n++;
 			//console.log(this['Data']['Nominal GDP (bil. $)'][1999]));
 		});
-		var countryNumber = 16;
+		var countryNumber = 13;
 		console.log("Country:"+EU[countryNumber].getName());
 		console.log("Per Capita GDP:")
 		for(var i = 1999; i<=2012; i++){
