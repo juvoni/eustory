@@ -62,8 +62,10 @@ CountryObj.prototype ={
 	addUN: function(key,val){
 		this.Economic['Unemployment_rate'][key] = val;
 	},
-	getNomGDP: function(){
-		return this.Economic['Nominal_GDP'];
+	getNomGDP: function(year){
+		if(year<1999)
+			return console.log("Invalid Year");
+		return this.Economic['Nominal_GDP'][year];
 	}
 
 };
@@ -74,32 +76,37 @@ Object.size = function(obj) {
     }
     return size;
 };
-//str.replace( /[\s\n\r]+/g, ' ' )
+
 var EU = [];
 $(document).ready(function() {
 
 $.getJSON('ajax/economic_data.json', function(data) {
 
-	var n = 0;
+	var n = 0; //Country counter
 		$.each(data, function(){
-			var size = 0;
+			var size = 0; //Number of Years in record
 			var startYear = 1999;
 			EU.push(new CountryObj(this['Entity Name'],this['ISO'],this['Data']['Long Term Currency Rating']));
-			//EU[n].addNomGDP(this['Nominal GDP (bil. $)']);
-			//console.log(this['Entity Name']+"<br>");
 			size = Object.size(this['Data']['Nominal GDP (bil. $)']);
-			//console.log(size);
-			for(var  i = startYear; i<=2012; i++){
-
-				console.log(this['Data']['Nominal GDP (bil. $)'][i]);
-				//EU[n].addNomGDP(startYear,this['Data']['Nominal GDP (bil. $)'][i]);
+			for(var  i = startYear; i<startYear+size; i++){
+				EU[n].addNomGDP(i,this['Data']['Nominal GDP (bil. $)'][i]),
+				EU[n].addPerCapita(i,this['Data']['Per capita GDP ($)'][i]),
+				EU[n].addGross_d_Saving(i,this['Data']['Gross domestic savings (% of GDP)'][i]),
+				EU[n].addGross_d_Investment(i,this['Data']['Gross domestic investment (% of GDP)']),
+				EU[n].addReal_GDP_G(i,this['Data']['Real GDP growth (%)']),
+				EU[n].addRealInvestment(i,this['Data']['Real investment (% change)']),
+				EU[n].addCPI(i,this['Data']['Consumer price index (% change)']),
+				EU[n].addNFPE(i,this['Data']['Oth DC claims on private & NFPEs (% change)']),
+				EU[n].addBank_Claim_res(i,this['Data']['Bank claims on resident non-govt. sectors']),
+				EU[n].addUN(i,this['Data']['Unemployment rate (average claimant count; %)']);
 			}
-			//console.log(new CountryObj(this['Entity Name'],this['ISO'], this['Data']['Long Term Currency Rating']));
 			n++;
 			//console.log(this['Data']['Nominal GDP (bil. $)'][1999]));
 		});
-		//console.log(EU[1].getNomGDP());
-
+		for(var i = 1999; i<=2012; i++){
+			console.log(i+":"+EU[0].getNomGDP(i));
+			console.log(i+":"+EU[1].getNomGDP(i));
+		}
 
 });
 

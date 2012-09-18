@@ -1,9 +1,9 @@
 
-body { 
+body {
     font-family:"Segoe UI","Helvetica Neue", Helvetica, Arial, sans-serif;
     margin:0px;
-	margin-left:auto;
-	margin-right:auto;
+    margin-left:auto;
+    margin-right:auto;
     padding:0px;
     overflow: auto;
 
@@ -26,16 +26,16 @@ html{
     z-index: 4;
 }
 
-div#map{  
-    width: 460px; 
+div#map{
+    width: 460px;
     height: 405px;
     margin-top: 10px;
     display:block;
     padding: 0;
-    float: right;  
+    float: right;
 }
 div#map_past{
-    width: 460px; 
+    width: 460px;
     height: 405px;
     margin-top: 10px;
     display:block;
@@ -45,7 +45,7 @@ div#map_past{
     min-height: 10em;
     border: 1px solid #000;
     margin: 60px 10px 0 10px;
-    
+
 
 }
 div.bar {
@@ -157,7 +157,7 @@ div.scaleInfo ul li{
     margin:0;
     list-style: none;
     padding-right: 6px;
-    
+
 }
 
 img.scale{
@@ -204,7 +204,7 @@ img.scale{
     box-shadow: 3px 3px 4px #444;
     -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#444444')";
     filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#444444');
-    
+
 }
 canvas#myRadar{
     margin-left: 5px;
@@ -216,7 +216,7 @@ canvas#myRadar{
     text-transform: capitalize;
     font-size:10px;
     display: inline;
-    
+
 }
 #periodNow{
     font-weight:bold;
@@ -226,7 +226,7 @@ canvas#myRadar{
     font-size:10px;
     display: block;
     float: right;
-    
+
 }
 
 h2.big {
@@ -293,7 +293,7 @@ a.slide{
     padding: 2px;
     border-left-style:solid;
     border-color:#E3E3E3;
-    border-width:1px; 
+    border-width:1px;
     float: right;
     margin-top: -400px;
 }
@@ -465,7 +465,7 @@ ul.ticker li:last-child{
     display: inline;
 }
 
-#three .infoToClick{  
+#three .infoToClick{
     top: 60px;
     margin: 0;
     background-color: #FFCC00;
@@ -688,7 +688,7 @@ ul.gcon li img#CountrySprite {
     -webkit-border-top-right-radius: 0px;
     border-top-right-radius: 0px;
     -moz-border-radius-bottomright: 0px;
-    -moz-border-radius-topright: 0px; 
+    -moz-border-radius-topright: 0px;
 }
 .ViewSwap button:last-child{
     -webkit-border-bottom-left-radius: 0px;
@@ -696,7 +696,7 @@ ul.gcon li img#CountrySprite {
     -webkit-border-top-left-radius: 0px;
     border-top-left-radius: 0px;
     -moz-border-radius-bottomleft: 0px;
-    -moz-border-radius-topleft: 0px; 
+    -moz-border-radius-topleft: 0px;
 }
 
 /*!
@@ -743,4 +743,3 @@ button.btn,input[type="submit"].btn{*padding-top:2px;*padding-bottom:2px;}button
 button.btn.btn-large,input[type="submit"].btn.btn-large{*padding-top:7px;*padding-bottom:7px;}
 button.btn.btn-small,input[type="submit"].btn.btn-small{*padding-top:3px;*padding-bottom:3px;}
 button.btn.btn-mini,input[type="submit"].btn.btn-mini{*padding-top:1px;*padding-bottom:1px;}
-
