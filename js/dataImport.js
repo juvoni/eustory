@@ -1,135 +1,14 @@
-function CountryObj(name, code, rating){
-	this.name = name;
-	this.code = code;
-	this.rating = rating;
-
-	this.Economic = {
-		'Nominal_GDP':{},
-		'Per_capita_GDP':{},
-		'Gross_domestic_savings':{},
-		'Gross_domestic_investment':{},
-		'Real_GDP_growth':{},
-		'Real_investment':{},
-		'Consumer_price_index':{},
-		'Oth_DC_claims_on_private_NFPEs':{},
-		'Bank_claims_on_resident_non_govt_sectors':{},
-		'Unemployment_rate':{}
-	};
-	this.Nominal_GDP = {};
-	this.Fiscal = {};
-	this.IIP = {};
-
-};
-
-CountryObj.prototype ={
-	getName: function(){
-		return this.name;
-	},
-	getCode: function(){
-		return this.code;
-	},
-	getRating: function(){
-		return this.rating;
-	},
-	//--------------------Economic Functions--------------------------------//
-	addNomGDP: function(key,val){
-		this.Economic['Nominal_GDP'][key] = val;
-	},
-	addPerCapita: function(key,val){
-		this.Economic['Per_capita_GDP'][key] = val;
-	},
-	addGross_d_Saving: function(key,val){
-		this.Economic['Gross_domestic_savings'][key]= val;
-	},
-	addGross_d_Investment: function(key,val){
-		this.Economic['Gross_domestic_investment'][key] = val;
-	},
-	addReal_GDP_G: function(key,val){
-		this.Economic['Real_GDP_growth'][key] = val;
-	},
-	addRealInvestment: function(key,val){
-		this.Economic['Real_investment'][key] = val;
-	},
-	addCPI: function(key,val){
-		this.Economic['Consumer_price_index'][key] = val;
-	},
-	addNFPE: function(key,val){
-		this.Economic['Oth_DC_claims_on_private_NFPEs'][key] = val;
-	},
-	addBank_Claim_res: function(key,val){
-		this.Economic['Bank_claims_on_resident_non_govt_sectors'][key] = val;
-	},
-	addUN: function(key,val){
-		this.Economic['Unemployment_rate'][key] = val;
-	},
-	getNomGDP: function(year){
-		if(year<1999)
-			return console.log("Invalid Year");
-		return this.Economic['Nominal_GDP'][year];
-	},
-	getPerCapita: function(year){
-		if(year<1999)
-			return console.log("Invalid Year");
-		return this.Economic['Per_capita_GDP'][year];
-	},
-	getGross_d_Saving: function(key,val){
-		if(year<1999)
-			return console.log("Invalid Year");
-		return this.Economic['Gross_domestic_savings'][year];
-	},
-	getGross_d_Investment: function(key,val){
-		if(year<1999)
-			return console.log("Invalid Year");
-		return this.Economic['Gross_domestic_investment'][year];
-	},
-	getReal_GDP_G: function(key,val){
-		if(year<1999)
-			return console.log("Invalid Year");
-		return this.Economic['Real_GDP_growth'][year];
-	},
-	getRealInvestment: function(key,val){
-		if(year<1999)
-			return console.log("Invalid Year");
-		return this.Economic['Real_investment'][year];
-	},
-	getCPI: function(key,val){
-		if(year<1999)
-			return console.log("Invalid Year");
-		return this.Economic['Consumer_price_index'][year];
-	},
-	getNFPE: function(key,val){
-		if(year<1999)
-			return console.log("Invalid Year");
-		return this.Economic['Oth_DC_claims_on_private_NFPEs'][year];
-	},
-	getBank_Claim_res: function(key,val){
-		if(year<1999)
-			return console.log("Invalid Year");
-		return this.Economic['Bank_claims_on_resident_non_govt_sectors'][year];
-	},
-	getUN: function(key,val){
-		if(year<1999)
-			return console.log("Invalid Year");
-		return this.Economic['Unemployment_rate'][year];
-	}
-};
-Object.size = function(obj) {
-    var size = 0, key;
-    for (key in obj) {
-        if (obj.hasOwnProperty(key)) size++;
-    }
-    return size;
-};
-
 var EU = [];
+var doub;
+var size = 0; //Number of Years in record
+var startYear = 1999;
 $(document).ready(function() {
 
 $.getJSON('ajax/economic_data.json', function(data) {
 
 	var n = 0; //Country counter
 		$.each(data, function(){
-			var size = 0; //Number of Years in record
-			var startYear = 1999;
+
 			EU.push(new CountryObj(this['Entity Name'],this['ISO'],this['Data']['Long Term Currency Rating']));
 			size = Object.size(this['Data']['Nominal GDP (bil. $)']);
 			for(var  i = startYear; i<startYear+size; i++){
@@ -148,14 +27,45 @@ $.getJSON('ajax/economic_data.json', function(data) {
 			//console.log(this['Data']['Nominal GDP (bil. $)'][1999]));
 		});
 		var countryNumber = 13;
-		console.log("Country:"+EU[countryNumber].getName());
-		console.log("Per Capita GDP:")
+		//console.log("Country:"+EU[countryNumber].getName());
+		//console.log("Per Capita GDP:")
 		for(var i = 1999; i<=2012; i++){
-			console.log(i+":"+EU[countryNumber].getPerCapita(i));
+			//console.log(i+":"+EU[countryNumber].getPerCapita(i));
 			//console.log(i+":"+EU[1].getNomGDP(i));
 		}
 
+		dataReady();
+});
 });
 
+$.getJSON('ajax/fiscal_data.json', function(data) {
+	$.each(data, function(){
+
+		//size = Object.size(this['Data']['Nominal GDP (bil. $)']);
+	});
 });
 
+
+//console.log("12"+":"+eu[12].getPerCapita(1999));
+
+
+	this.Fiscal = {
+		'Net_Gov_debt_per_GDP':{},
+		'GG_debt net of deposits / GDP (%)':{},
+		'General government debt':{},
+		'General government balance':{},
+		'General government primary balance':{},
+		'General government revenues':{},
+		'General government expenditures':{},
+		'GG interest paid / GDP (%)':{}
+	};
+	this.IIP = {
+		'Net external liabilities':{},
+		'Gross external debt':{},
+		'Public sector ext. debt / CAR (%)':{},
+		'Net external debt / CAR (%)':{},
+		'Narrow net external debt (% of CARs)':{},
+		'Net public sector external debt':{},
+		'Net investment payments':{},
+		'Net interest payments':{}
+	};

@@ -43,6 +43,7 @@
       <script src="js/jquery-jvectormap-1.0.min.js"></script>
     <script src="js/jquery-jvectormap-europe-mill-en.js"></script>
     <script src="js/dataImport.js"></script>
+    <script src="js/CountryObj.js"></script>
     <script src="js/render.js"></script>
   </head>
 
@@ -76,20 +77,29 @@
     </div>
 
       <div class="row-fluid">
-        <div class="span5">
+        <div class="span4">
           <!-- Dyanmic labels for period and totals -->
           <div id="map"></div>
         </div>
 
           <div class="span2 data_overview">
-        <ul>
-          <li>Sovereign Ratings</li>
-          <li class = "selected">Economy</li>
-          <p class="info">
+        <ul class = "Criteria">
+          <li class = "Criteria">Sovereign Ratings</li>
+          <p class="info1">
+            Sovereign ratings pertain to a sovereign's ability and willingness to service financial obligations to nonofficial, in other words commercial, creditors.
+          </p>
+          <li class = "Criteria selected"><a href="#">Economy</a></li>
+          <p class="info2">
             Based on a country's income level,as measured by its GDP per capita. Adjusted based on the economy's growth prospects, as well as its economic diversity and volatility.
           </p>
-          <li>Fiscal Postion</li>
-          <li>International<br>Investment Position</li>
+          <li class = "Criteria"><a href="#">Fiscal Postion</a></li>
+          <p class="info3">
+            The change in net GG debt to GDP is a key measure of a government's fiscal performance.  We believe it is a better indicator of fiscal performance rather than the reported deficit.
+          </p>
+          <li class = "Criteria"><a href="#">International<br>Investment Position</a></li>
+          <p class="info4">
+             International Investment Position, the net external liabilities to GDP is an important factor along with external liquidity in our external score. Total external debt plus the stock of direct and portfolio equity investment from abroad minus total external assets, which include official reserves, other public sector foreign assets, financial institutions' deposits with and lending to nonresidents, other private sector deposits with and lending to nonresidents, and the stock of direct and portfolio equity investment placed abroad.
+          </p>
         </ul>
 
         <div class="CountryData">
@@ -141,7 +151,7 @@
         }
       });
       $('.data_overview ul li').each(function(){
-        if($(this).attr('class') == 'selected'){
+        if($(this).attr('class') == 'Criteria selected'){
           $(this).prepend('&#9654;');
         }
       });
@@ -150,13 +160,14 @@
       <hr>
     </div>
 
-    <div class="row-fluid">
-      <footer>
-        <p>&copy; Standard and Poor's 2012</p>
-      </footer>
+
     </div>
     
     </div><!--/.fluid-container-->
+        <div class="row-fluid">
+      <footer>
+        <p>&copy; Standard and Poor's 2012</p>
+      </footer>
 
     <!-- Le javascript
     ================================================== -->

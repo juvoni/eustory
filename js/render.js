@@ -1,4 +1,4 @@
-$(function(){
+$(document).ready(function() {
       $('#map').vectorMap(
 		    {map: 'europe_mill_en',
           initial: {
@@ -22,4 +22,29 @@ $(function(){
         selectedHover: {
         }}
 	   );
+      $("li.Criteria").click(function(){
+          $("ul.Criteria p").hide();
+          $("li.Criteria selected").removeClass("selected");
+
+          $(this).addClass("selected");
+          var id = $(this).closest("p").attr("class");
+          $("p.info" + id).show();
+      });
+
+
+   // $("#tab a").click(function() {
+
+   //    //reset
+   //    $(".content").hide();
+   //    $("#tab .active").removeClass("active");
+
+   //    //act
+   //    $(this).addClass("active")
+   //    var id = $(this).closest("li").attr("id").replace("tab","");
+   //    $("#content" + id).show();
+   //});
 });
+function dataReady(){
+  doub = EU;
+  console.log(doub[1].getName()+" "+doub[1].getNomGDP(2000));
+};
