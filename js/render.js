@@ -46,5 +46,5 @@ $(document).ready(function() {
 });
 function dataReady(){
   doub = EU;
-  console.log(doub[1].getName()+" "+doub[1].getNomGDP(2000));
+  //console.log(doub[1].getName()+" "+doub[1].getCPI(2000));
 };

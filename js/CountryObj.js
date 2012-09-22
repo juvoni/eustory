@@ -16,14 +16,14 @@ function CountryObj(name, code, rating){
 		'Unemployment_rate':{}
 	};
 	this.Fiscal = {
-		'Net general government debt as % of GDP (%)':{},
-		'GG debt net of deposits / GDP (%)':{},
-		'General government debt':{},
-		'General government balance':{},
-		'General government primary balance':{},
-		'General government revenues':{},
-		'General government expenditures':{},
-		'GG interest paid / GDP (%)':{}
+		'Net_Gov_debt_per_GDP':{},
+		'GG_debtDeposits_GDP':{},
+		'Gov_Debt':{},
+		'Gov_balance':{},
+		'Gov_Pri_Bal':{},
+		'Revenues':{},
+		'Expenditures':{},
+		'Interest_To_GDP':{}
 	};
 	this.IIP = {
 		'Net external liabilities':{},
@@ -131,7 +131,7 @@ CountryObj.prototype ={
 		if(year<1999)
 			err_y();
 		return this.Economic['Unemployment_rate'][year];
-	}
+	},
 
 	//--------------------Fiscal Functions--------------------------------//
 	addDebtToGDP: function(key,val){
@@ -198,6 +198,9 @@ CountryObj.prototype ={
 			err_y();
 		return this.Fiscal['Interest_To_GDP'][year];
 	}
+
+	//--------------------External Functions--------------------------------//
+
 };
 
 Object.size = function(obj) {
