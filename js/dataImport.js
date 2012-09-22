@@ -51,13 +51,13 @@ $.getJSON('ajax/fiscal_data.json', function(data) {
 
 	this.Fiscal = {
 		'Net_Gov_debt_per_GDP':{},
-		'GG_debt net of deposits / GDP (%)':{},
-		'General government debt':{},
-		'General government balance':{},
-		'General government primary balance':{},
-		'General government revenues':{},
-		'General government expenditures':{},
-		'GG interest paid / GDP (%)':{}
+		'GG_debtDeposits_GDP':{},
+		'Gov_Debt':{},
+		'Gov_balance':{},
+		'Gov_Pri_Bal':{},
+		'Revenues':{},
+		'Expenditures':{},
+		'Interest_To_GDP':{}
 	};
 	this.IIP = {
 		'Net external liabilities':{},
