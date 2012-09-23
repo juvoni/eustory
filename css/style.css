@@ -85,10 +85,11 @@ div.data_overview ul li.selected a{
     color: red;
 }
 
-p.info{
+li.Criteria p.info{
+    display: block;
     margin-left: 15px;
 }
-li.Criteria a>p{
+li.Criteria p{
     display: inline;
 }
 .CountryData{

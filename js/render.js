@@ -22,21 +22,18 @@ $(document).ready(function() {
         selectedHover: {
         }}
 	   );
-      $('p.info').hide();
-      $('li.Criteria a>p').hide();
-      $('li.selected p.info').show();
-      $('li.selected a>p').show();
+      $('li.Criteria p').hide();
+      $('li.selected p').show();
       $('ul.historical li.selected').prepend("<p>&#9654;</p>");
-      $(".data_overview li.selected").prepend("<p>&#9654;</p>");
+      $(".data_overview li.selected").prepend('<p class = "arrow">&#9654;</p>');
 
     $(".data_overview ul li").click(function(e) {
         $(".data_overview li.selected").removeClass("selected");
-
         $(this).addClass("selected");
-        $('p.info').hide();
-        $('li.selected p.info').show();
-        $('li.Criteria a>p').hide();
-        $("li.selected a>p").show();
+        $(".data_overview ul li p.arrow").remove();
+        $(this).prepend('<p class = "arrow">&#9654;</p>');
+        $('li.Criteria p').hide();
+        $("ul li.selected p").show();
     });
 
     $("ul.historical li").click(function(e) {
