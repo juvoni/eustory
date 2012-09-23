@@ -27,7 +27,6 @@ $(document).ready(function() {
 				}
 				n++;
 			});
-
 	});
 
 
@@ -48,4 +47,28 @@ $(document).ready(function() {
 		});
 	});
 
+	$.getJSON('ajax/external.json', function(data) {
+		var n = 0; //Country counter
+		$.each(data, function(){
+			for(var  i = startYear; i<=endYear; i++){
+					EU[n].addELiabilities(i,this['Data']['Net external liabilities'][i]),
+					EU[n].addEDebt(i,this['Data']['Gross external debt'][i]),
+					EU[n].addPublicToCar(i,this['Data']['Public sector ext. debt / CAR (%)'][i]),
+					EU[n].addExternalToCar(i,this['Data']['Net external debt / CAR (%)'][i]),
+					EU[n].addNarrowExToCar(i,this['Data']['Narrow net external debt (% of CARs)'][i]),
+					EU[n].addPublicExternal(i,this['Data']['Net public sector external debt'][i]),
+					EU[n].addInvestmentPay(i,this['Data']['Net investment payments'][i]),
+					EU[n].addInterestPay(i,this['Data']['Net interest payments'][i])
+				}
+				n++;
+		});
+
+	});
+	/*
+		var e = 14;
+		console.log(EU[e].getName());
+		for(var i = 1999; i<=2012;i++)
+			console.log(i+" "+EU[e].getGov_Rev(i));
+	*/
 });
+

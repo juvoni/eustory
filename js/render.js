@@ -22,14 +22,37 @@ $(document).ready(function() {
         selectedHover: {
         }}
 	   );
-      $("li.Criteria").click(function(){
-          $("ul.Criteria p").hide();
-          $("li.Criteria selected").removeClass("selected");
+      $('li.Criteria p').hide();
+      $('li.selected p').show();
+      $('ul.historical li.selected').prepend("<p>&#9654;</p>");
+      $(".data_overview li.selected").prepend('<p class = "arrow">&#9654;</p>');
 
-          $(this).addClass("selected");
-          var id = $(this).closest("p").attr("class");
-          $("p.info" + id).show();
-      });
+    $(".data_overview ul li").click(function(e) {
+        $(".data_overview li.selected").removeClass("selected");
+        $(this).addClass("selected");
+        $(".data_overview ul li p.arrow").remove();
+        $(this).prepend('<p class = "arrow">&#9654;</p>');
+        $('li.Criteria p').hide();
+        $("ul li.selected p").show();
+    });
+
+    $("ul.historical li").click(function(e) {
+        $("ul.historical li").removeClass("selected");
+        $(this).addClass("selected");
+        $("ul.historical li p").remove();
+        $(this).prepend("<p>&#9654;</p>");
+
+    });
+
+
+      // $("li.Criteria").click(function(){
+      //     $("ul.Criteria p").hide();
+      //     $("li.Criteria selected").removeClass("selected");
+
+      //     $(this).addClass("selected");
+      //     var id = $(this).closest("p").attr("class");
+      //     $("p.info" + id).show();
+      // });
 
 
    // $("#tab a").click(function() {
@@ -49,3 +72,4 @@ function dataReady(){
   return doub;
   //console.log(doub[1].getName()+" "+doub[1].getCPI(2000));
 };
+

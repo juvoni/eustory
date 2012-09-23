@@ -26,14 +26,14 @@ function CountryObj(name, code, rating){
 		'Interest_To_GDP':{}
 	};
 	this.IIP = {
-		'Net external liabilities':{},
-		'Gross external debt':{},
-		'Public sector ext. debt / CAR (%)':{},
-		'Net external debt / CAR (%)':{},
-		'Narrow net external debt (% of CARs)':{},
-		'Net public sector external debt':{},
-		'Net investment payments':{},
-		'Net interest payments':{}
+		'eLiabilities':{},
+		'eDebt':{},
+		'publicToCar':{},
+		'externalToCar':{},
+		'NarrowExToCar':{},
+		'publicExternal':{},
+		'InvestmentPay':{},
+		'InterestPay':{}
 	};
 
 
@@ -180,9 +180,65 @@ CountryObj.prototype ={
 	getInterestToGDP: function(year){
 			err_y(year);
 		return this.Fiscal['Interest_To_GDP'][year];
-	}
+	},
 
 	//--------------------External Functions--------------------------------//
+	addELiabilities: function(key,val){
+		this.IIP['eLiabilities'][key] = val;
+	},
+	addEDebt: function(key,val){
+		this.IIP['eDebt'][key] = val;
+	},
+	addPublicToCar: function(key,val){
+		this.IIP['publicToCar'][key] = val;
+	},
+	addExternalToCar: function(key,val){
+		this.IIP['externalToCar'][key] = val;
+	},
+	addNarrowExToCar: function(key,val){
+		this.IIP['NarrowExToCar'][key] = val;
+	},
+	addPublicExternal: function(key,val){
+		this.IIP['publicExternal'][key] = val;
+	},
+	addInvestmentPay: function(key,val){
+		this.IIP['InvestmentPay'][key] = val;
+	},
+	addInterestPay: function(key,val){
+		this.IIP['InterestPay'][key] = val;
+	},
+	getELiabilities: function(year){
+			err_y(year);
+		return this.IIP['eLiabilities'][year];
+	},
+	getEDebt: function(year){
+			err_y(year);
+		return this.IIP['eDebt'][year];
+	},
+	getPublicToCar: function(year){
+			err_y(year);
+		return this.IIP['publicToCar'][year];
+	},
+	getExternalToCar: function(year){
+			err_y(year);
+		return this.IIP['externalToCar'][year];
+	},
+	getNarrowExToCar: function(year){
+			err_y(year);
+		return this.IIP['NarrowExToCar'][year];
+	},
+	getPublicExternal: function(year){
+			err_y(year);
+		return this.IIP['publicExternal'][year];
+	},
+	getInvestmentPay: function(year){
+			err_y(year);
+		return this.IIP['InvestmentPay'][year];
+	},
+	getInterestPay: function(year){
+			err_y(year);
+		return this.IIP['InterestPay'][year];
+	}
 
 };
 

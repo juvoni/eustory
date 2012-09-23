@@ -38,7 +38,6 @@ div#map{
     position:relative;
     float: right;
     padding: 0;
-    z-index: 1;
 }
 div.span1{
     margin-right: 100px;
@@ -52,40 +51,46 @@ ul.historical{
     list-style: none;
     display:block;
 }
+ul.historical li p{
+    display: inline;
+}
 ul.historical li a{
     color:#aaaaaa;
     font-size: 16px;
-    
     font-weight: bold;
     margin-bottom: 5px;
     text-shadow: 1px 1px 3px #c2c2c2;
         filter: dropshadow(color=#c2c2c2, offx=1, offy=1);
-    
 }
-ul.historical li a.selected{
+ul.historical li.selected a{
     font-size: 24px;
     color: red;
 }
 div.data_overview ul{
     margin-left: 0;
-}
-div.data_overview ul li{
-    color:#999999;
     list-style: none;
+}
+div.data_overview ul li a{
+    color:#999999;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 14px;
     font-weight: bold;
     text-transform:uppercase;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 
 
 }
-div.data_overview ul li.selected{
+div.data_overview ul li.selected a{
     font-size: 18px;
     color: red;
 }
-p.info{
+
+li.Criteria p.info{
+    display: block;
     margin-left: 15px;
+}
+li.Criteria p{
+    display: inline;
 }
 .CountryData{
     margin-top: 30px;
