@@ -26,7 +26,7 @@ $(document).ready(function() {
       $('li.selected p').show();
       $('ul.historical li.selected').prepend('<p class = "arrow">&#9654;</p>');
       $(".data_overview li.selected").prepend('<p class = "arrow">&#9654;</p>');
-
+      var myClass;
     $(".data_overview ul li").click(function(e) {
         $(".data_overview li.selected").removeClass("selected");
         $(this).addClass("selected");
@@ -34,6 +34,9 @@ $(document).ready(function() {
         $(this).prepend('<p class = "arrow">&#9654;</p>');
         $('li.Criteria p').hide();
         $("ul li.selected p").show();
+        myClass = $(this).attr("class").split(' ')[1];
+        $("ul.historical li.selected").removeClass("rating economy fiscal external").addClass(myClass);
+        console.log(myClass);
     });
 
     $("ul.historical li").click(function(e) {
@@ -41,6 +44,7 @@ $(document).ready(function() {
         $(this).addClass("selected");
         $("ul.historical li p").remove();
         $(this).prepend('<p class = "arrow">&#9654;</p>');
+        $(this).removeClass("rating economy fiscal external").addClass(myClass);
 
     });
 

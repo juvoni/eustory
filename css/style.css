@@ -56,7 +56,7 @@ ul.historical{
 p.arrow{
     display: inline;
 }
-ul.historical li a{
+ul.historical li {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
@@ -65,8 +65,12 @@ ul.historical li a{
 }
 ul.historical li.selected a{
     font-size: 24px;
-    color: red;
+    color:#E3173E; /*Redish*/
 }
+/*ul.historical li.selected a{
+    font-size: 24px;
+    color: red;
+}*/
 div.data_overview ul{
     margin-left: 0;
     list-style: none;
@@ -79,13 +83,13 @@ div.data_overview ul li.Criteria a{
     text-transform:uppercase;
     margin-bottom: 15px;
 }
-div.data_overview ul li.selected.fiscal a{
+div.data_overview ul li.selected.fiscal a,ul.historical li.fiscal.selected a{
     color: #1D578C;/*Blueish*/
 }
-div.data_overview ul  li.external.selected a{
+div.data_overview ul  li.external.selected a,ul.historical li.external.selected a{
     color:#007C44; /*Greenish*/
 }
-div.data_overview ul  li.economy.selected a,div.data_overview ul li.rating.selected  a{
+div.data_overview ul  li.economy.selected a,div.data_overview ul li.rating.selected  a,ul.historical li.economy a,ul.historical li.rating a{
     color:#E3173E; /*Redish*/
 }
 div.data_overview ul li.selected a{
