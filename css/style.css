@@ -51,6 +51,9 @@ ul.historical{
     list-style: none;
     display:block;
 }
+ul.historical li p{
+    display: inline;
+}
 ul.historical li a{
     color:#aaaaaa;
     font-size: 16px;
@@ -59,7 +62,7 @@ ul.historical li a{
     text-shadow: 1px 1px 3px #c2c2c2;
         filter: dropshadow(color=#c2c2c2, offx=1, offy=1);
 }
-ul.historical li a.selected{
+ul.historical li.selected a{
     font-size: 24px;
     color: red;
 }
@@ -81,6 +84,7 @@ div.data_overview ul li.selected a{
     font-size: 18px;
     color: red;
 }
+
 p.info{
     margin-left: 15px;
 }

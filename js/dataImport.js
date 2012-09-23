@@ -64,9 +64,11 @@ $(document).ready(function() {
 		});
 
 	});
+	/*
 		var e = 14;
 		console.log(EU[e].getName());
 		for(var i = 1999; i<=2012;i++)
 			console.log(i+" "+EU[e].getGov_Rev(i));
+	*/
 });
 

@@ -26,9 +26,11 @@ $(document).ready(function() {
       $('li.Criteria a>p').hide();
       $('li.selected p.info').show();
       $('li.selected a>p').show();
+      $('ul.historical li.selected').prepend("<p>&#9654;</p>");
+      $(".data_overview li.selected").prepend("<p>&#9654;</p>");
 
     $(".data_overview ul li").click(function(e) {
-        $(".selected").removeClass("selected");
+        $(".data_overview li.selected").removeClass("selected");
 
         $(this).addClass("selected");
         $('p.info').hide();
@@ -36,15 +38,13 @@ $(document).ready(function() {
         $('li.Criteria a>p').hide();
         $("li.selected a>p").show();
     });
-    
-    $(".data_overview ul li").click(function(e) {
-        $(".selected").removeClass("selected");
 
+    $("ul.historical li").click(function(e) {
+        $("ul.historical li").removeClass("selected");
         $(this).addClass("selected");
-        $('p.info').hide();
-        $('li.selected p.info').show();
-        $('li.Criteria a>p').hide();
-        $("li.selected a>p").show();
+        $("ul.historical li p").remove();
+        $(this).prepend("<p>&#9654;</p>");
+
     });
 
 
