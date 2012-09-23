@@ -24,7 +24,7 @@ $(document).ready(function() {
 	   );
       $('li.Criteria p').hide();
       $('li.selected p').show();
-      $('ul.historical li.selected').prepend("<p>&#9654;</p>");
+      $('ul.historical li.selected').prepend('<p class = "arrow">&#9654;</p>');
       $(".data_overview li.selected").prepend('<p class = "arrow">&#9654;</p>');
 
     $(".data_overview ul li").click(function(e) {
@@ -40,32 +40,10 @@ $(document).ready(function() {
         $("ul.historical li").removeClass("selected");
         $(this).addClass("selected");
         $("ul.historical li p").remove();
-        $(this).prepend("<p>&#9654;</p>");
+        $(this).prepend('<p class = "arrow">&#9654;</p>');
 
     });
 
-
-      // $("li.Criteria").click(function(){
-      //     $("ul.Criteria p").hide();
-      //     $("li.Criteria selected").removeClass("selected");
-
-      //     $(this).addClass("selected");
-      //     var id = $(this).closest("p").attr("class");
-      //     $("p.info" + id).show();
-      // });
-
-
-   // $("#tab a").click(function() {
-
-   //    //reset
-   //    $(".content").hide();
-   //    $("#tab .active").removeClass("active");
-
-   //    //act
-   //    $(this).addClass("active")
-   //    var id = $(this).closest("li").attr("id").replace("tab","");
-   //    $("#content" + id).show();
-   //});
 });
 function dataReady(){
   doub = EU;

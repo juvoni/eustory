@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
 	$.ajaxSetup({
 		async: false
@@ -70,5 +71,6 @@ $(document).ready(function() {
 		for(var i = 1999; i<=2012;i++)
 			console.log(i+" "+EU[e].getGov_Rev(i));
 	*/
+
 });
 
