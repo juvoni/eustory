@@ -60,19 +60,19 @@
           <div class="span1">
       <ul class = "historical">
         <li><a class = "selected" href="">1999</a></li>
-        <li><a href="">2000</a></li>
-        <li><a href="">2001</a></li>
-        <li><a href="">2002</a></li>
-        <li><a href="">2003</a></li>
-        <li><a href="">2004</a></li>
-        <li><a href="">2005</a></li>
-        <li><a href="">2006</a></li>
-        <li><a href="">2007</a></li>
-        <li><a href="">2008</a></li>
-        <li><a href="">2009</a></li>
-        <li><a href="">2010</a></li>
-        <li><a href="">2011</a></li>
-        <li><a href="">2012</a></li>
+        <li><a href="#">2000</a></li>
+        <li><a href="#">2001</a></li>
+        <li><a href="#">2002</a></li>
+        <li><a href="#">2003</a></li>
+        <li><a href="#">2004</a></li>
+        <li><a href="#">2005</a></li>
+        <li><a href="#">2006</a></li>
+        <li><a href="#">2007</a></li>
+        <li><a href="#">2008</a></li>
+        <li><a href="#">2009</a></li>
+        <li><a href="#">2010</a></li>
+        <li><a href="#">2011</a></li>
+        <li><a href="#">2012</a></li>
       </ul>
     </div>
 
@@ -84,22 +84,26 @@
 
           <div class="span2 data_overview">
         <ul class = "Criteria">
-          <li class = "Criteria">Sovereign Ratings</li>
-          <p class="info1">
+          <li class = "Criteria"><a href="#"><p>&#9654;</p>Sovereign Ratings</a>
+          <p class="info">
             Sovereign ratings pertain to a sovereign's ability and willingness to service financial obligations to nonofficial, in other words commercial, creditors.
           </p>
-          <li class = "Criteria selected"><a href="#">Economy</a></li>
-          <p class="info2">
+          </li>
+          <li class = "Criteria selected"><a href="#"><p>&#9654;</p>Economy</a>
+          <p class="info">
             Based on a country's income level,as measured by its GDP per capita. Adjusted based on the economy's growth prospects, as well as its economic diversity and volatility.
           </p>
-          <li class = "Criteria"><a href="#">Fiscal Postion</a></li>
-          <p class="info3">
+          </li>
+          <li class = "Criteria"><a href="#"><p>&#9654;</p>Fiscal Postion</a>
+          <p class="info">
             The change in net GG debt to GDP is a key measure of a government's fiscal performance.  We believe it is a better indicator of fiscal performance rather than the reported deficit.
           </p>
-          <li class = "Criteria"><a href="#">International<br>Investment Position</a></li>
-          <p class="info4">
+          </li>
+          <li class = "Criteria"><a href="#"><p>&#9654;</p>International<br>Investment Position</a>
+          <p class="info">
              International Investment Position, the net external liabilities to GDP is an important factor along with external liquidity in our external score. Total external debt plus the stock of direct and portfolio equity investment from abroad minus total external assets, which include official reserves, other public sector foreign assets, financial institutions' deposits with and lending to nonresidents, other private sector deposits with and lending to nonresidents, and the stock of direct and portfolio equity investment placed abroad.
           </p>
+          </li>
         </ul>
 
         <div class="CountryData">
@@ -145,16 +149,17 @@
 
     </div>
     <script type="text/javascript">
-      $('ul.historical li a').each(function(){
-        if($(this).attr('class') == 'selected'){
-          $(this).prepend('&#9654;');
-        }
-      });
-      $('.data_overview ul li').each(function(){
-        if($(this).attr('class') == 'Criteria selected'){
-          $(this).prepend('&#9654;');
-        }
-      });
+
+      // $('ul.historical li a').each(function(){
+      //   if($(this).attr('class') == 'selected'){
+      //     $(this).prepend('&#9654;');
+      //   }
+      // });
+      // $('.data_overview ul li').each(function(){
+      //   if($(this).attr('class') == 'Criteria selected'){
+      //     $(this).prepend('&#9654;');
+      //   }
+      // });
     </script>
     <div class="row-fluid">
       <hr>

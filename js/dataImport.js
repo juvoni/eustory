@@ -27,26 +27,8 @@ $(document).ready(function() {
 				}
 				n++;
 			});
-
 	});
 
-
-	$.getJSON('ajax/fiscal_data.json', function(data) {
-		var n = 0; //Country counter
-		$.each(data, function(){
-			for(var  i = startYear; i<=endYear; i++){
-					EU[n].addDebtToGDP(i,this['Data']['Net general government debt as % of GDP (%)'][i]),
-					EU[n].addDepositToGDP(i,this['Data']['GG debt net of deposits / GDP (%)'][i]),
-					EU[n].addGov_Debt(i,this['Data']['General government debt'][i]),
-					EU[n].addGov_Bal(i,this['Data']['General government balance'][i]),
-					EU[n].addGov_P_Bal(i,this['Data']['General government balance'][i]),
-					EU[n].addGov_Rev(i,this['Data']['General government revenues'][i]),
-					EU[n].addGov_Ex(i,this['Data']['General government expenditures'][i]),
-					EU[n].addInterestToGDP(i,this['Data']['GG interest paid / GDP (%)'][i])
-				}
-				n++;
-		});
-	});
 
 	$.getJSON('ajax/fiscal_data.json', function(data) {
 		var n = 0; //Country counter
@@ -80,11 +62,11 @@ $(document).ready(function() {
 				}
 				n++;
 		});
+
+	});
 		var e = 14;
 		console.log(EU[e].getName());
 		for(var i = 1999; i<=2012;i++)
-			console.log(i+" "+EU[e].getInterestPay(i));
-	});
-
+			console.log(i+" "+EU[e].getGov_Rev(i));
 });
 
