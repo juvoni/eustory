@@ -4,6 +4,7 @@ $(document).ready(function() {
       $('ul.historical li.selected').prepend('<p class = "arrow">&#9654;</p>');
       $(".data_overview li.selected").prepend('<p class = "arrow">&#9654;</p>');
       var myClass;
+      var currentYear = 1999;
     $(".data_overview ul li").click(function(e) {
         $(".data_overview li.selected").removeClass("selected");
         $(this).addClass("selected");
@@ -12,8 +13,9 @@ $(document).ready(function() {
         $('li.Criteria p').hide();
         $("ul li.selected p").show();
         myClass = $(this).attr("class").split(' ')[1];
-        $("ul.historical li.selected").removeClass("rating economy fiscal external");
+        $("ul.historical li.selected").removeClass("rating fiscal economy external");
         $("ul.historical li.selected").addClass(myClass);
+        setIndicator(myClass);
         console.log(myClass);
     });
 
@@ -22,10 +24,35 @@ $(document).ready(function() {
         $(this).addClass("selected");
         $("ul.historical li p").remove();
         $(this).prepend('<p class = "arrow">&#9654;</p>');
-        $(this).removeClass("rating economy fiscal external").addClass(myClass);
+        $(this).removeClass("rating fiscal economy external").addClass(myClass);
+        var year = $(this).text();
+        var remove = year.charAt(0);
+        currentYear = year.replace(remove,"");
+        setYear(currentYear);
+        console.log(currentYear);
+      });
+    $("#showHide").click(function(){
+      var theDiv = $('#toggle');
+      if(theDiv.css('display') == 'none'){
+        $(this).next().css('display','block');
+        $(this).text("Hide");
+      }
+      else{
+        $(this).next().css('display','none');
+        $(this).text("Show");
+      }
     });
 
 });
+var currentYear = 1999;
+var indic;
+
+function setYear(year){
+  currentYear = year;
+};
+function setIndicator(ind){
+  indic = ind;
+};
 function dataReady(){
   doub = EU;
   return doub;
@@ -65,5 +92,49 @@ function convert(num){
 };
 
 function displayAllEconomy(obj){
- // $('#')
+  var renderE;
+  var title = "Country";
+  var indicator = "Gdp per Capita(US$)";
+  renderE = "<ul><li><span class='title'>"+title+"</span><span class = 'indicator'>"+indicator+"</span>";
+  for(var i = 0; i<obj.length; i++){
+    renderE+="<li class = 'conlist'><span class = 'Cname'>"+obj[i].getName(currentYear)+"</span><span class = 'value'>"+obj[i].getPerCapita(currentYear)+"</span></li>";
+  }
+  renderE+="</ul>";
+  $('#CountryData').html(renderE);
+};
+
+function displayAllFiscal(obj){
+  var renderE;
+  var title = "Country";
+  var indicator = "GG debt/GDP(%)";
+  renderE = "<ul><li><span class='title'>"+title+"</span><span class = 'indicator'>"+indicator+"</span>";
+  for(var i = 0; i<obj.length; i++){
+    renderE+="<li class = 'conlist'><span class = 'Cname'>"+obj[i].getName(currentYear)+"</span><span class = 'value'>"+obj[i].getDebtToGDP(currentYear)+"</span></li>";
+  }
+  renderE+="</ul>";
+  $('#CountryData').html(renderE);
+};
+
+
+function displayAllExternal(obj){
+  var renderE;
+  var title = "Country";
+  var indicator = "Net external liabilities";
+  renderE = "<ul><li><span class='title'>"+title+"</span><span class = 'indicator'>"+indicator+"</span>";
+  for(var i = 0; i<obj.length; i++){
+    renderE+="<li class = 'conlist'><span class = 'Cname'>"+obj[i].getName(currentYear)+"</span><span class = 'value'>"+obj[i].getELiabilities(currentYear)+"</span></li>";
+  }
+  renderE+="</ul>";
+  $('#CountryData').html(renderE);
+};
+
+function renderBy(id){
+  switch(id){
+    case "economy": displayAllEconomy(obj);
+    break;
+    case "fiscal": displayAllFiscal(obj);
+    break;
+    case "external": displayAllExternal(obj);
+    break;
+  }
 };

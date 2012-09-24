@@ -22,9 +22,6 @@ a{
 a:hover{
     text-decoration: none;
 }
-.span5{
-    margin-left: 100px;
-}
 div#map{
     width: 560px;
     height: 495px;
@@ -97,7 +94,9 @@ div.data_overview ul  li.economy.selected a,div.data_overview ul li.rating.selec
 div.data_overview ul li.selected a{
     font-size: 18px;
 }
-
+ul.Criteria{
+    margin-top: -40px;
+}
 li.Criteria p.info{
     display: block;
     color:black;
@@ -132,6 +131,29 @@ h1.title{
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     text-transform: capitalize;
 }
+
+#CountryData ul{
+    list-style-type: none;
+    font-size: 14px;
+    color: #414042;
+}
+#CountryData ul span{
+    margin-right: 30px;
+}
+
+#CountryData ul span.Cname{
+    width:95px;
+    float: left;
+}
+#CountryData ul span.value{
+    width: 110px;
+    float: right;
+    text-align: left;
+}
+#CountryData li.conlist{
+    border-bottom: 1px solid gray;
+    height:20px;
+}
 fieldset {
     border:0;
     display:inline;
@@ -140,9 +162,10 @@ footer{
     margin:0 auto;
     position:relative;
     display:block;
-    bottom:50px;
+    bottom:40px;
     width:90%;
     height:20px;
+    margin-bottom: 0;
 }
 form{
     display:inline;

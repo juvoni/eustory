@@ -157,7 +157,7 @@ $(document).ready(function() {
 		        }
 		    }
 	   );
-console.log(EU.length);
+displayAllEconomy(EU);
 });
 
 /*
