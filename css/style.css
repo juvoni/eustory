@@ -22,12 +22,14 @@ a{
 a:hover{
     text-decoration: none;
 }
-
+.span5{
+    margin-left: 100px;
+}
 div#map{
     width: 560px;
     height: 495px;
     margin-top: 10px;
-    margin-left: 90px;
+    margin-left: 190px;
     display:inline;
     position:relative;
     float: right;

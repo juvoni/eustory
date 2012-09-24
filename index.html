@@ -24,7 +24,7 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-     <script src="js/jquery-1.8.0.min.js"></script>
+    <!-- <script src="js/jquery-1.8.2.min.js"></script>-->
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="ico/favicon.png">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
@@ -40,16 +40,16 @@
 
     <script src="js/selectToUISlider.jQuery.js"></script>
   -->
-      <script src="js/jquery-jvectormap-1.0.min.js"></script>
-    <script src="js/jquery-jvectormap-europe-mill-en.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <script src="js/dataImport.js"></script>
     <script src="js/CountryObj.js"></script>
     <script src="js/render.js"></script>
+    <script src="js/jquery-jvectormap.js"></script>
+    <script src="js/jquery-jvectormap-europe-mill-en.js"></script>
   </head>
 
   <body>
 
-    
       <header>
     <img class = "logo"src="img/SP_RatingsService_1.png" alt="S&amp;P Rating's Logo">
 <h1 class ="title">The Eurozone Story</h1>
@@ -78,12 +78,12 @@
     </div>
 
 
-        <div class="span4">
+        <div class="span5">
           <!-- Dyanmic labels for period and totals -->
           <div id="map"></div>
         </div>
 
-          <div class="span2 data_overview">
+          <div class="span3 data_overview">
         <ul class = "Criteria ">
           <li class = "Criteria rating"><a href="#">Sovereign Ratings</a>
           <p class="info">
@@ -106,7 +106,9 @@
           </p>
           </li>
         </ul>
+        <div id="CountryData">
 
+        </div>
         <div class="CountryData">
           <p>Federal republic of <br><span class="countryName">Germany</span></p>
           <hr>
