@@ -8,8 +8,8 @@ $(document).ready(function() {
       var myClass = "economy";
       var currentYear = 1999;
 	//---------------Blue------------------------Green---------------Red--------------/
-	var colorS = [['#1D578C', '#DEDEDE'],['#007C44','#DEDEDE'],['#E3173E','#DEDEDE']];
-	var colorIndicator;
+	var colorS = [['#1D578C', '#ffffff'],['#007C44','#ffffff'],['#E3173E','#ffffff']];
+	var colorIndicator = 2;
     $(".data_overview ul li").click(function(e) {
         $(".data_overview li.selected").removeClass("selected");
         $(this).addClass("selected");
@@ -23,6 +23,7 @@ $(document).ready(function() {
         setIndicator(myClass);
         renderBy(myClass,EU);
         colorIndicator = updateColor(myClass);
+        updateC();
                 var barPosition;
         switch(myClass){
 			case "economy": barPosition = '0px 0px';
@@ -174,21 +175,21 @@ $(document).ready(function() {
 	//console.log(Number(nTest));
 	//console.log(convert(nTest));
 	var test = {
-		"AT": 0,
+		"AT": 1,
 		"BE": 2,
 		"CY": 5,
-		"DE": 7,
+		"DE": 1,
 		"EE": 2,
-		"ES": 10,
-		"FI": 17,
+		"ES": 5,
+		"FI": 6,
 		"FR": 9,
-		"GR": 2,
+		"GR": 10,
 		"IE": 3,
 		"IT": 4,
 		"LU": 1,
 		"MT": 5,
 		"NL": 1,
-		"PT": 9,
+		"PT": 3,
 		"SI": 5,
 		"SK": 6
 	};
@@ -198,14 +199,13 @@ $(document).ready(function() {
 	$('#map').vectorMap({
 		map: 'europe_mill_en',
 			backgroundColor:'#808080',
-			normalizeFunction: 'polynomial',
 			regionsSelectable: 'true',
 			selected: {
 				fill: 'yellow'
 			},
 			regionStyle:{
 				 initial: {
-					fill: 'white',
+					fill: '#c7c7c7',
 				    "fill-opacity": 1,
 				    stroke: '#cccccc',
 				    "stroke-width": 0.5,
@@ -213,7 +213,7 @@ $(document).ready(function() {
 				},
 			},
 			// color:'#565659',
-			color:'#A8A8A8',
+			//color:'#A8A8A8',
 			hoverOpacity: 0.8,
 			hoverColor: false,
 			onLabelShow: function(event, label, code) {
@@ -226,7 +226,8 @@ $(document).ready(function() {
 				regions:[{
 					scale:colorS[colorIndicator],
 					attribute: 'fill',
-					values: test
+					values: test,
+					normalizeFunction: 'linear'
 				}]
 			},
 		  //       values: test,
@@ -240,7 +241,9 @@ $(document).ready(function() {
 		    }
 	   );
 	var mapObject = $('#map').vectorMap('get', 'mapObject');
-
+	function updateC(){
+		mapObject.series.regions[0].setScale(colorS[colorIndicator]);
+	};
 displayAllEconomy(EU);
 
 

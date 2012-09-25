@@ -22,16 +22,24 @@ a{
 a:hover{
     text-decoration: none;
 }
+
+.legend{
+    position: block;
+    width: 250px;
+    height:20px;
+}
 .bar{
+    display: visible;
     width: 138px;
     height: 10px;
+    margin-top: 0;
+    padding-top: 0;
     background:url("../img/scale.png");
     background-position: 0 0;
 }
 div#map{
     width: 560px;
     height: 495px;
-    margin-top: 10px;
     margin-left: 190px;
     display:inline;
     position:relative;
@@ -137,7 +145,7 @@ h1.title{
     color: #414042;
 }
 #CountryData ul span{
-    margin-right: 30px;
+    margin-right: 25px;
 }
 #CountryData ul span.title,span.indicator{
     font-weight: bold;
@@ -167,10 +175,12 @@ footer{
     margin:0 auto;
     position:relative;
     display:block;
-    bottom:40px;
+    bottom:10px;
     width:90%;
     height:20px;
+    margin-top: 15px;
     margin-bottom: 0;
+    padding-bottom: 0;
 }
 form{
     display:inline;
