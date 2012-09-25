@@ -1,4 +1,3 @@
-
 body {
     font-family:"Segoe UI","Helvetica Neue", Helvetica, Arial, sans-serif;
     margin:0px;
@@ -13,35 +12,27 @@ html{
     background: #ffffff;
 
 }
-#container{
-    width: 1320px;
-    margin: 0 auto;
-    padding:0px;
-}
-#container #loadingDiv img{
-    margin: 0 auto;
-    position: relative;
-    top: 200px;
-    left: 380px;
-    z-index: 4;
-}
 p{
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
-
+a{
+    color:#808080;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+}
 div#map{
     width: 560px;
     height: 495px;
     margin-top: 10px;
-    margin-left: 90px;
+    margin-left: 190px;
     display:inline;
     position:relative;
     float: right;
     padding: 0;
 }
-div.span1{
-    margin-right: 100px;
-}
+
 ul.historical{
     width: 150px;
     position: relative;
@@ -51,11 +42,28 @@ ul.historical{
     list-style: none;
     display:block;
 }
-ul.historical li p{
+
+.fiscal{
+    color: #1D578C;/*Blueish*/
+}
+.external{
+    color:#007C44; /*Greenish*/
+}
+.economy{
+    color:#E3173E; /*Redish*/
+}
+.rating{
+    color:#E3173E; /*Redish*/
+}
+#showHide{
+    color:#E3173E; /*Redish*/
+    font-weight: bold;
+    font-size: 10px;
+}
+p.arrow{
     display: inline;
 }
-ul.historical li a{
-    color:#aaaaaa;
+ul.historical li {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
@@ -64,59 +72,88 @@ ul.historical li a{
 }
 ul.historical li.selected a{
     font-size: 24px;
-    color: red;
+    color:#E3173E; /*Redish*/
 }
+/*ul.historical li.selected a{
+    font-size: 24px;
+    color: red;
+}*/
 div.data_overview ul{
     margin-left: 0;
     list-style: none;
 }
-div.data_overview ul li a{
-    color:#999999;
+div.data_overview ul li.Criteria a{
+    color:#808080;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 14px;
     font-weight: bold;
     text-transform:uppercase;
     margin-bottom: 15px;
-
-
+}
+div.data_overview ul li.selected.fiscal a,ul.historical li.fiscal.selected a{
+    color: #1D578C;/*Blueish*/
+}
+div.data_overview ul  li.external.selected a,ul.historical li.external.selected a{
+    color:#007C44; /*Greenish*/
+}
+div.data_overview ul  li.economy.selected a,div.data_overview ul li.rating.selected  a,ul.historical li.economy a,ul.historical li.rating a{
+    color:#E3173E; /*Redish*/
 }
 div.data_overview ul li.selected a{
     font-size: 18px;
-    color: red;
 }
-
+ul.Criteria{
+    margin-top: -40px;
+}
 li.Criteria p.info{
     display: block;
+    color:black;
     margin-left: 15px;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 li.Criteria p{
     display: inline;
 }
-.CountryData{
-    margin-top: 30px;
-}
-.CountryData hr{
-    margin: 0;
-}
-.CountryData span.countryName{
-    font-size: 24px;
-    color:#505050;
-}
-.CountryData span.value{
-    color:red;
-    font-weight: bold;
-    font-size: 18px;
-    margin-bottom: 5px;
-}
+
 h1.title{
     display: inline;
     position:relative;
     margin-bottom:10px;
     margin-left: 130px;
     font-size: 30px;
-    color: #505050;
+    color: #414042;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     text-transform: capitalize;
+}
+
+#CountryData ul{
+    list-style-type: none;
+    font-size: 14px;
+    color: #414042;
+}
+#CountryData ul span{
+    margin-right: 30px;
+}
+#CountryData ul span.title,span.indicator{
+    font-weight: bold;
+}
+span.indicator{
+    float: right;
+}
+#CountryData ul span.Cname{
+    width:95px;
+    float: left;
+}
+#CountryData ul span.value{
+    width: 110px;
+    float: right;
+    text-align: left;
+        text-shadow: 1px 1px 3px #c2c2c2;
+        filter: dropshadow(color=#c2c2c2, offx=1, offy=1);
+}
+#CountryData li.conlist{
+    border-bottom: 1px solid gray;
+    height:20px;
 }
 fieldset {
     border:0;
@@ -126,9 +163,10 @@ footer{
     margin:0 auto;
     position:relative;
     display:block;
-    bottom:50px;
+    bottom:40px;
     width:90%;
     height:20px;
+    margin-bottom: 0;
 }
 form{
     display:inline;
@@ -364,3 +402,4 @@ button.btn,input[type="submit"].btn{*padding-top:2px;*padding-bottom:2px;}button
 button.btn.btn-large,input[type="submit"].btn.btn-large{*padding-top:7px;*padding-bottom:7px;}
 button.btn.btn-small,input[type="submit"].btn.btn-small{*padding-top:3px;*padding-bottom:3px;}
 button.btn.btn-mini,input[type="submit"].btn.btn-mini{*padding-top:1px;*padding-bottom:1px;}
+

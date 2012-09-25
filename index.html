@@ -24,7 +24,7 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-     <script src="js/jquery-1.8.0.min.js"></script>
+    <!-- <script src="js/jquery-1.8.2.min.js"></script>-->
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="ico/favicon.png">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
@@ -32,24 +32,20 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
    <!--
-    <script src="js/Country.js"></script>
-
-
     <script src="js/jvmSlider.js"></script>
     <script src="js/jquery.reject.js"></script>
-
     <script src="js/selectToUISlider.jQuery.js"></script>
   -->
-      <script src="js/jquery-jvectormap-1.0.min.js"></script>
-    <script src="js/jquery-jvectormap-europe-mill-en.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <script src="js/dataImport.js"></script>
     <script src="js/CountryObj.js"></script>
     <script src="js/render.js"></script>
+    <script src="js/jquery-jvectormap.js"></script>
+    <script src="js/jquery-jvectormap-europe-mill-en.js"></script>
   </head>
 
   <body>
 
-    
       <header>
     <img class = "logo"src="img/SP_RatingsService_1.png" alt="S&amp;P Rating's Logo">
 <h1 class ="title">The Eurozone Story</h1>
@@ -57,8 +53,9 @@
   </header>
 
     <div class="container-fluid">
-          <div class="span1">
-      <ul class = "historical">
+      <div class="row-fluid">
+          <div class="span2">
+            <ul class = "historical">
         <li class = "selected"><a  href="#">1999</a></li>
         <li><a href="#">2000</a></li>
         <li><a href="#">2001</a></li>
@@ -73,18 +70,18 @@
         <li><a href="#">2010</a></li>
         <li><a href="#">2011</a></li>
         <li><a href="#">2012</a></li>
-      </ul>
-    </div>
+            </ul>
+      </div>
 
-      <div class="row-fluid">
-        <div class="span4">
-          <!-- Dyanmic labels for period and totals -->
-          <div id="map"></div>
-        </div>
 
-          <div class="span2 data_overview">
-        <ul class = "Criteria rating">
-          <li class = "Criteria"><a href="#">Sovereign Ratings</a>
+      <div class="span5">
+        <!-- Dyanmic labels for period and totals -->
+        <div id="map"></div>
+      </div>
+
+      <div class="span3 data_overview">
+        <ul class = "Criteria ">
+          <li class = "Criteria rating"><a href="#">Sovereign Ratings</a>
           <p class="info">
             Sovereign ratings pertain to a sovereign's ability and willingness to service financial obligations to nonofficial, in other words commercial, creditors.
           </p>
@@ -96,16 +93,16 @@
           </li>
           <li class = "Criteria fiscal"><a href="#">Fiscal Postion</a>
           <p class="info">
-            The change in net GG debt to GDP is a key measure of a government's fiscal performance.  We believe it is a better indicator of fiscal performance rather than the reported deficit.
+            The change in net GG debt to GDP is a key measure of a government's fiscal performance.We believe it is a better indicator of fiscal performance rather than the reported deficit.
           </p>
           </li>
-          <li class = "Criteria external"><a href="#">International<br>Investment Position</a>
+          <li class = "Criteria external"><a href="#">International</br>Investment Position</a>
           <p class="info">
-             International Investment Position, the net external liabilities to GDP is an important factor along with external liquidity in our external score. Total external debt plus the stock of direct and portfolio equity investment from abroad minus total external assets, which include official reserves, other public sector foreign assets, financial institutions' deposits with and lending to nonresidents, other private sector deposits with and lending to nonresidents, and the stock of direct and portfolio equity investment placed abroad.
+             International Investment Position, the net external liabilities to GDP is an important factor along with external liquidity in our external score.<span id="showHide">Read more..</span> <span id="toggle" style="display:none"> Total external debt plus the stock of direct and portfolio equity investment from abroad minus total external assets, which include official reserves, other public sector foreign assets, financial institutions' deposits with and lending to nonresidents, other private sector deposits with and lending to nonresidents, and the stock of direct and portfolio equity investment placed abroad.</span>
           </p>
           </li>
         </ul>
-
+        <!--
         <div class="CountryData">
           <p>Federal republic of <br><span class="countryName">Germany</span></p>
           <hr>
@@ -144,32 +141,15 @@
              <span class="value">-0.5</span>
            </p>
         </div>
-
+-->
     </div>
-
+    <div class="span3 offset4">
+        <div id="CountryData"></div>
     </div>
-    <script type="text/javascript">
-
-      // $('ul.historical li a').each(function(){
-      //   if($(this).attr('class') == 'selected'){
-      //     $(this).prepend('&#9654;');
-      //   }
-      // });
-      // $('.data_overview ul li').each(function(){
-      //   if($(this).attr('class') == 'Criteria selected'){
-      //     $(this).prepend('&#9654;');
-      //   }
-      // });
-    </script>
-    <div class="row-fluid">
+    </div>
       <hr>
-    </div>
-
-
-    </div>
-    
+ 
     </div><!--/.fluid-container-->
-        <div class="row-fluid">
       <footer>
         <p>&copy; Standard and Poor's 2012</p>
       </footer>
@@ -177,10 +157,6 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <!-- <script src="js/jquery-ui-1.8.22.custom.min.js"></script> -->
-    <!--<script src ="http://cdnjs.cloudflare.com/ajax/libs/d3/2.10.0/d3.v2.min.js"></script>-->
-   
-
 
   </body>
 </html>

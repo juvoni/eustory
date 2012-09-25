@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
 	$.ajaxSetup({
 		async: false
@@ -7,6 +8,9 @@ $(document).ready(function() {
 	var size = 0; //Number of Years in record
 	var startYear = 1999;
 	var endYear = 2012;
+	var mapData = {};
+	var indicator;
+	var cCode
 
 
 	$.getJSON('ajax/economic_data.json', function(data) {
@@ -70,5 +74,149 @@ $(document).ready(function() {
 		for(var i = 1999; i<=2012;i++)
 			console.log(i+" "+EU[e].getGov_Rev(i));
 	*/
+
+		for(var year = startYear; year<=endYear;year++){
+			mapData[year]={};
+
+			for(var i = 1; i<=3;i++){
+				switch(i){
+					case 1: indicator = "economy";
+					break;
+					case 2: indicator = "fiscal";
+					break;
+					case 3: indicator = "external";
+					break;
+					default:
+					break;
+				}
+				mapData[year][indicator]={};
+				for(var j = 0; j<17;j++){
+					cCode = EU[j].getCode();
+					if(indicator === "economy")
+						mapData[year][indicator][cCode] = convert(EU[j].getPerCapita(year));
+					else if(indicator === "fiscal")
+						mapData[year][indicator][cCode] = convert(EU[j].getDebtToGDP(year));
+					else if(indicator === "external")
+						mapData[year][indicator][cCode] = convert(EU[j].getDebtToGDP(year));
+
+				}
+			}
+		}
+
+	//console.log(mapData[2000]['economy']['AT']);
+	//console.log(mapData['2000']["economy"]['AT']);
+	//passData(EU);
+	var indicator = 'fiscal';
+	var countryCode = 'DE';
+	for(var i = startYear; i<=endYear;i++){
+		//console.log(mapData[i][indicator][countryCode]);
+	}
+	var nTest = 'N/A';
+	//console.log(Number(nTest));
+	//console.log(convert(nTest));
+	var test = {
+		"AT": 0,
+"BE": 2,
+"CY": 5,
+"DE": 7,
+"EE": 2,
+"ES": 10,
+"FI": 17,
+"FR": 9,
+"GR": 2,
+"IE": 3,
+"IT": 4,
+"LU": 1,
+"MT": 5,
+"NL": 1,
+"PT": 9,
+"SI": 5,
+"SK": 6
+	};
+//console.log(mapData['1999'][indicator]);
+//console.log(test);
+	$('#map').vectorMap({
+		map: 'europe_mill_en',
+			backgroundColor:'#fffffff',
+			normalizeFunction: 'polynomial',
+			// color:'#565659',
+			color:'#A8A8A8',
+			hoverOpacity: 0.8,
+			hoverColor: false,
+			onLabelShow: function(event, label, code) {
+				label.text(label.text() + " (Test)");
+			},
+			onRegionClick: function (event, code) {},
+		        values: test,
+		        //values: mapData['1999'][indicator],
+				scaleColors: ['#C8EEFF', '#0071A4'],
+		        focusOn:{
+		          x: 0.6,
+		          y: 0.55,
+		          scale: 0.8
+		        }
+		    }
+	   );
+displayAllEconomy(EU);
+
+
+
+
+  $('li.Criteria p').hide();
+      $('li.selected p').show();
+      $('ul.historical li.selected').prepend('<p class = "arrow">&#9654;</p>');
+      $(".data_overview li.selected").prepend('<p class = "arrow">&#9654;</p>');
+      var myClass = "economy";
+      var currentYear = 1999;
+    $(".data_overview ul li").click(function(e) {
+        $(".data_overview li.selected").removeClass("selected");
+        $(this).addClass("selected");
+        $(".data_overview ul li p.arrow").remove();
+        $(this).prepend('<p class = "arrow">&#9654;</p>');
+        $('li.Criteria p').hide();
+        $("ul li.selected p").show();
+        myClass = $(this).attr("class").split(' ')[1];
+        $("ul.historical li.selected").removeClass("rating fiscal economy external");
+        $("ul.historical li.selected").addClass(myClass);
+        setIndicator(myClass);
+        renderBy(myClass,EU);
+        console.log(myClass);
+    });
+
+    $("ul.historical li").click(function(e) {
+        $("ul.historical li").removeClass("selected");
+        $(this).addClass("selected");
+        $("ul.historical li p").remove();
+        $(this).prepend('<p class = "arrow">&#9654;</p>');
+        $("ul.historical li.selected").removeClass("rating fiscal economy external");
+        $("ul.historical li").removeClass("rating fiscal economy external");
+        var year = $(this).text();
+        var remove = year.charAt(0);
+        currentYear = year.replace(remove,"");
+        setYear(currentYear);
+        renderBy(myClass,EU,currentYear);
+        //console.log(currentYear);
+      });
+    $("#showHide").click(function(){
+      var theDiv = $('#toggle');
+      if(theDiv.css('display') == 'none'){
+        $(this).next().css('display','block');
+        $(this).text("Hide");
+      }
+      else{
+        $(this).next().css('display','none');
+        $(this).text("Read More..");
+      }
+    });
 });
 
+/*
+		initial: {
+        fill: 'black',
+        "fill-opacity": 1,
+		stroke: 'none',
+		"stroke-width": 0,
+		"stroke-opacity": 1
+				},
+
+*/
