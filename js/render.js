@@ -11,11 +11,7 @@ function setYear(year){
 function setIndicator(ind){
   indic = ind;
 };
-function dataReady(EU){
-  doub = EU;
-  return doub;
-  //console.log(doub[1].getName()+" "+doub[1].getCPI(2000));
-};
+
 function isDigit(num){
   var isnum = /^\d+$/.test(num);
   return isnum;
@@ -90,5 +86,19 @@ function renderBy(id,obj,year){
     case "external": displayAllExternal(obj,year);
     break;
   }
+};
+
+function updateColor(id){
+  var val;
+  switch(id){
+    case "economy": val = 2;
+    break;
+    case "fiscal": val = 0;
+    break;
+    case "external": val = 1;
+    break;
+    default: val = 2;
+  }
+  return val;
 };
 

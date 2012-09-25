@@ -1,5 +1,70 @@
 
 $(document).ready(function() {
+
+	$('li.Criteria p').hide();
+    $('li.selected p').show();
+      $('ul.historical li.selected').prepend('<p class = "arrow">&#9654;</p>');
+      $(".data_overview li.selected").prepend('<p class = "arrow">&#9654;</p>');
+      var myClass = "economy";
+      var currentYear = 1999;
+	//---------------Blue------------------------Green---------------Red--------------/
+	var colorS = [['#1D578C', '#DEDEDE'],['#007C44','#DEDEDE'],['#E3173E','#DEDEDE']];
+	var colorIndicator;
+    $(".data_overview ul li").click(function(e) {
+        $(".data_overview li.selected").removeClass("selected");
+        $(this).addClass("selected");
+        $(".data_overview ul li p.arrow").remove();
+        $(this).prepend('<p class = "arrow">&#9654;</p>');
+        $('li.Criteria p').hide();
+        $("ul li.selected p").show();
+        myClass = $(this).attr("class").split(' ')[1];
+        $("ul.historical li.selected").removeClass("rating fiscal economy external");
+        $("ul.historical li.selected").addClass(myClass);
+        setIndicator(myClass);
+        renderBy(myClass,EU);
+        colorIndicator = updateColor(myClass);
+                var barPosition;
+        switch(myClass){
+			case "economy": barPosition = '0px 0px';
+			break;
+			case "fiscal": barPosition = '0px -22px';
+			break;
+			case "external": barPosition = '0px -44px';
+			break;
+        }
+        $('.bar').css("backgroundPosition",barPosition);
+        console.log(colorIndicator);
+        console.log(myClass);
+    });
+
+    $("ul.historical li").click(function() {
+        $("ul.historical li").removeClass("selected");
+        $("ul.historical li p").remove();
+        $(this).addClass("selected");
+        $(this).prepend('<p class = "arrow">&#9654;</p>');
+        $("ul.historical li").removeClass("rating fiscal economy external");
+        $("ul.historical li.selected").addClass(myClass);
+        //$("ul.historical li.selected").removeClass("rating fiscal economy external");
+        var year = $(this).text();
+        var remove = year.charAt(0);
+        currentYear = year.replace(remove,"");
+        setYear(currentYear);
+        renderBy(myClass,EU,currentYear);
+
+
+        //console.log(currentYear);
+      });
+    $("#showHide").click(function(){
+      var theDiv = $('#toggle');
+      if(theDiv.css('display') == 'none'){
+        $(this).next().css('display','block');
+        $(this).text("Hide");
+      }
+      else{
+        $(this).next().css('display','none');
+        $(this).text("Read More..");
+      }
+    });
 	$.ajaxSetup({
 		async: false
 	});
@@ -68,12 +133,6 @@ $(document).ready(function() {
 		});
 
 	});
-	/*
-		var e = 14;
-		console.log(EU[e].getName());
-		for(var i = 1999; i<=2012;i++)
-			console.log(i+" "+EU[e].getGov_Rev(i));
-	*/
 
 		for(var year = startYear; year<=endYear;year++){
 			mapData[year]={};
@@ -116,29 +175,43 @@ $(document).ready(function() {
 	//console.log(convert(nTest));
 	var test = {
 		"AT": 0,
-"BE": 2,
-"CY": 5,
-"DE": 7,
-"EE": 2,
-"ES": 10,
-"FI": 17,
-"FR": 9,
-"GR": 2,
-"IE": 3,
-"IT": 4,
-"LU": 1,
-"MT": 5,
-"NL": 1,
-"PT": 9,
-"SI": 5,
-"SK": 6
+		"BE": 2,
+		"CY": 5,
+		"DE": 7,
+		"EE": 2,
+		"ES": 10,
+		"FI": 17,
+		"FR": 9,
+		"GR": 2,
+		"IE": 3,
+		"IT": 4,
+		"LU": 1,
+		"MT": 5,
+		"NL": 1,
+		"PT": 9,
+		"SI": 5,
+		"SK": 6
 	};
+//var mapObject = $('#map').vectorMap('get', 'mapObject');
 //console.log(mapData['1999'][indicator]);
 //console.log(test);
 	$('#map').vectorMap({
 		map: 'europe_mill_en',
-			backgroundColor:'#fffffff',
+			backgroundColor:'#808080',
 			normalizeFunction: 'polynomial',
+			regionsSelectable: 'true',
+			selected: {
+				fill: 'yellow'
+			},
+			regionStyle:{
+				 initial: {
+					fill: 'white',
+				    "fill-opacity": 1,
+				    stroke: '#cccccc',
+				    "stroke-width": 0.5,
+				    "stroke-opacity": 1
+				},
+			},
 			// color:'#565659',
 			color:'#A8A8A8',
 			hoverOpacity: 0.8,
@@ -146,10 +219,19 @@ $(document).ready(function() {
 			onLabelShow: function(event, label, code) {
 				label.text(label.text() + " (Test)");
 			},
-			onRegionClick: function (event, code) {},
-		        values: test,
-		        //values: mapData['1999'][indicator],
-				scaleColors: ['#C8EEFF', '#0071A4'],
+			onRegionClick: function (event, code) {
+				console.log(code);
+			},
+			series:{
+				regions:[{
+					scale:colorS[colorIndicator],
+					attribute: 'fill',
+					values: test
+				}]
+			},
+		  //       values: test,
+		  //       //values: mapData['1999'][indicator],
+				// scaleColors: colorS[colorIndicator],
 		        focusOn:{
 		          x: 0.6,
 		          y: 0.55,
@@ -157,57 +239,13 @@ $(document).ready(function() {
 		        }
 		    }
 	   );
+	var mapObject = $('#map').vectorMap('get', 'mapObject');
+
 displayAllEconomy(EU);
 
 
 
 
-  $('li.Criteria p').hide();
-      $('li.selected p').show();
-      $('ul.historical li.selected').prepend('<p class = "arrow">&#9654;</p>');
-      $(".data_overview li.selected").prepend('<p class = "arrow">&#9654;</p>');
-      var myClass = "economy";
-      var currentYear = 1999;
-    $(".data_overview ul li").click(function(e) {
-        $(".data_overview li.selected").removeClass("selected");
-        $(this).addClass("selected");
-        $(".data_overview ul li p.arrow").remove();
-        $(this).prepend('<p class = "arrow">&#9654;</p>');
-        $('li.Criteria p').hide();
-        $("ul li.selected p").show();
-        myClass = $(this).attr("class").split(' ')[1];
-        $("ul.historical li.selected").removeClass("rating fiscal economy external");
-        $("ul.historical li.selected").addClass(myClass);
-        setIndicator(myClass);
-        renderBy(myClass,EU);
-        console.log(myClass);
-    });
-
-    $("ul.historical li").click(function(e) {
-        $("ul.historical li").removeClass("selected");
-        $(this).addClass("selected");
-        $("ul.historical li p").remove();
-        $(this).prepend('<p class = "arrow">&#9654;</p>');
-        $("ul.historical li.selected").removeClass("rating fiscal economy external");
-        $("ul.historical li").removeClass("rating fiscal economy external");
-        var year = $(this).text();
-        var remove = year.charAt(0);
-        currentYear = year.replace(remove,"");
-        setYear(currentYear);
-        renderBy(myClass,EU,currentYear);
-        //console.log(currentYear);
-      });
-    $("#showHide").click(function(){
-      var theDiv = $('#toggle');
-      if(theDiv.css('display') == 'none'){
-        $(this).next().css('display','block');
-        $(this).text("Hide");
-      }
-      else{
-        $(this).next().css('display','none');
-        $(this).text("Read More..");
-      }
-    });
 });
 
 /*
