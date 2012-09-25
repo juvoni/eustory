@@ -23,8 +23,8 @@ a:hover{
     text-decoration: none;
 }
 .bar{
-    width: 140px;
-    height: 12px;
+    width: 138px;
+    height: 10px;
     background:url("../img/scale.png");
     background-position: 0 0;
 }
