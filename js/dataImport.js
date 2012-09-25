@@ -105,7 +105,7 @@ $(document).ready(function() {
 
 	//console.log(mapData[2000]['economy']['AT']);
 	//console.log(mapData['2000']["economy"]['AT']);
-
+	//passData(EU);
 	var indicator = 'fiscal';
 	var countryCode = 'DE';
 	for(var i = startYear; i<=endYear;i++){
@@ -158,6 +158,56 @@ $(document).ready(function() {
 		    }
 	   );
 displayAllEconomy(EU);
+
+
+
+
+  $('li.Criteria p').hide();
+      $('li.selected p').show();
+      $('ul.historical li.selected').prepend('<p class = "arrow">&#9654;</p>');
+      $(".data_overview li.selected").prepend('<p class = "arrow">&#9654;</p>');
+      var myClass = "economy";
+      var currentYear = 1999;
+    $(".data_overview ul li").click(function(e) {
+        $(".data_overview li.selected").removeClass("selected");
+        $(this).addClass("selected");
+        $(".data_overview ul li p.arrow").remove();
+        $(this).prepend('<p class = "arrow">&#9654;</p>');
+        $('li.Criteria p').hide();
+        $("ul li.selected p").show();
+        myClass = $(this).attr("class").split(' ')[1];
+        $("ul.historical li.selected").removeClass("rating fiscal economy external");
+        $("ul.historical li.selected").addClass(myClass);
+        setIndicator(myClass);
+        renderBy(myClass,EU);
+        console.log(myClass);
+    });
+
+    $("ul.historical li").click(function(e) {
+        $("ul.historical li").removeClass("selected");
+        $(this).addClass("selected");
+        $("ul.historical li p").remove();
+        $(this).prepend('<p class = "arrow">&#9654;</p>');
+        $("ul.historical li.selected").removeClass("rating fiscal economy external");
+        $("ul.historical li").removeClass("rating fiscal economy external");
+        var year = $(this).text();
+        var remove = year.charAt(0);
+        currentYear = year.replace(remove,"");
+        setYear(currentYear);
+        renderBy(myClass,EU,currentYear);
+        //console.log(currentYear);
+      });
+    $("#showHide").click(function(){
+      var theDiv = $('#toggle');
+      if(theDiv.css('display') == 'none'){
+        $(this).next().css('display','block');
+        $(this).text("Hide");
+      }
+      else{
+        $(this).next().css('display','none');
+        $(this).text("Read More..");
+      }
+    });
 });
 
 /*

@@ -49,8 +49,16 @@ ul.historical{
 .external{
     color:#007C44; /*Greenish*/
 }
-.economy,.rating{
+.economy{
     color:#E3173E; /*Redish*/
+}
+.rating{
+    color:#E3173E; /*Redish*/
+}
+#showHide{
+    color:#E3173E; /*Redish*/
+    font-weight: bold;
+    font-size: 10px;
 }
 p.arrow{
     display: inline;
@@ -101,26 +109,12 @@ li.Criteria p.info{
     display: block;
     color:black;
     margin-left: 15px;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 li.Criteria p{
     display: inline;
 }
-.CountryData{
-    margin-top: 30px;
-}
-.CountryData hr{
-    margin: 0;
-}
-.CountryData span.countryName{
-    font-size: 24px;
-    color:#505050;
-}
-.CountryData span.value{
-    color:red;
-    font-weight: bold;
-    font-size: 18px;
-    margin-bottom: 5px;
-}
+
 h1.title{
     display: inline;
     position:relative;
@@ -140,7 +134,12 @@ h1.title{
 #CountryData ul span{
     margin-right: 30px;
 }
-
+#CountryData ul span.title,span.indicator{
+    font-weight: bold;
+}
+span.indicator{
+    float: right;
+}
 #CountryData ul span.Cname{
     width:95px;
     float: left;
@@ -149,6 +148,8 @@ h1.title{
     width: 110px;
     float: right;
     text-align: left;
+        text-shadow: 1px 1px 3px #c2c2c2;
+        filter: dropshadow(color=#c2c2c2, offx=1, offy=1);
 }
 #CountryData li.conlist{
     border-bottom: 1px solid gray;
