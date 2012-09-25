@@ -7,7 +7,9 @@ $(document).ready(function() {
       $(".data_overview li.selected").prepend('<p class = "arrow">&#9654;</p>');
       var myClass = "economy";
       var currentYear = 1999;
-
+	//---------------Blue------------------------Green---------------Red--------------/
+	var colorS = [['#1D578C', '#DEDEDE'],['#007C44','#DEDEDE'],['#E3173E','#DEDEDE']];
+	var colorIndicator;
     $(".data_overview ul li").click(function(e) {
         $(".data_overview li.selected").removeClass("selected");
         $(this).addClass("selected");
@@ -20,6 +22,18 @@ $(document).ready(function() {
         $("ul.historical li.selected").addClass(myClass);
         setIndicator(myClass);
         renderBy(myClass,EU);
+        colorIndicator = updateColor(myClass);
+                var barPosition;
+        switch(myClass){
+			case "economy": barPosition = '0px 0px';
+			break;
+			case "fiscal": barPosition = '0px -22px';
+			break;
+			case "external": barPosition = '0px -44px';
+			break;
+        }
+        $('.bar').css("backgroundPosition",barPosition);
+        console.log(colorIndicator);
         console.log(myClass);
     });
 
@@ -36,6 +50,8 @@ $(document).ready(function() {
         currentYear = year.replace(remove,"");
         setYear(currentYear);
         renderBy(myClass,EU,currentYear);
+
+
         //console.log(currentYear);
       });
     $("#showHide").click(function(){
@@ -176,12 +192,26 @@ $(document).ready(function() {
 		"SI": 5,
 		"SK": 6
 	};
+//var mapObject = $('#map').vectorMap('get', 'mapObject');
 //console.log(mapData['1999'][indicator]);
 //console.log(test);
 	$('#map').vectorMap({
 		map: 'europe_mill_en',
-			backgroundColor:'#fffffff',
+			backgroundColor:'#808080',
 			normalizeFunction: 'polynomial',
+			regionsSelectable: 'true',
+			selected: {
+				fill: 'yellow'
+			},
+			regionStyle:{
+				 initial: {
+					fill: 'white',
+				    "fill-opacity": 1,
+				    stroke: '#cccccc',
+				    "stroke-width": 0.5,
+				    "stroke-opacity": 1
+				},
+			},
 			// color:'#565659',
 			color:'#A8A8A8',
 			hoverOpacity: 0.8,
@@ -189,10 +219,19 @@ $(document).ready(function() {
 			onLabelShow: function(event, label, code) {
 				label.text(label.text() + " (Test)");
 			},
-			onRegionClick: function (event, code) {},
-		        values: test,
-		        //values: mapData['1999'][indicator],
-				scaleColors: ['#C8EEFF', '#0071A4'],
+			onRegionClick: function (event, code) {
+				console.log(code);
+			},
+			series:{
+				regions:[{
+					scale:colorS[colorIndicator],
+					attribute: 'fill',
+					values: test
+				}]
+			},
+		  //       values: test,
+		  //       //values: mapData['1999'][indicator],
+				// scaleColors: colorS[colorIndicator],
 		        focusOn:{
 		          x: 0.6,
 		          y: 0.55,
@@ -200,6 +239,8 @@ $(document).ready(function() {
 		        }
 		    }
 	   );
+	var mapObject = $('#map').vectorMap('get', 'mapObject');
+
 displayAllEconomy(EU);
 
 

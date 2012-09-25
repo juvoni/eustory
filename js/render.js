@@ -88,3 +88,17 @@ function renderBy(id,obj,year){
   }
 };
 
+function updateColor(id){
+  var val;
+  switch(id){
+    case "economy": val = 2;
+    break;
+    case "fiscal": val = 0;
+    break;
+    case "external": val = 1;
+    break;
+    default: val = 2;
+  }
+  return val;
+};
+

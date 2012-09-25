@@ -22,6 +22,12 @@ a{
 a:hover{
     text-decoration: none;
 }
+.bar{
+    width: 140px;
+    height: 12px;
+    background:url("../img/scale.png");
+    background-position: 0 0;
+}
 div#map{
     width: 560px;
     height: 495px;
@@ -68,7 +74,6 @@ ul.historical li {
     font-weight: bold;
     margin-bottom: 5px;
     text-shadow: 1px 1px 3px #c2c2c2;
-        filter: dropshadow(color=#c2c2c2, offx=1, offy=1);
 }
 ul.historical li.selected a{
     font-size: 24px;
@@ -96,7 +101,7 @@ div.data_overview ul li.selected.fiscal a,ul.historical li.fiscal.selected a{
 div.data_overview ul  li.external.selected a,ul.historical li.external.selected a{
     color:#007C44; /*Greenish*/
 }
-div.data_overview ul  li.economy.selected a,div.data_overview ul li.rating.selected  a,ul.historical li.economy a,ul.historical li.rating a{
+div.data_overview ul  li.economy.selected a,div.data_overview ul li.rating.selected  a,ul.historical li.economy ,ul.historical li.rating {
     color:#E3173E; /*Redish*/
 }
 div.data_overview ul li.selected a{
@@ -149,7 +154,6 @@ span.indicator{
     float: right;
     text-align: left;
         text-shadow: 1px 1px 3px #c2c2c2;
-        filter: dropshadow(color=#c2c2c2, offx=1, offy=1);
 }
 #CountryData li.conlist{
     border-bottom: 1px solid gray;

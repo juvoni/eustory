@@ -24,7 +24,7 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <!-- <script src="js/jquery-1.8.2.min.js"></script>-->
+    <script src="js/jquery-1.8.2.min.js"></script>
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="ico/favicon.png">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
@@ -40,7 +40,7 @@
     <script src="js/dataImport.js"></script>
     <script src="js/CountryObj.js"></script>
     <script src="js/render.js"></script>
-    <script src="js/jquery-jvectormap.js"></script>
+    <script src="js/jquery-jvectormap-1.0.min.js"></script>
     <script src="js/jquery-jvectormap-europe-mill-en.js"></script>
   </head>
 
@@ -77,6 +77,10 @@
       <div class="span5">
         <!-- Dyanmic labels for period and totals -->
         <div id="map"></div>
+        <div class="legend">
+          <p>Weakest to Strongest</p>
+          <div class="bar"></div>
+        </div>
       </div>
 
       <div class="span3 data_overview">
@@ -96,7 +100,7 @@
             The change in net GG debt to GDP is a key measure of a government's fiscal performance.We believe it is a better indicator of fiscal performance rather than the reported deficit.
           </p>
           </li>
-          <li class = "Criteria external"><a href="#">International</br>Investment Position</a>
+          <li class = "Criteria external"><a href="#">International<br>Investment Position</a>
           <p class="info">
              International Investment Position, the net external liabilities to GDP is an important factor along with external liquidity in our external score.<span id="showHide">Read more..</span> <span id="toggle" style="display:none"> Total external debt plus the stock of direct and portfolio equity investment from abroad minus total external assets, which include official reserves, other public sector foreign assets, financial institutions' deposits with and lending to nonresidents, other private sector deposits with and lending to nonresidents, and the stock of direct and portfolio equity investment placed abroad.</span>
           </p>
