@@ -27,6 +27,7 @@ a:hover{
     position: block;
     width: 250px;
     height:20px;
+    float: left;
 }
 .bar{
     display: visible;
@@ -168,11 +169,12 @@ fieldset {
 }
 footer{
     margin:0 auto;
-    position:relative;
+    position:absolute;
     display:block;
     bottom:0px;
     width:90%;
     height:20px;
+    margin-left: 10%;
     margin-top: 25px;
     margin-bottom: 0;
     padding-bottom: 0;

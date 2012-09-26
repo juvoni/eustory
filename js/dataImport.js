@@ -134,6 +134,16 @@ $(document).ready(function() {
 		});
 
 	});
+	$.getJSON('ajax/Ratings.json', function(data) {
+		var n = 0; //Country counter
+		$.each(data, function(){
+			for(var  i = startYear; i<=endYear; i++){
+				
+				}
+				n++;
+		});
+
+	});
 
 		for(var year = startYear; year<=endYear;year++){
 			mapData[year]={};

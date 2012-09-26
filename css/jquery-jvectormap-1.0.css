@@ -10,6 +10,8 @@
     font-family: sans-serif, Verdana;
     font-size: smaller;
     padding: 3px;
+    margin-right:40px;
+    z-index: 99;
 }
 
 .jvectormap-zoomin, .jvectormap-zoomout {

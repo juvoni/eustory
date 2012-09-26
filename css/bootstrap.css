@@ -3463,8 +3463,8 @@ button.close {
   .visible-desktop {
     display: none !important ;
   }
-}
-@media (max-width: 480px) {
+}`
+/*@media (max-width: 480px) {
   .nav-collapse {
     -webkit-transform: translate3d(0, 0, 0);
   }
@@ -3572,8 +3572,8 @@ button.close {
     display: inline-block;
     width: auto;
   }
-}
-@media (min-width: 768px) and (max-width: 979px) {
+}*/
+/*@media (min-width: 768px) and (max-width: 979px) {
   .row {
     margin-left: -20px;
     *zoom: 1;
@@ -4135,5 +4135,5 @@ button.close {
   .nav-collapse.collapse {
     height: auto !important;
     overflow: visible !important;
-  }
+  }*/
 }
