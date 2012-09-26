@@ -76,6 +76,23 @@ function displayAllExternal(obj,year){
   renderE+="</ul>";
   $('#CountryData').html(renderE);
 };
+function countryExternal(obj,year){
+  
+};
+function displayAllRating(obj,year){
+  if(!year)
+    year = currentYear;
+  var renderE;
+  var title = "Country";
+  var indicator = "Rating";
+  renderE = "<ul><li><span class='title'>"+title+"</span><span class = 'indicator'>"+indicator+"</span>";
+  for(var i = 0; i<obj.length; i++){
+    renderE+="<li class = 'conlist'><span class = 'Cname'>"+obj[i].getName(year)+"</span><span class = 'value'>"+obj[i].getRating(year)+"</span></li>";
+  }
+  renderE+="</ul>";
+  $('#CountryData').html(renderE);
+};
+
 
 function renderBy(id,obj,year){
   switch(id){

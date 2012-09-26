@@ -35,6 +35,9 @@ function CountryObj(name, code, rating){
 		'InvestmentPay':{},
 		'InterestPay':{}
 	};
+	this.Rating = {
+		'historicalRating':{}
+	};
 
 
 };
@@ -51,6 +54,13 @@ CountryObj.prototype ={
 	},
 	getRating: function(){
 		return this.rating;
+	},
+	addRating: function(key,val){
+		this.Rating['historicalRating'][key]= val;
+	},
+	getRating: function(year){
+		err_y(year);
+		return this.Rating['historicalRating'][year];
 	},
 	//--------------------Economic Functions--------------------------------//
 	addNomGDP: function(key,val){

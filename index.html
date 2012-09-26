@@ -8,17 +8,12 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--<link href="css/bootstrap.css" rel="stylesheet">-->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/jquery-jvectormap-1.0.css" rel="stylesheet">
-    <!--
-    <link href="css/custom-theme/jquery-ui-1.8.22.custom.css" rel="stylesheet" type="text/css" />
-    <link href="css/ui.slider.extras.css" media="screen" rel="stylesheet" type="text/css" />
-    -->
+
+  <link rel="stylesheet" href="css/grid.css" type="text/css" media="screen" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <!--[if lt IE 9]>
-    <script type="text/javascript" src="js/aight.min.js"></script>
-    <![endif]-->
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -27,14 +22,11 @@
     <script src="js/jquery-1.8.2.min.js"></script>
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="ico/favicon.png">
+    <!--
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
-   <!--
-    <script src="js/jvmSlider.js"></script>
-    <script src="js/jquery.reject.js"></script>
-    <script src="js/selectToUISlider.jQuery.js"></script>
   -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <script src="js/dataImport.js"></script>
@@ -52,10 +44,9 @@
     <!-- Dyanmic labels for period and totals -->
   </header>
 
-    <div class="container">
+    <div class="container_10">
       <div class="row">
-          <div class="span2">
-            <ul class = "historical">
+        <ul class = "historical grid_1 ">
         <li class = "selected"><a  href="#">1999</a></li>
         <li><a href="#">2000</a></li>
         <li><a href="#">2001</a></li>
@@ -71,10 +62,9 @@
         <li><a href="#">2011</a></li>
         <li><a href="#">2012</a></li>
             </ul>
-      </div>
 
-
-      <div class="span5">
+    </div>
+      <div class="grid_5">
         <!-- Dyanmic labels for period and totals -->
         <div id="map"></div>
         <div class="legend">
@@ -83,7 +73,7 @@
         </div>
       </div>
 
-      <div class="span3 data_overview">
+      <div class="grid_3 data_overview">
         <ul class = "Criteria ">
           <li class = "Criteria rating"><a href="#">Sovereign Ratings</a>
           <p class="info">
@@ -106,47 +96,7 @@
           </p>
           </li>
         </ul>
-        <!--
-        <div class="CountryData">
-          <p>Federal republic of <br><span class="countryName">Germany</span></p>
-          <hr>
-          <p>
-            <span class="indicator">GDP(US$)</span><br><span class="value">251.81
-            </span> 
-            <hr>
-          </p>
-          <p>
-            <span class="indicator">GDP per capita(US$)</span>
-            <br>
-            <span class="value">22517.34</span>
-            <hr>
-          </p>
-           <p>
-             <span class="indicator">Gross dom.savings /GDP(%)</span>
-             <br>
-             <span class="value">4.38</span>
-             <hr>
-           </p>
-           <p>
-             <span class="indicator">Investment/GDP(%)</span>
-             <br>
-             <span class="value">18.5</span>
-             <hr>
-           </p>
-           <p>
-             <span class="indicator">Gross dom. investment/GDP(%)</span>
-             <br>
-             <span class="value">12.37</span>
-             <hr>
-           </p>
-           <p>
-             <span class="indicator">CPI growth(%) -Input</span>
-             <br>
-             <span class="value">-0.5</span>
-           </p>
-        </div>
---><div id="CountryData"></div>
-    </div>
+<div id="CountryData"></div>
     </div>
     </div><!--container-->
       <footer>

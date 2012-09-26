@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
-
+	var test = false;
 	$('li.Criteria p').hide();
     $('li.selected p').show();
       $('ul.historical li.selected').prepend('<p class = "arrow">&#9654;</p>');
@@ -53,7 +53,7 @@ $(document).ready(function() {
         renderBy(myClass,EU,currentYear);
 
 
-        //console.log(currentYear);
+        console.log(currentYear);
       });
     $("#showHide").click(function(){
       var theDiv = $('#toggle');
@@ -138,8 +138,8 @@ $(document).ready(function() {
 		var n = 0; //Country counter
 		$.each(data, function(){
 			for(var  i = startYear; i<=endYear; i++){
-				
-				}
+				EU[n].addRating(i,this[i]);
+			}
 				n++;
 		});
 
@@ -156,6 +156,8 @@ $(document).ready(function() {
 					break;
 					case 3: indicator = "external";
 					break;
+					case 4: indicator = "rating";
+					break;
 					default:
 					break;
 				}
@@ -168,6 +170,8 @@ $(document).ready(function() {
 						mapData[year][indicator][cCode] = convert(EU[j].getDebtToGDP(year));
 					else if(indicator === "external")
 						mapData[year][indicator][cCode] = convert(EU[j].getDebtToGDP(year));
+					else if(indicator === "rating")
+						mapData[year][indicator][cCode] = EU[j].getRating(year);
 
 				}
 			}
@@ -176,15 +180,11 @@ $(document).ready(function() {
 	//console.log(mapData[2000]['economy']['AT']);
 	//console.log(mapData['2000']["economy"]['AT']);
 	//passData(EU);
-	var indicator = 'fiscal';
-	var countryCode = 'DE';
-	for(var i = startYear; i<=endYear;i++){
-		//console.log(mapData[i][indicator][countryCode]);
-	}
+
 	var nTest = 'N/A';
 	//console.log(Number(nTest));
 	//console.log(convert(nTest));
-	var test = {
+	var dummyData = {
 		"AT": 1,
 		"BE": 2,
 		"CY": 5,
@@ -222,8 +222,6 @@ $(document).ready(function() {
 				    "stroke-opacity": 1
 				},
 			},
-			// color:'#565659',
-			//color:'#A8A8A8',
 			hoverOpacity: 0.8,
 			hoverColor: false,
 			onLabelShow: function(event, label, code) {
@@ -236,11 +234,10 @@ $(document).ready(function() {
 				regions:[{
 					scale:colorS[colorIndicator],
 					attribute: 'fill',
-					values: test,
+					values: dummyData,
 					normalizeFunction: 'linear'
 				}]
 			},
-		  //       values: test,
 		  //       //values: mapData['1999'][indicator],
 				// scaleColors: colorS[colorIndicator],
 		        focusOn:{
@@ -257,7 +254,14 @@ $(document).ready(function() {
 displayAllEconomy(EU);
 
 
+if(test){
+	var testName = 4;
+	console.log(EU[testName].getName());
+	for(var i = startYear;i<=endYear;i++){
 
+		console.log(i+"=>"+EU[testName].getRating(i));
+	}
+}
 
 });
 
