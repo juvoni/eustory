@@ -58,8 +58,7 @@ div#map{
 ul.historical{
     width: 150px;
     position: relative;
-/*    margin-right: 50px;
-*/    z-index: 10;
+    z-index: 10;
     list-style: none;
     display:block;
 }
@@ -155,7 +154,8 @@ h1.title{
     font-weight: bold;
 }
 span.indicator{
-    float: right;
+    text-align: left;
+    margin-left: 60px;
 }
 #CountryData ul span.Cname{
     width:105px;

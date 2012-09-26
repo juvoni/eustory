@@ -10,6 +10,7 @@ $(document).ready(function() {
 	//---------------Blue------------------------Green---------------Red--------------/
 	var colorS = [['#1D578C', '#ffffff'],['#007C44','#ffffff'],['#E3173E','#ffffff']];
 	var colorIndicator = 2;
+	var codeArray = [];
     $(".data_overview ul li").click(function(e) {
         $(".data_overview li.selected").removeClass("selected");
         $(this).addClass("selected");
@@ -32,9 +33,11 @@ $(document).ready(function() {
 			break;
 			case "external": barPosition = '0px -44px';
 			break;
+			case "rating": barPosition = '0px 0px';
+			break;
         }
         $('.bar').css("backgroundPosition",barPosition);
-        console.log(colorIndicator);
+        //console.log(colorIndicator);
         console.log(myClass);
     });
 
@@ -53,7 +56,7 @@ $(document).ready(function() {
         renderBy(myClass,EU,currentYear);
 
 
-        console.log(currentYear);
+       // console.log(currentYear);
       });
     $("#showHide").click(function(){
       var theDiv = $('#toggle');
@@ -95,11 +98,12 @@ $(document).ready(function() {
 					EU[n].addBank_Claim_res(i,this['Data']['Bank claims on resident non-govt. sectors'][i]),
 					EU[n].addUN(i,this['Data']['Unemployment rate (average claimant count; %)'][i]);
 				}
+				codeArray.push(EU[n].getCode());
 				n++;
 			});
 	});
 
-
+console.log(codeArray);
 	$.getJSON('ajax/fiscal_data.json', function(data) {
 		var n = 0; //Country counter
 		$.each(data, function(){
@@ -172,40 +176,16 @@ $(document).ready(function() {
 						mapData[year][indicator][cCode] = convert(EU[j].getDebtToGDP(year));
 					else if(indicator === "rating")
 						mapData[year][indicator][cCode] = EU[j].getRating(year);
-
 				}
 			}
 		}
 
-	//console.log(mapData[2000]['economy']['AT']);
-	//console.log(mapData['2000']["economy"]['AT']);
-	//passData(EU);
 
 	var nTest = 'N/A';
 	//console.log(Number(nTest));
 	//console.log(convert(nTest));
-	var dummyData = {
-		"AT": 1,
-		"BE": 2,
-		"CY": 5,
-		"DE": 1,
-		"EE": 2,
-		"ES": 5,
-		"FI": 6,
-		"FR": 9,
-		"GR": 10,
-		"IE": 3,
-		"IT": 4,
-		"LU": 1,
-		"MT": 5,
-		"NL": 1,
-		"PT": 3,
-		"SI": 5,
-		"SK": 6
-	};
-//var mapObject = $('#map').vectorMap('get', 'mapObject');
-//console.log(mapData['1999'][indicator]);
-//console.log(test);
+	var dummyData = {"AT": 1,"BE": 2,"CY": 5,"DE": 1,"EE": 2,"ES": 5,"FI": 6,"FR": 9,"GR": 10,"IE": 3,"IT": 4,"LU": 1,"MT": 5,"NL": 1,"PT": 3,"SI": 5,"SK": 6};
+
 	$('#map').vectorMap({
 		map: 'europe_mill_en',
 			backgroundColor:'#808080',
@@ -216,16 +196,22 @@ $(document).ready(function() {
 				    "fill-opacity": 1,
 				    stroke: '#cccccc',
 				    "stroke-width": 0.5,
-				    "stroke-opacity": 1
+				    "stroke-opacity": 1,
 				},
+				hover:{
+					stroke: '#414042',
+					"stroke-width": 1,
+					opacity: 0.8,
+					color: false
+				}
 			},
-			hoverOpacity: 0.8,
-			hoverColor: false,
-			onLabelShow: function(event, label, code) {
-				label.text(label.text() + " (Test)");
+			onRegionLabelShow: function(event, label, code) {
+				if($.inArray(code,codeArray)!=1){
+					label.text(label.text());
+				}
 			},
 			onRegionClick: function (event, code) {
-				console.log(code);
+				//console.log(code);
 			},
 			series:{
 				regions:[{
@@ -235,15 +221,12 @@ $(document).ready(function() {
 					normalizeFunction: 'linear'
 				}]
 			},
-		  //       //values: mapData['1999'][indicator],
-				// scaleColors: colorS[colorIndicator],
-		        focusOn:{
-		          x: 0.6,
-		          y: 0.55,
-		          scale: 0.8
-		        }
+		    focusOn:{
+		        x: 0.6,
+		        y: 0.55,
+		        scale: 0.8
 		    }
-	   );
+	 });
 	var mapObject = $('#map').vectorMap('get', 'mapObject');
 	function updateC(){
 		mapObject.series.regions[0].setScale(colorS[colorIndicator]);
@@ -253,22 +236,12 @@ displayAllEconomy(EU);
 
 if(test){
 	var testName = 4;
-	console.log(EU[testName].getName());
+	//console.log(EU[testName].getName());
 	for(var i = startYear;i<=endYear;i++){
 
-		console.log(i+"=>"+EU[testName].getRating(i));
+		//console.log(i+"=>"+EU[testName].getRating(i));
 	}
 }
 
 });
 
-/*
-		initial: {
-        fill: 'black',
-        "fill-opacity": 1,
-		stroke: 'none',
-		"stroke-width": 0,
-		"stroke-opacity": 1
-				},
-
-*/

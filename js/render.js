@@ -77,7 +77,7 @@ function displayAllExternal(obj,year){
   $('#CountryData').html(renderE);
 };
 function countryExternal(obj,year){
-  
+
 };
 function displayAllRating(obj,year){
   if(!year)
@@ -102,6 +102,7 @@ function renderBy(id,obj,year){
     break;
     case "external": displayAllExternal(obj,year);
     break;
+    case "rating": displayAllRating(obj,year);
   }
 };
 
@@ -113,6 +114,8 @@ function updateColor(id){
     case "fiscal": val = 0;
     break;
     case "external": val = 1;
+    break;
+    case "rating": val = 2;
     break;
     default: val = 2;
   }
