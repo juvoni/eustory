@@ -209,10 +209,7 @@ $(document).ready(function() {
 	$('#map').vectorMap({
 		map: 'europe_mill_en',
 			backgroundColor:'#808080',
-			regionsSelectable: 'true',
-			selected: {
-				fill: 'yellow'
-			},
+			regionsSelectable: false,
 			regionStyle:{
 				 initial: {
 					fill: '#c7c7c7',

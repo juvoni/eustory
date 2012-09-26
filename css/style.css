@@ -1,5 +1,5 @@
 body {
-    font-family:"Segoe UI","Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Arial,"Helvetica Neue", Helvetica, sans-serif;
     margin:0px;
     margin-left:auto;
     margin-right:auto;
@@ -23,20 +23,27 @@ a:hover{
     text-decoration: none;
 }
 
-.legend{
-    position: block;
+div.legend{
+    font-size: 12px;
+    font-weight: bold;
     width: 250px;
-    height:20px;
+    height:40px;
+    position: relative;
+    display:inline;
+    margin-left: 20px;
+}
+.legend h4{
     float: left;
 }
 .bar{
-    display: visible;
     width: 138px;
     height: 10px;
-    margin-top: 0;
+    margin-top: 20px;
+    margin: 20px 5px 0 5px;
     padding-top: 0;
     background:url("../img/scale.png");
     background-position: 0 0;
+    float: left;
 }
 div#map{
     width: 560px;
@@ -51,9 +58,8 @@ div#map{
 ul.historical{
     width: 150px;
     position: relative;
-    margin-top: 20px;
-    margin-right: 50px;
-    z-index: 10;
+/*    margin-right: 50px;
+*/    z-index: 10;
     list-style: none;
     display:block;
 }
@@ -80,7 +86,7 @@ p.arrow{
     margin-left: -15px;
 }
 ul.historical li {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     margin-bottom: 5px;
 }
@@ -117,9 +123,10 @@ ul.Criteria{
 }
 li.Criteria p.info{
     display: block;
-    color:black;
-    margin-left: 15px;
+    color:#414042;
+    margin: 0;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 14px;
 }
 li.Criteria p{
     display: inline;
@@ -151,7 +158,7 @@ span.indicator{
     float: right;
 }
 #CountryData ul span.Cname{
-    width:95px;
+    width:105px;
     float: left;
 }
 #CountryData ul span.value{
@@ -172,10 +179,7 @@ footer{
     position:absolute;
     display:block;
     bottom:0px;
-    width:90%;
     height:20px;
-    margin-left: 10%;
-    margin-top: 25px;
     margin-bottom: 0;
     padding-bottom: 0;
 }
