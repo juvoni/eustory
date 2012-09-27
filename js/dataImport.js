@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
-	var test = false;
+	var test = true;
 	$('li.Criteria p').hide();
     $('li.selected p').show();
       $('ul.historical li.selected').prepend('<p class = "arrow">&#9654;</p>');
@@ -22,9 +22,9 @@ $(document).ready(function() {
         $("ul.historical li.selected").removeClass("rating fiscal economy external");
         $("ul.historical li.selected").addClass(myClass);
         setIndicator(myClass);
-        renderBy(myClass,EU);
-        colorIndicator = updateColor(myClass);
-        updateC();
+        // renderBy(myClass,EU);
+        // colorIndicator = updateColor(myClass);
+        // updateC();
                 var barPosition;
         switch(myClass){
 			case "economy": barPosition = '0px 0px';
@@ -53,7 +53,7 @@ $(document).ready(function() {
         var remove = year.charAt(0);
         currentYear = year.replace(remove,"");
         setYear(currentYear);
-        renderBy(myClass,EU,currentYear);
+        // renderBy(myClass,EU,currentYear);
 
 
        // console.log(currentYear);
@@ -87,12 +87,12 @@ $(document).ready(function() {
 			$.each(data, function(){
 				EU.push(new CountryObj(this['Entity Name'],this['ISO'],this['Data']['Long Term Currency Rating']));
 				for(var  i = startYear; i<=endYear; i++){
-					EU[n].addNomGDP(i,this['Data']['Nominal GDP (bil. $)'][i]),
-					EU[n].addPerCapita(i,this['Data']['Per capita GDP ($)'][i])
-					// EU[n].addReal_GDP_G(i,this['Data']['Real GDP growth (%)'][i]),
-					// EU[n].addRealInvestment(i,this['Data']['Real investment (% change)'][i]),
-					// EU[n].addNFPE(i,this['Data']['Oth DC claims on private & NFPEs (% change)'][i]),
-					// EU[n].addBank_Claim_res(i,this['Data']['Bank claims on resident non-govt. sectors'][i])
+					EU[n].addNomGDP(i,this['Data']['Nominal GDP (bil. $)'][i])
+					EU[n].addPerCapita(i,this['Data']['Per capita GDP (US$)'][i]),
+					EU[n].addReal_GDP_G(i,this['Data']['Real GDP growth (%)'][i]),
+					EU[n].addGDP_per_capita(i,this['Data']['Real GDP per capita (% change)'][i]),
+					EU[n].addNFPE(i,this['Data']['Oth DC claims on private & NFPEs (% change)'][i]),
+					EU[n].addBank_Claim_res(i,this['Data']['Bank claims on resident non-govt. sectors / GDP'][i])
 				}
 				//codeArray.push(EU[n].getCode());
 				n++;
@@ -100,70 +100,70 @@ $(document).ready(function() {
 	});
 
 //console.log(codeArray);
-	// $.getJSON('ajax/fiscal.json', function(data) {
-	//	var n = 0; //Country counter
-	//	$.each(data, function(){
-	//		for(var  i = startYear; i<=endYear; i++){
-	//			EU[n].addGG_bal_per_GDP(i,this['Data']['General government balance as % of GDP (%)'][i]),
-	//			EU[n].addChange_GG_debt_per_GDP(i,this['Data']['Change in general government debt as % of GDP'][i]),
-	//			EU[n].addGG_debt_per_GDP(i,this['Data']['Net general government debt as % of GDP (%)'][i]),
-	//			EU[n].addGG_interest_exp_per_revenue(i,this['Data']['General government interest exp. (% of revenues)'][i])
-	//		}
-	//			n++;
-	//	});
-	// });
+	$.getJSON('ajax/fiscal.json', function(data) {
+		var n = 0; //Country counter
+		$.each(data, function(){
+			for(var  i = startYear; i<=endYear; i++){
+				EU[n].addGG_bal_per_GDP(i,this['Data']['General government balance as % of GDP (%)'][i]),
+				EU[n].addChange_GG_debt_per_GDP(i,this['Data']['Change in general government debt as % of GDP'][i]),
+				EU[n].addGG_debt_per_GDP(i,this['Data']['Net general government debt as % of GDP (%)'][i]),
+				EU[n].addGG_interest_exp_per_revenue(i,this['Data']['General government interest exp. (% of revenues)'][i])
+			}
+				n++;
+		});
+	});
 
-	// $.getJSON('ajax/external.json', function(data) {
-	//	var n = 0; //Country counter
-	//	$.each(data, function(){
-	//		for(var  i = startYear; i<=endYear; i++){
-	//				EU[n].addELiabilities(i,this['Data']['Net external liabilities'][i]),
-	//				EU[n].addNarrowExToCar(i,this['Data']['Narrow net external debt (% of CARs)'][i])
-	//			}
-	//			n++;
-	//	});
+	$.getJSON('ajax/external.json', function(data) {
+		var n = 0; //Country counter
+		$.each(data, function(){
+			for(var  i = startYear; i<=endYear; i++){
+					EU[n].addELiabilities(i,this['Data']['Net external liabilities (% of CARs)'][i]),
+					EU[n].addNarrowExToCar(i,this['Data']['Narrow net external debt (% of CARs)'][i])
+				}
+				n++;
+		});
 
-	// });
-	// $.getJSON('ajax/Ratings.json', function(data) {
-	//	var n = 0; //Country counter
-	//	$.each(data, function(){
-	//		for(var  i = startYear; i<=endYear; i++){
-	//			EU[n].addRating(i,this[i]);
-	//		}
-	//			n++;
-	//	});
+	});
+	$.getJSON('ajax/Ratings.json', function(data) {
+		var n = 0; //Country counter
+		$.each(data, function(){
+			for(var  i = startYear; i<=endYear; i++){
+				EU[n].addRatingHistorical(i,this[i]);
+			}
+				n++;
+		});
 
-	// });
+	});
 
 		for(var year = startYear; year<=endYear;year++){
 			mapData[year]={};
 
-			for(var i = 1; i<=3;i++){
-				switch(i){
-					case 1: indicator = "economy";
-					break;
-					case 2: indicator = "fiscal";
-					break;
-					case 3: indicator = "external";
-					break;
-					case 4: indicator = "rating";
-					break;
-					default:
-					break;
-				}
-				mapData[year][indicator]={};
-				for(var j = 0; j<17;j++){
-					cCode = EU[j].getCode();
-					if(indicator === "economy")
-						mapData[year][indicator][cCode] = convert(EU[j].getPerCapita(year));
-					else if(indicator === "fiscal")
-						mapData[year][indicator][cCode] = convert(EU[j].getDebtToGDP(year));
-					else if(indicator === "external")
-						mapData[year][indicator][cCode] = convert(EU[j].getDebtToGDP(year));
-					else if(indicator === "rating")
-						mapData[year][indicator][cCode] = EU[j].getRating(year);
-				}
-			}
+			// for(var i = 1; i<=3;i++){
+			//	switch(i){
+			//		case 1: indicator = "economy";
+			//		break;
+			//		case 2: indicator = "fiscal";
+			//		break;
+			//		case 3: indicator = "external";
+			//		break;
+			//		case 4: indicator = "rating";
+			//		break;
+			//		default:
+			//		break;
+			//	}
+			//	mapData[year][indicator]={};
+			//	for(var j = 0; j<17;j++){
+			//		cCode = EU[j].getCode();
+			//		if(indicator === "economy")
+			//			mapData[year][indicator][cCode] = convert(EU[j].getPerCapita(year));
+			//		else if(indicator === "fiscal")
+			//			mapData[year][indicator][cCode] = convert(EU[j].getDebtToGDP(year));
+			//		else if(indicator === "external")
+			//			mapData[year][indicator][cCode] = convert(EU[j].getDebtToGDP(year));
+			//		else if(indicator === "rating")
+			//			mapData[year][indicator][cCode] = EU[j].getRating(year);
+			//	}
+			// }
 		}
 
 
@@ -214,19 +214,24 @@ $(document).ready(function() {
 		    }
 	 });
 	var mapObject = $('#map').vectorMap('get', 'mapObject');
+
 	function updateC(){
 		mapObject.series.regions[0].setScale(colorS[colorIndicator]);
 	};
+
 displayAllEconomy(EU);
 
+function $n (n) { return (typeof(n) == 'number') ? new Number(n) : NaN};
 
 if(test){
 	var testName = 4;
+	var CountrySelect = 10;
 	//console.log(EU[testName].getName());
 	for(var i = startYear;i<=endYear;i++){
 
-		//console.log(i+"=>"+EU[testName].getRating(i));
+		//console.log(i+"=>"+typeof(Number(EU[CountrySelect].getELiabilities(i))));
 	}
+	console.log($n(1));
 }
 
 });

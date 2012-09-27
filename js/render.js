@@ -14,22 +14,12 @@ function isDigit(num){
 };
 
 function convert(num){
-  temp = num.replace(/\,/g,'');
-  var result;
-  if(isDigit(temp)){
-      result = temp.parseInt(temp,10);
-      // result = result.parseInt(result,10);
-  }
-  else if(temp.indexOf("(") !=-1){
-      result = "-";
-      result+=temp.substring(1,temp.length-1);
-      //result = result.parseFloat(result,10);
-    }
-  else if(temp.indexOf("-")!=-1){
-      result = result.parseInt(result,10);
+  num = Number(num);
+  if(typeof num == 'string'){
+    result = 0;
   }
   else{
-    result = 0;
+    result = num;
   }
   return result;
 };
