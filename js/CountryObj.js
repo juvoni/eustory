@@ -4,36 +4,22 @@ function CountryObj(name, code, rating){
 	this.rating = rating;
 
 	this.Economic = {
-		'Nominal_GDP':{},
 		'Per_capita_GDP':{},
-		'Gross_domestic_savings':{},
-		'Gross_domestic_investment':{},
+		'Real_GDP_per_capita':{},
+		'Nominal_GDP':{},
 		'Real_GDP_growth':{},
-		'Real_investment':{},
-		'Consumer_price_index':{},
 		'Oth_DC_claims_on_private_NFPEs':{},
-		'Bank_claims_on_resident_non_govt_sectors':{},
-		'Unemployment_rate':{}
+		'Bank_claims_on_resident_non_govt_sectors':{}
 	};
 	this.Fiscal = {
-		'Net_Gov_debt_per_GDP':{},
-		'GG_debtDeposits_GDP':{},
-		'Gov_Debt':{},
-		'Gov_balance':{},
-		'Gov_Pri_Bal':{},
-		'Revenues':{},
-		'Expenditures':{},
-		'Interest_To_GDP':{}
+		'GG_bal_per_GDP':{},
+		'Change_GG_debt_per_GDP':{},
+		'GG_debt_per_GDP':{},
+		'GG_interest_exp_per_revenue':{}
 	};
-	this.IIP = {
+	this.External = {
 		'eLiabilities':{},
-		'eDebt':{},
-		'publicToCar':{},
-		'externalToCar':{},
-		'NarrowExToCar':{},
-		'publicExternal':{},
-		'InvestmentPay':{},
-		'InterestPay':{}
+		'NarrowExToCar':{}
 	};
 	this.Rating = {
 		'historicalRating':{}
@@ -55,6 +41,7 @@ CountryObj.prototype ={
 	getRating: function(){
 		return this.rating;
 	},
+	//--------------------Rating Functions--------------------------------//
 	addRating: function(key,val){
 		this.Rating['historicalRating'][key]= val;
 	},
@@ -69,29 +56,17 @@ CountryObj.prototype ={
 	addPerCapita: function(key,val){
 		this.Economic['Per_capita_GDP'][key] = val;
 	},
-	addGross_d_Saving: function(key,val){
-		this.Economic['Gross_domestic_savings'][key]= val;
-	},
-	addGross_d_Investment: function(key,val){
-		this.Economic['Gross_domestic_investment'][key] = val;
-	},
 	addReal_GDP_G: function(key,val){
 		this.Economic['Real_GDP_growth'][key] = val;
 	},
-	addRealInvestment: function(key,val){
-		this.Economic['Real_investment'][key] = val;
-	},
-	addCPI: function(key,val){
-		this.Economic['Consumer_price_index'][key] = val;
+	addGDP_per_capita: function(key,val){
+		this.Economic['Real_GDP_per_capita'][key] = val;
 	},
 	addNFPE: function(key,val){
 		this.Economic['Oth_DC_claims_on_private_NFPEs'][key] = val;
 	},
 	addBank_Claim_res: function(key,val){
 		this.Economic['Bank_claims_on_resident_non_govt_sectors'][key] = val;
-	},
-	addUN: function(key,val){
-		this.Economic['Unemployment_rate'][key] = val;
 	},
 	getNomGDP: function(year){
 			err_y(year);
@@ -101,25 +76,9 @@ CountryObj.prototype ={
 			err_y(year);
 		return this.Economic['Per_capita_GDP'][year];
 	},
-	getGross_d_Saving: function(year){
-			err_y(year);
-		return this.Economic['Gross_domestic_savings'][year];
-	},
-	getGross_d_Investment: function(year){
-			err_y(year);
-		return this.Economic['Gross_domestic_investment'][year];
-	},
 	getReal_GDP_G: function(year){
 			err_y(year);
 		return this.Economic['Real_GDP_growth'][year];
-	},
-	getRealInvestment: function(year){
-			err_y(year);
-		return this.Economic['Real_investment'][year];
-	},
-	getCPI: function(year){
-			err_y(year);
-		return this.Economic['Consumer_price_index'][year];
 	},
 	getNFPE: function(year){
 			err_y(year);
@@ -129,126 +88,49 @@ CountryObj.prototype ={
 			err_y(year);
 		return this.Economic['Bank_claims_on_resident_non_govt_sectors'][year];
 	},
-	getUN: function(year){
-			err_y(year);
-		return this.Economic['Unemployment_rate'][year];
-	},
-
 	//--------------------Fiscal Functions--------------------------------//
-	addDebtToGDP: function(key,val){
-		this.Fiscal['Net_Gov_debt_per_GDP'][key] = val;
+	addGG_bal_per_GDP: function(key,val){
+		this.Fiscal['GG_bal_per_GDP'][key] = val;
 	},
-	addDepositToGDP: function(key,val){
-		this.Fiscal['GG_debtDeposits_GDP'][key] = val;
+	addChange_GG_debt_per_GDP: function(key,val){
+		this.Fiscal['Change_GG_debt_per_GDP'][key] = val;
 	},
-	addGov_Debt: function(key,val){
-		this.Fiscal['Gov_Debt'][key] = val;
+	addGG_debt_per_GDP: function(key,val){
+		this.Fiscal['GG_debt_per_GDP'][key] = val;
 	},
-	addGov_Bal: function(key,val){
-		this.Fiscal['Gov_balance'][key] = val;
+	addGG_interest_exp_per_revenue: function(key,val){
+		this.Fiscal['GG_interest_exp_per_revenue'][key] = val;
 	},
-	addGov_P_Bal: function(key,val){
-		this.Fiscal['Gov_Pri_Bal'][key] = val;
-	},
-	addGov_Rev: function(key,val){
-		this.Fiscal['Revenues'][key] = val;
-	},
-	addGov_Ex: function(key,val){
-		this.Fiscal['Expenditures'][key] = val;
-	},
-	addInterestToGDP: function(key,val){
-		this.Fiscal['Interest_To_GDP'][key] = val;
-	},
-	getDebtToGDP: function(year){
+	getGG_bal_per_GDP: function(year){
 			err_y(year);
-		return this.Fiscal['Net_Gov_debt_per_GDP'][year];
+		return this.Fiscal['GG_bal_per_GDP'][year];
 	},
-	getDepositToGDP: function(year){
+	getChange_GG_debt_per_GDP: function(year){
 			err_y(year);
-		return this.Fiscal['GG_debtDeposits_GDP'][year];
+		return this.Fiscal['Change_GG_debt_per_GDP'][year];
 	},
-	getGov_Debt: function(year){
+	getGG_debt_per_GDP: function(year){
 			err_y(year);
-		return this.Fiscal['Gov_Debt'][year];
+		return this.Fiscal['GG_debt_per_GDP'][year];
 	},
-	getGov_Bal: function(year){
+	getGG_interest_exp_per_revenue: function(year){
 			err_y(year);
-		return this.Fiscal['Gov_balance'][year];
+		return this.Fiscal['GG_interest_exp_per_revenue'][year];
 	},
-	getGov_P_Bal: function(year){
-			err_y(year);
-		return this.Fiscal['Gov_Pri_Bal'][year];
-	},
-	getGov_Rev: function(year){
-			err_y(year);
-		return this.Fiscal['Revenues'][year];
-	},
-	getGov_Ex: function(year){
-			err_y(year);
-		return this.Fiscal['Expenditures'][year];
-	},
-	getInterestToGDP: function(year){
-			err_y(year);
-		return this.Fiscal['Interest_To_GDP'][year];
-	},
-
 	//--------------------External Functions--------------------------------//
 	addELiabilities: function(key,val){
-		this.IIP['eLiabilities'][key] = val;
-	},
-	addEDebt: function(key,val){
-		this.IIP['eDebt'][key] = val;
-	},
-	addPublicToCar: function(key,val){
-		this.IIP['publicToCar'][key] = val;
-	},
-	addExternalToCar: function(key,val){
-		this.IIP['externalToCar'][key] = val;
+		this.External['eLiabilities'][key] = val;
 	},
 	addNarrowExToCar: function(key,val){
-		this.IIP['NarrowExToCar'][key] = val;
-	},
-	addPublicExternal: function(key,val){
-		this.IIP['publicExternal'][key] = val;
-	},
-	addInvestmentPay: function(key,val){
-		this.IIP['InvestmentPay'][key] = val;
-	},
-	addInterestPay: function(key,val){
-		this.IIP['InterestPay'][key] = val;
+		this.External['NarrowExToCar'][key] = val;
 	},
 	getELiabilities: function(year){
 			err_y(year);
-		return this.IIP['eLiabilities'][year];
-	},
-	getEDebt: function(year){
-			err_y(year);
-		return this.IIP['eDebt'][year];
-	},
-	getPublicToCar: function(year){
-			err_y(year);
-		return this.IIP['publicToCar'][year];
-	},
-	getExternalToCar: function(year){
-			err_y(year);
-		return this.IIP['externalToCar'][year];
+		return this.External['eLiabilities'][year];
 	},
 	getNarrowExToCar: function(year){
 			err_y(year);
-		return this.IIP['NarrowExToCar'][year];
-	},
-	getPublicExternal: function(year){
-			err_y(year);
-		return this.IIP['publicExternal'][year];
-	},
-	getInvestmentPay: function(year){
-			err_y(year);
-		return this.IIP['InvestmentPay'][year];
-	},
-	getInterestPay: function(year){
-			err_y(year);
-		return this.IIP['InterestPay'][year];
+		return this.External['NarrowExToCar'][year];
 	}
-
 };
 
