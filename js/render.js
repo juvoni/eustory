@@ -1,7 +1,3 @@
-$(document).ready(function() {
-    
-
-});
 var currentYear = 1999;
 var indic;
 var EUdata = {};
@@ -56,7 +52,7 @@ function displayAllFiscal(obj){
   var indicator = "GG debt/GDP(%)";
   renderE = "<ul><li><span class='title'>"+title+"</span><span class = 'indicator'>"+indicator+"</span>";
   for(var i = 0; i<obj.length; i++){
-    renderE+="<li class = 'conlist'><span class = 'Cname'>"+obj[i].getName(currentYear)+"</span><span class = 'value'>"+obj[i].getDebtToGDP(currentYear)+"</span></li>";
+    renderE+="<li class = 'conlist'><span class = 'Cname'>"+obj[i].getName(currentYear)+"</span><span class = 'value'>"+obj[i].GG_debt_per_GDP(currentYear)+"</span></li>";
   }
   renderE+="</ul>";
   $('#CountryData').html(renderE);

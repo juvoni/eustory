@@ -25,7 +25,6 @@ function CountryObj(name, code, rating){
 		'historicalRating':{}
 	};
 
-
 };
 function err_y(year){
 	if(year<1999)
@@ -42,10 +41,10 @@ CountryObj.prototype ={
 		return this.rating;
 	},
 	//--------------------Rating Functions--------------------------------//
-	addRating: function(key,val){
+	addRatingHistorical: function(key,val){
 		this.Rating['historicalRating'][key]= val;
 	},
-	getRating: function(year){
+	getRatingHistorical: function(year){
 		err_y(year);
 		return this.Rating['historicalRating'][year];
 	},
