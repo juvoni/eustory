@@ -74,6 +74,30 @@ function displayEx(obj,location,year){
   }
 };
 
+function displayF(obj,location,year){
+  var renderE;
+  var conPrefix = countryPrefix(obj,location);
+  var countryName = obj[location].getName();
+  var indicators = ['General government balance as % of GDP (%)','Change in general government debt as % of GDP','Net general government debt as % of GDP (%)','General government interest exp. (% of revenues)'];
+
+  renderE+="<ul class = 'CountryInformation'><li><span class = 'prefix'>"+conPrefix+"</span><br>";
+  renderE+="<span class='cTitle'>"+countryName+"</span><li>";
+  for(var i = 0; i<indicators.length;i++){
+    renderE+="<li><span class='indiTitle'>"+indicator[i]+"<<br><span class = 'indiValue'>";
+    switch(i){
+      case 0:renderE+=obj[location].getGG_bal_per_GDP(year);
+      break;
+      case 1:renderE+=obj[location].getChange_GG_debt_per_GDP(year);
+      break;
+      case 2:renderE+=obj[location].getGG_debt_per_GDP(year);
+      break;
+      case 3:renderE+=obj[location].getGG_interest_exp_per_revenue(year);
+      break;
+    }
+    renderE+="</span>";
+    $('#CountryData').html(renderE);
+  }
+};
 function countryPrefix(obj,location){
   var prefix;
   if(obj[location].getName() === "Finland"|| "Austria" || "France" || "Estonia" || "Slovenia" || "Malta" || "Ireland" || "Italy" || "Cyprus" || "Portugal"){
