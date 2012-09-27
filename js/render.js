@@ -1,12 +1,4 @@
 var currentYear = 1999;
-var indic;
-var EUdata = {};
-function setYear(year){
-  currentYear = year;
-};
-function setIndicator(ind){
-  indic = ind;
-};
 
 function convert(num){
   num = +num || 0;
@@ -14,26 +6,16 @@ function convert(num){
   return result;
 };
 
-function displayAllEconomy(obj){
-  var renderE;
-  var title = "Country";
-  var indicator = "Per Capita GDP(US$)";
-  renderE = "<ul><li><span class='title'>"+title+"</span><span class = 'indicator'>"+indicator+"</span>";
-  for(var i = 0; i<obj.length; i++){
-    renderE+="<li class = 'conlist'><span class = 'Cname'>"+obj[i].getName(currentYear)+"</span><span class = 'value'>"+obj[i].getPerCapita(currentYear)+"</span></li>";
-  }
-  renderE+="</ul>";
-  $('#CountryData').html(renderE);
-};
+
 function displayE(obj,location,year){
   var renderE;
   var conPrefix = countryPrefix(obj,location);
   var countryName = obj[location].getName();
-  var indicators = ['Per capita GDP (US$)','Real GDP per capita (% change)','Nominal GDP (bil. $)','Real GDP growth (%)','Bank claims on resident<br>non-govt. sectors / GDP','Oth DC claims on private & NFPEs (% change)'];
+  var indC = ['Per capita GDP (US$)','Real GDP per capita (% change)','Nominal GDP (bil. $)','Real GDP growth (%)','Bank claims on resident<br>non-govt. sectors / GDP','Oth DC claims on private & NFPEs (% change)'];
 
   renderE+="<ul class = 'CountryInformation'><li><span class = 'prefix'>"+conPrefix+"</span><br>";
   renderE+="<span class='cTitle'>"+countryName+"</span><li>";
-  for(var i = 0; i<indicators.length;i++){
+  for(var i = 0; i<indC.length;i++){
     renderE+="<li><span class='indiTitle'>"+indicator[i]+"<<br><span class = 'indiValue'>";
     switch(i){
       case 0:renderE+=obj[location].getPerCapita(year);
@@ -57,11 +39,11 @@ function displayEx(obj,location,year){
   var renderE;
   var conPrefix = countryPrefix(obj,location);
   var countryName = obj[location].getName();
-  var indicators = ['Narrow net external debt (% of CARs)','Net external liabilities (% of CARs)'];
+  var indC = ['Narrow net external debt (% of CARs)','Net external liabilities (% of CARs)'];
 
   renderE+="<ul class = 'CountryInformation'><li><span class = 'prefix'>"+conPrefix+"</span><br>";
   renderE+="<span class='cTitle'>"+countryName+"</span><li>";
-  for(var i = 0; i<indicators.length;i++){
+  for(var i = 0; i<indC.length;i++){
     renderE+="<li><span class='indiTitle'>"+indicator[i]+"<<br><span class = 'indiValue'>";
     switch(i){
       case 0:renderE+=obj[location].getNarrowExToCar(year);
@@ -78,11 +60,11 @@ function displayF(obj,location,year){
   var renderE;
   var conPrefix = countryPrefix(obj,location);
   var countryName = obj[location].getName();
-  var indicators = ['General government balance as % of GDP (%)','Change in general government debt as % of GDP','Net general government debt as % of GDP (%)','General government interest exp. (% of revenues)'];
+  var indC = ['General government balance as % of GDP (%)','Change in general government debt as % of GDP','Net general government debt as % of GDP (%)','General government interest exp. (% of revenues)'];
 
   renderE+="<ul class = 'CountryInformation'><li><span class = 'prefix'>"+conPrefix+"</span><br>";
   renderE+="<span class='cTitle'>"+countryName+"</span><li>";
-  for(var i = 0; i<indicators.length;i++){
+  for(var i = 0; i<indC.length;i++){
     renderE+="<li><span class='indiTitle'>"+indicator[i]+"<<br><span class = 'indiValue'>";
     switch(i){
       case 0:renderE+=obj[location].getGG_bal_per_GDP(year);
@@ -124,10 +106,10 @@ function countryPrefix(obj,location){
 function displayAllFiscal(obj){
   var renderE;
   var title = "Country";
-  var indicator = "G. Government balance % of GDP";
+  var indicator = "Net general government debt as % of GDP (%)";
   renderE = "<ul><li><span class='title'>"+title+"</span><span class = 'indicator'>"+indicator+"</span>";
   for(var i = 0; i<obj.length; i++){
-    renderE+="<li class = 'conlist'><span class = 'Cname'>"+obj[i].getName(currentYear)+"</span><span class = 'value'>"+obj[i].getGG_bal_per_GDP(currentYear)+"</span></li>";
+    renderE+="<li class = 'conlist'><span class = 'Cname'>"+obj[i].getName(currentYear)+"</span><span class = 'value'>"+obj[i].getGG_debt_per_GDP(currentYear)+"</span></li>";
   }
   renderE+="</ul>";
   $('#CountryData').html(renderE);
@@ -156,6 +138,17 @@ function findObj(obj){
       break;
     }
   }
+};
+function displayAllEconomy(obj){
+  var renderE;
+  var title = "Country";
+  var indicator = "Real GDP growth (%)";
+  renderE = "<ul><li><span class='title'>"+title+"</span><span class = 'indicator'>"+indicator+"</span>";
+  for(var i = 0; i<obj.length; i++){
+    renderE+="<li class = 'conlist'><span class = 'Cname'>"+obj[i].getName(currentYear)+"</span><span class = 'value'>"+obj[i].getReal_GDP_G(currentYear)+"</span></li>";
+  }
+  renderE+="</ul>";
+  $('#CountryData').html(renderE);
 };
 
 function displayAllRating(obj,year){

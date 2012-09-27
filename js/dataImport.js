@@ -1,31 +1,41 @@
 
 $(document).ready(function() {
-	var test = true;
-	$('li.Criteria p').hide();
-    $('li.selected p').show();
-      $('ul.historical li.selected').prepend('<p class = "arrow">&#9654;</p>');
+	var test = false;
+	var $description = $('li.Criteria p');
+	$description.hide();
+    $("li.selected p").show();
+      $("ul.historical li.selected").prepend('<p class = "arrow">&#9654;</p>');
       $(".data_overview li.selected").prepend('<p class = "arrow">&#9654;</p>');
       var myClass = "economy";
       var currentYear = 1999;
 	//---------------Blue------------------------Green---------------Red--------------/
-	var colorS = [['#1D578C', '#ffffff'],['#007C44','#ffffff'],['#E3173E','#ffffff']];
+	var colorS = [['#ffffff','#1D578C'],['#ffffff','#007C44'],['#ffffff','#E3173E']];
+	var ratingScore =["AAA","AA+","AA-","AA","A+","A-","A","BBB+","BBB-","BBB","BB+","BB-","BB","B+","B-","B","CCC+","CCC-","CCC","CC"];
 	var colorIndicator = 2;
 	var codeArray = [];
+
+	var EU = [];
+	var startYear = 1999;
+	var endYear = 2012;
+	var mapData = {};
+	var indicator = myClass;
+
     $(".data_overview ul li").click(function(e) {
         $(".data_overview li.selected").removeClass("selected");
         $(this).addClass("selected");
         $(".data_overview ul li p.arrow").remove();
         $(this).prepend('<p class = "arrow">&#9654;</p>');
-        $('li.Criteria p').hide();
+        $description.hide();
         $("ul li.selected p").show();
         myClass = $(this).attr("class").split(' ')[1];
         $("ul.historical li.selected").removeClass("rating fiscal economy external");
         $("ul.historical li.selected").addClass(myClass);
-        setIndicator(myClass);
+        //setIndicator(myClass);
         renderBy(myClass,EU);
         colorIndicator = updateColor(myClass);
         updateC();
-                var barPosition;
+        updateValue();
+        var barPosition;
         switch(myClass){
 			case "economy": barPosition = '0px 0px';
 			break;
@@ -48,39 +58,16 @@ $(document).ready(function() {
         $(this).prepend('<p class = "arrow">&#9654;</p>');
         $("ul.historical li").removeClass("rating fiscal economy external");
         $("ul.historical li.selected").addClass(myClass);
-        //$("ul.historical li.selected").removeClass("rating fiscal economy external");
         var year = $(this).text();
         var remove = year.charAt(0);
         currentYear = year.replace(remove,"");
-        setYear(currentYear);
+        //setYear(currentYear);
         renderBy(myClass,EU,currentYear);
-
-
-       // console.log(currentYear);
+        updateValue();
       });
-    $("#showHide").click(function(){
-      var theDiv = $('#toggle');
-      if(theDiv.css('display') == 'none'){
-        $(this).next().css('display','block');
-        $(this).text("Hide");
-      }
-      else{
-        $(this).next().css('display','none');
-        $(this).text("Read More..");
-      }
-    });
 	$.ajaxSetup({
 		async: false
 	});
-	var EU = [];
-	var doub;
-	var size = 0; //Number of Years in record
-	var startYear = 1999;
-	var endYear = 2012;
-	var mapData = {};
-	var indicator;
-	var cCode
-
 
 	$.getJSON('ajax/economic.json', function(data) {
 		var n = 0; //Country counter
@@ -138,32 +125,39 @@ $(document).ready(function() {
 		for(var year = startYear; year<=endYear;year++){
 			mapData[year]={};
 
-			// for(var i = 1; i<=3;i++){
-			//	switch(i){
-			//		case 1: indicator = "economy";
-			//		break;
-			//		case 2: indicator = "fiscal";
-			//		break;
-			//		case 3: indicator = "external";
-			//		break;
-			//		case 4: indicator = "rating";
-			//		break;
-			//		default:
-			//		break;
-			//	}
-			//	mapData[year][indicator]={};
-			//	for(var j = 0; j<17;j++){
-			//		cCode = EU[j].getCode();
-			//		if(indicator === "economy")
-			//			mapData[year][indicator][cCode] = convert(EU[j].getPerCapita(year));
-			//		else if(indicator === "fiscal")
-			//			mapData[year][indicator][cCode] = convert(EU[j].getDebtToGDP(year));
-			//		else if(indicator === "external")
-			//			mapData[year][indicator][cCode] = convert(EU[j].getDebtToGDP(year));
-			//		else if(indicator === "rating")
-			//			mapData[year][indicator][cCode] = EU[j].getRating(year);
-			//	}
-			// }
+			for(var i = 1; i<=4;i++){
+				switch(i){
+					case 1: indicator = "economy";
+					break;
+					case 2: indicator = "fiscal";
+					break;
+					case 3: indicator = "external";
+					break;
+					case 4: indicator = "rating";
+					break;
+					default:
+					break;
+				}
+				mapData[year][indicator]={};
+				for(var j = 0; j<17;j++){
+					cCode = EU[j].getCode();
+					if(indicator === "economy")
+						mapData[year][indicator][cCode] = convert(EU[j].getReal_GDP_G(year));
+					else if(indicator === "fiscal")
+						mapData[year][indicator][cCode] = convert(EU[j].getGG_debt_per_GDP(year));
+					else if(indicator === "external")
+						mapData[year][indicator][cCode] = convert(EU[j].getELiabilities(year));
+					else if(indicator === "rating"){
+						for(var k = 0; k<ratingScore.length;k++){
+							if(EU[j].getRatingHistorical(year) === ratingScore[k]){
+								mapData[year][indicator][cCode] = k;
+								break;
+							}
+
+						}
+					}
+				}
+			}
 		}
 
 
@@ -192,19 +186,17 @@ $(document).ready(function() {
 				}
 			},
 			onRegionLabelShow: function(event, label, code) {
-				if($.inArray(code,codeArray)!=1){
 					label.text(label.text());
-				}
 			},
 			onRegionClick: function (event, code) {
-				//console.log(code);
+				console.log(code);
 			},
 			series:{
 				regions:[{
 					scale:colorS[colorIndicator],
 					attribute: 'fill',
-					values: dummyData,
-					normalizeFunction: 'linear'
+					values: mapData[currentYear][indicator],
+					normalizeFunction: 'polynomial'
 				}]
 			},
 		    focusOn:{
@@ -218,10 +210,11 @@ $(document).ready(function() {
 	function updateC(){
 		mapObject.series.regions[0].setScale(colorS[colorIndicator]);
 	};
+	function updateValue(){
+		mapObject.series.regions[0].setValues(mapData[currentYear][indicator]);
+	};
 
 displayAllEconomy(EU);
-
-function $n (n) { return (typeof(n) == 'number') ? new Number(n) : NaN};
 
 if(test){
 	var testName = 4;
