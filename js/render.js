@@ -34,7 +34,7 @@ function displayE(obj,location,year){
   renderE+="<ul class = 'CountryInformation'><li><span class = 'prefix'>"+conPrefix+"</span><br>";
   renderE+="<span class='cTitle'>"+countryName+"</span><li>";
   for(var i = 0; i<indicators.length;i++){
-    renderE+="<li><span class='indiTitle'>"+indicator[i]+<"<br><span class = 'indiValue'>";
+    renderE+="<li><span class='indiTitle'>"+indicator[i]+"<<br><span class = 'indiValue'>";
     switch(i){
       case 0:renderE+=obj[location].getPerCapita(year);
       break;
@@ -53,29 +53,21 @@ function displayE(obj,location,year){
     $('#CountryData').html(renderE);
   }
 };
-function displayEx(obj,location){
+function displayEx(obj,location,year){
   var renderE;
   var conPrefix = countryPrefix(obj,location);
   var countryName = obj[location].getName();
-  var indicators = ['Per capita GDP (US$)','Real GDP per capita (% change)','Nominal GDP (bil. $)','Real GDP growth (%)','Bank claims on resident<br>non-govt. sectors / GDP','Oth DC claims on private & NFPEs (% change)'];
+  var indicators = ['Narrow net external debt (% of CARs)','Net external liabilities (% of CARs)'];
 
   renderE+="<ul class = 'CountryInformation'><li><span class = 'prefix'>"+conPrefix+"</span><br>";
   renderE+="<span class='cTitle'>"+countryName+"</span><li>";
   for(var i = 0; i<indicators.length;i++){
-    renderE+="<li><span class='indiTitle'>"+indicator[i]+<"<br><span class = 'indiValue'>";
+    renderE+="<li><span class='indiTitle'>"+indicator[i]+"<<br><span class = 'indiValue'>";
     switch(i){
-      // case 0:renderE+=obj[location].
-      // break;
-      // case 1:renderE+=obj[location].
-      // break;
-      // case 2:renderE+=obj[location].
-      // break;
-      // case 3:renderE+=obj[location].
-      // break;
-      // case 4:renderE+=obj[location].
-      // break;
-      // case 5:renderE+=obj[location].
-      // break;
+      case 0:renderE+=obj[location].getNarrowExToCar(year);
+      break;
+      case 1:renderE+=obj[location].getELiabilities(year);
+      break;
     }
     renderE+="</span>";
     $('#CountryData').html(renderE);

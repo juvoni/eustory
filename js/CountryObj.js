@@ -82,7 +82,7 @@ CountryObj.prototype ={
 	getGDP_per_capita: function(year){
 		err_y(year);
 		return this.Economic['Real_GDP_per_capita'][year];
-	}
+	},
 	getNFPE: function(year){
 			err_y(year);
 		return this.Economic['Oth_DC_claims_on_private_NFPEs'][year];
