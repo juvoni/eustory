@@ -154,8 +154,10 @@ h1.title{
     font-weight: bold;
 }
 span.indicator{
-    text-align: left;
-    margin-left: 60px;
+    text-align: center;
+    position: relative;
+    margin-left: 15px;
+    font-size: 12px;
 }
 #CountryData ul span.Cname{
     width:105px;

@@ -22,9 +22,9 @@ $(document).ready(function() {
         $("ul.historical li.selected").removeClass("rating fiscal economy external");
         $("ul.historical li.selected").addClass(myClass);
         setIndicator(myClass);
-        // renderBy(myClass,EU);
-        // colorIndicator = updateColor(myClass);
-        // updateC();
+        renderBy(myClass,EU);
+        colorIndicator = updateColor(myClass);
+        updateC();
                 var barPosition;
         switch(myClass){
 			case "economy": barPosition = '0px 0px';
@@ -53,7 +53,7 @@ $(document).ready(function() {
         var remove = year.charAt(0);
         currentYear = year.replace(remove,"");
         setYear(currentYear);
-        // renderBy(myClass,EU,currentYear);
+        renderBy(myClass,EU,currentYear);
 
 
        // console.log(currentYear);
@@ -231,7 +231,7 @@ if(test){
 
 		//console.log(i+"=>"+typeof(Number(EU[CountrySelect].getELiabilities(i))));
 	}
-	console.log($n(1));
+	console.log(convert("N.A"));
 }
 
 });
