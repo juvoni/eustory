@@ -1,5 +1,12 @@
 var currentYear = 1999;
+var indic = "economy";
 
+function setYear(year){
+  currentYear = year;
+};
+function setIndicator(ind){
+  indic = ind;
+};
 function convert(num){
   num = +num || 0;
   result = num;
@@ -189,7 +196,6 @@ function updateColor(id){
     break;
     case "rating": val = 2;
     break;
-    default: val = 2;
   }
   return val;
 };

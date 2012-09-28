@@ -7,18 +7,21 @@ $(document).ready(function() {
       $("ul.historical li.selected").prepend('<p class = "arrow">&#9654;</p>');
       $(".data_overview li.selected").prepend('<p class = "arrow">&#9654;</p>');
       var myClass = "economy";
-      var currentYear = 1999;
+      var currentYear = "1999";
 	//---------------Blue------------------------Green---------------Red--------------/
-	var colorS = [['#ffffff','#1D578C'],['#ffffff','#007C44'],['#ffffff','#E3173E']];
+	var colorS = [['#f7f7f7','#1D578C'],['#f7f7f7','#007C44'],['#f7f7f7','#E3173E']];
 	var ratingScore =["AAA","AA+","AA-","AA","A+","A-","A","BBB+","BBB-","BBB","BB+","BB-","BB","B+","B-","B","CCC+","CCC-","CCC","CC"];
-	var colorIndicator = 2;
+	var colorIndicator ;
+		colorIndicator= 2;
 	var codeArray = [];
+	var cCode;
 
 	var EU = [];
 	var startYear = 1999;
 	var endYear = 2012;
 	var mapData = {};
-	var indicator = myClass;
+	var indicator;
+		indicator = "economy";
 
     $(".data_overview ul li").click(function(e) {
         $(".data_overview li.selected").removeClass("selected");
@@ -30,11 +33,11 @@ $(document).ready(function() {
         myClass = $(this).attr("class").split(' ')[1];
         $("ul.historical li.selected").removeClass("rating fiscal economy external");
         $("ul.historical li.selected").addClass(myClass);
-        //setIndicator(myClass);
+        setIndicator(myClass);
         renderBy(myClass,EU);
         colorIndicator = updateColor(myClass);
-        updateC();
         updateValue();
+        updateC();
         var barPosition;
         switch(myClass){
 			case "economy": barPosition = '0px 0px';
@@ -47,8 +50,7 @@ $(document).ready(function() {
 			break;
         }
         $('.bar').css("backgroundPosition",barPosition);
-        //console.log(colorIndicator);
-        console.log(myClass);
+        //console.log();
     });
 
     $("ul.historical li").click(function() {
@@ -61,10 +63,12 @@ $(document).ready(function() {
         var year = $(this).text();
         var remove = year.charAt(0);
         currentYear = year.replace(remove,"");
-        //setYear(currentYear);
+        setYear(currentYear);
         renderBy(myClass,EU,currentYear);
         updateValue();
+        updateC();
       });
+
 	$.ajaxSetup({
 		async: false
 	});
@@ -81,7 +85,7 @@ $(document).ready(function() {
 					EU[n].addNFPE(i,this['Data']['Oth DC claims on private & NFPEs (% change)'][i]),
 					EU[n].addBank_Claim_res(i,this['Data']['Bank claims on resident non-govt. sectors / GDP'][i])
 				}
-				//codeArray.push(EU[n].getCode());
+				codeArray.push(EU[n].getCode());
 				n++;
 			});
 	});
@@ -119,53 +123,44 @@ $(document).ready(function() {
 			}
 				n++;
 		});
-
 	});
-
 		for(var year = startYear; year<=endYear;year++){
 			mapData[year]={};
-
 			for(var i = 1; i<=4;i++){
 				switch(i){
-					case 1: indicator = "economy";
+					case 1: valI = "economy";
 					break;
-					case 2: indicator = "fiscal";
+					case 2: valI = "fiscal";
 					break;
-					case 3: indicator = "external";
+					case 3: valI = "external";
 					break;
-					case 4: indicator = "rating";
-					break;
-					default:
+					case 4: valI = "rating";
 					break;
 				}
-				mapData[year][indicator]={};
+				mapData[year][valI]={};
 				for(var j = 0; j<17;j++){
 					cCode = EU[j].getCode();
-					if(indicator === "economy")
-						mapData[year][indicator][cCode] = convert(EU[j].getReal_GDP_G(year));
-					else if(indicator === "fiscal")
-						mapData[year][indicator][cCode] = convert(EU[j].getGG_debt_per_GDP(year));
-					else if(indicator === "external")
-						mapData[year][indicator][cCode] = convert(EU[j].getELiabilities(year));
-					else if(indicator === "rating"){
+					if(valI == "economy")
+						mapData[year][valI][cCode] = convert(EU[j].getReal_GDP_G(year));
+					else if(valI == "fiscal")
+						mapData[year][valI][cCode] = convert(EU[j].getGG_debt_per_GDP(year));
+					else if(valI == "external")
+						mapData[year][valI][cCode] = convert(EU[j].getELiabilities(year));
+					else if(valI == "rating"){
 						for(var k = 0; k<ratingScore.length;k++){
-							if(EU[j].getRatingHistorical(year) === ratingScore[k]){
-								mapData[year][indicator][cCode] = k;
-								break;
+							if(EU[j].getRatingHistorical(year) == ratingScore[k]){
+								mapData[year][valI][cCode] = k;
 							}
 
 						}
 					}
-				}
+				 }
 			}
 		}
 
-
-	var nTest = 'N/A';
-	//console.log(Number(nTest));
-	//console.log(convert(nTest));
 	var dummyData = {"AT": 1,"BE": 2,"CY": 5,"DE": 1,"EE": 2,"ES": 5,"FI": 6,"FR": 9,"GR": 10,"IE": 3,"IT": 4,"LU": 1,"MT": 5,"NL": 1,"PT": 3,"SI": 5,"SK": 6};
-
+	console.log(myClass);
+	console.log(mapData[currentYear]["external"]);
 	$('#map').vectorMap({
 		map: 'europe_mill_en',
 			backgroundColor:'#808080',
@@ -181,7 +176,7 @@ $(document).ready(function() {
 				hover:{
 					stroke: '#414042',
 					"stroke-width": 1,
-					opacity: 0.8,
+					opacity: 1,
 					color: false
 				}
 			},
@@ -195,8 +190,8 @@ $(document).ready(function() {
 				regions:[{
 					scale:colorS[colorIndicator],
 					attribute: 'fill',
-					values: mapData[currentYear][indicator],
-					normalizeFunction: 'polynomial'
+					values: mapData[currentYear][myClass],
+					normalizeFunction: 'linear'
 				}]
 			},
 		    focusOn:{
@@ -211,7 +206,8 @@ $(document).ready(function() {
 		mapObject.series.regions[0].setScale(colorS[colorIndicator]);
 	};
 	function updateValue(){
-		mapObject.series.regions[0].setValues(mapData[currentYear][indicator]);
+		console.log(myClass);
+		mapObject.series.regions[0].setValues(mapData[currentYear][myClass]);
 	};
 
 displayAllEconomy(EU);
@@ -229,3 +225,6 @@ if(test){
 
 });
 
+//,
+					//min: jvm.min(mapData[currentYear][indicator]),
+					//max: jvm.max(mapData[currentYear][indicator])
