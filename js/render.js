@@ -18,12 +18,12 @@ function displayE(obj,location,year){
   var renderE = "";
   var conPrefix = countryPrefix(obj,location);
   var countryName = obj[location].getName();
-  var indC = ['Per capita GDP (US$)','Real GDP per capita (% change)','Nominal GDP (bil. $)','Real GDP growth (%)','Bank claims on resident<br>non-govt. sectors / GDP','Oth DC claims on private & NFPEs (% change)'];
+  var indC = ['Per capita GDP (US$)','Real GDP per capita (% change)','Nominal GDP (bil. $)','Real GDP growth (%)','Bank claims on resident non-govt. sectors / GDP','Oth DC claims on private & NFPEs (% change)'];
 
   renderE+="<ul class = 'CountryInformation'><li><span class = 'prefix'>"+conPrefix+"</span><br>";
   renderE+="<span class='cTitle'>"+countryName+"</span><li>";
   for(var i = 0; i<indC.length;i++){
-    renderE+="<li><span class='indiTitle'>"+indC[i]+"<br><span class = 'indiValue'>";
+    renderE+="<li class = 'dataSec'><span class='indiTitle'>"+indC[i]+"<br><span class = 'indiValue'>";
     switch(i){
       case 0:renderE+=obj[location].getPerCapita(year);
       break;
@@ -51,7 +51,7 @@ function displayEx(obj,location,year){
   renderE+="<ul class = 'CountryInformation'><li><span class = 'prefix'>"+conPrefix+"</span><br>";
   renderE+="<span class='cTitle'>"+countryName+"</span><li>";
   for(var i = 0; i<indC.length;i++){
-    renderE+="<li><span class='indiTitle'>"+indC[i]+"<br><span class = 'indiValue'>";
+    renderE+="<li class = 'dataSec'><span class='indiTitle'>"+indC[i]+"<br><span class = 'indiValue'>";
     switch(i){
       case 0:renderE+=obj[location].getNarrowExToCar(year);
       break;
@@ -73,7 +73,7 @@ function displayF(obj,location,year){
   renderE+="<ul class = 'CountryInformation'><li><span class = 'prefix'>"+conPrefix+"</span><br>";
   renderE+="<span class='cTitle'>"+countryName+"</span><li>";
   for(var i = 0; i<indC.length;i++){
-    renderE+="<li><span class='indiTitle'>"+indC[i]+"<br><span class = 'indiValue'>";
+    renderE+="<li class = 'dataSec'><span class='indiTitle'>"+indC[i]+"<br><span class = 'indiValue'>";
     switch(i){
       case 0:renderE+=obj[location].getGG_bal_per_GDP(year);
       break;
@@ -89,7 +89,7 @@ function displayF(obj,location,year){
       $('#CountryData').html(renderE);
 };
 function countryPrefix(obj,location){
-  var prefix;
+  var prefix = "";
   var repub = ["Finland","Austria","France","Estonia","Slovenia","Malta","Ireland","Italy","Cyprus","Portugal"]
   if($.inArray(obj[location].getName(), repub)!=-1){
     prefix = "Republic Of";
@@ -109,6 +109,7 @@ function countryPrefix(obj,location){
   else if (obj[location].getName() == "Greece"){
     prefix =  "Hellenic Republic";
   }
+
   return prefix;
 };
 

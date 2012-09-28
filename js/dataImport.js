@@ -62,7 +62,8 @@ $(document).ready(function() {
 			break;
         }
         $('.bar').css("backgroundPosition",barPosition);
-        //console.log();
+        $('span.indiValue').removeClass("rating fiscal economy external");
+        $('span.indiValue').addClass(myClass);
     });
 
     $("ul.historical li").click(function() {
@@ -81,6 +82,8 @@ $(document).ready(function() {
         }
         else{
 			renderSelectedCon(EU,currentYear,myClass,globalCode);
+			$('span.indiValue').removeClass("rating fiscal economy external");
+			$('span.indiValue').addClass(myClass);
         }
         updateValue();
         updateC();
@@ -113,7 +116,7 @@ $(document).ready(function() {
 			});
 	});
 
-//console.log(codeArray);
+
 	$.getJSON('ajax/fiscal.json', function(data) {
 		var n = 0; //Country counter
 		$.each(data, function(){
@@ -210,6 +213,8 @@ $(document).ready(function() {
 					isConSelected = true;
 					renderSelectedCon(EU,currentYear,myClass,code);
 					$selectedCountry.show().html(EU[findObj(EU,code)].getName()+"<img class = 'closebtn' src='img/"+imgSrc+"' alt=''>");
+				    $('span.indiValue').removeClass("rating fiscal economy external");
+					$('span.indiValue').addClass(myClass);
 				}
 			},
 			series:{
