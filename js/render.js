@@ -15,7 +15,7 @@ function convert(num){
 
 
 function displayE(obj,location,year){
-  var renderE;
+  var renderE = "";
   var conPrefix = countryPrefix(obj,location);
   var countryName = obj[location].getName();
   var indC = ['Per capita GDP (US$)','Real GDP per capita (% change)','Nominal GDP (bil. $)','Real GDP growth (%)','Bank claims on resident<br>non-govt. sectors / GDP','Oth DC claims on private & NFPEs (% change)'];
@@ -23,7 +23,7 @@ function displayE(obj,location,year){
   renderE+="<ul class = 'CountryInformation'><li><span class = 'prefix'>"+conPrefix+"</span><br>";
   renderE+="<span class='cTitle'>"+countryName+"</span><li>";
   for(var i = 0; i<indC.length;i++){
-    renderE+="<li><span class='indiTitle'>"+indicator[i]+"<<br><span class = 'indiValue'>";
+    renderE+="<li><span class='indiTitle'>"+indC[i]+"<br><span class = 'indiValue'>";
     switch(i){
       case 0:renderE+=obj[location].getPerCapita(year);
       break;
@@ -39,11 +39,11 @@ function displayE(obj,location,year){
       break;
     }
     renderE+="</span>";
-    $('#CountryData').html(renderE);
   }
+  $('#CountryData').html(renderE);
 };
 function displayEx(obj,location,year){
-  var renderE;
+  var renderE = "";
   var conPrefix = countryPrefix(obj,location);
   var countryName = obj[location].getName();
   var indC = ['Narrow net external debt (% of CARs)','Net external liabilities (% of CARs)'];
@@ -51,7 +51,7 @@ function displayEx(obj,location,year){
   renderE+="<ul class = 'CountryInformation'><li><span class = 'prefix'>"+conPrefix+"</span><br>";
   renderE+="<span class='cTitle'>"+countryName+"</span><li>";
   for(var i = 0; i<indC.length;i++){
-    renderE+="<li><span class='indiTitle'>"+indicator[i]+"<<br><span class = 'indiValue'>";
+    renderE+="<li><span class='indiTitle'>"+indC[i]+"<br><span class = 'indiValue'>";
     switch(i){
       case 0:renderE+=obj[location].getNarrowExToCar(year);
       break;
@@ -59,12 +59,13 @@ function displayEx(obj,location,year){
       break;
     }
     renderE+="</span>";
-    $('#CountryData').html(renderE);
   }
+  $('#CountryData').html(renderE);
+
 };
 
 function displayF(obj,location,year){
-  var renderE;
+  var renderE = "";
   var conPrefix = countryPrefix(obj,location);
   var countryName = obj[location].getName();
   var indC = ['General government balance as % of GDP (%)','Change in general government debt as % of GDP','Net general government debt as % of GDP (%)','General government interest exp. (% of revenues)'];
@@ -72,7 +73,7 @@ function displayF(obj,location,year){
   renderE+="<ul class = 'CountryInformation'><li><span class = 'prefix'>"+conPrefix+"</span><br>";
   renderE+="<span class='cTitle'>"+countryName+"</span><li>";
   for(var i = 0; i<indC.length;i++){
-    renderE+="<li><span class='indiTitle'>"+indicator[i]+"<<br><span class = 'indiValue'>";
+    renderE+="<li><span class='indiTitle'>"+indC[i]+"<br><span class = 'indiValue'>";
     switch(i){
       case 0:renderE+=obj[location].getGG_bal_per_GDP(year);
       break;
@@ -84,12 +85,13 @@ function displayF(obj,location,year){
       break;
     }
     renderE+="</span>";
-    $('#CountryData').html(renderE);
   }
+      $('#CountryData').html(renderE);
 };
 function countryPrefix(obj,location){
   var prefix;
-  if(obj[location].getName() === "Finland"|| "Austria" || "France" || "Estonia" || "Slovenia" || "Malta" || "Ireland" || "Italy" || "Cyprus" || "Portugal"){
+  var repub = ["Finland","Austria","France","Estonia","Slovenia","Malta","Ireland","Italy","Cyprus","Portugal"]
+  if($.inArray(obj[location].getName(), repub)!=-1){
     prefix = "Republic Of";
   }
   else if(obj[location].getName() == "Germany"){
@@ -101,7 +103,7 @@ function countryPrefix(obj,location){
   else if(obj[location].getName() == "Netherlands"){
     prefix = "The State of";
   }
-  else if(obj[location].getName() == "Belgium" || "Spain"){
+  else if(obj[location].getName() == "Belgium" || obj[location].getName() == "Spain"){
     prefix = "Kingdom of";
   }
   else if (obj[location].getName() == "Greece"){
@@ -137,14 +139,15 @@ function displayAllExternal(obj,year){
   $('#CountryData').html(renderE);
 };
 
-function findObj(obj){
+function findObj(obj,code){
   var location;
-  for(var i = 0; i<EU.length;i++){
-    if(EU[i].getCode() === code){
+  for(var i = 0; i<obj.length;i++){
+    if(obj[i].getCode() === code){
       location = i;
       break;
     }
   }
+  return location;
 };
 function displayAllEconomy(obj){
   var renderE;
@@ -198,5 +201,17 @@ function updateColor(id){
     break;
   }
   return val;
+};
+function renderSelectedCon(obj,year,ind,code){
+  var floc = findObj(obj,code);
+  switch(ind){
+    case "economy":displayE(obj,floc,year);
+    break;
+    case "external": displayEx(obj,floc,year);
+    break;
+    case "fiscal": displayF(obj,floc,year);
+    break;
+    default:
+  }
 };
 

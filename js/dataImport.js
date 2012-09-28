@@ -2,6 +2,7 @@
 $(document).ready(function() {
 	var test = false;
 	var $description = $('li.Criteria p');
+	var isConSelected = false;
 	$description.hide();
     $("li.selected p").show();
       $("ul.historical li.selected").prepend('<p class = "arrow">&#9654;</p>');
@@ -184,7 +185,10 @@ $(document).ready(function() {
 					label.text(label.text());
 			},
 			onRegionClick: function (event, code) {
-				console.log(code);
+				if($.inArray(code, codeArray)!=-1){
+					renderSelectedCon(EU,currentYear,myClass,code);
+				}
+
 			},
 			series:{
 				regions:[{
