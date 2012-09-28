@@ -25,11 +25,11 @@ a:hover{
 div.legend{
     font-size: 12px;
     font-weight: bold;
-    width: 250px;
-    height:40px;
+    width: 270px;
+    height:60px;
     position: relative;
     display:inline;
-    margin-left: 20px;
+    margin-left: 30px;
 }
 .legend h4{
     float: left;
@@ -43,6 +43,23 @@ div.legend{
     background:url("../img/scale.png");
     background-position: 0 0;
     float: left;
+}
+.selectedCountry{
+    position: relative;
+    display: inline;
+    color: #414042;
+    background:#cccccc;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border:1px solid #E3173E;
+    padding: 5px;
+    margin: 10px 0 0 20px;
+    float: left;
+}
+.closebtn{
+    width: 10px;
+    height: 10px;
+    margin-left: 10px;
 }
 div#map{
     width: 560px;
@@ -171,6 +188,7 @@ span.indicator{
     border-bottom: 1px solid gray;
     height:20px;
 }
+
 fieldset {
     border:0;
     display:inline;
@@ -178,11 +196,15 @@ fieldset {
 footer{
     margin:0 auto;
     position:absolute;
-    display:block;
     bottom:0px;
-    height:20px;
+    width: 90%;
+    height:12px;
+    font-size: 10px;
+    font-weight: bold;
     margin-bottom: 0;
     padding-bottom: 0;
+    color: #cccccc;
+    text-align: center;
 }
 form{
     display:inline;
@@ -196,29 +218,6 @@ label {
     margin-right: .5em;
     font-size: 75%;
     font-family:"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-
-select {
-    margin-right: 1em;
-    float: left;
-    display: none;
-}
-
-button#play {
-    width: 25px;
-    height: 25px;
-    position:relative;
-    padding-bottom: 10px;
-    top: 5px;
-    left: 5px;
-}
-
-
-#totals{
-    font-weight:bold;
-    font-family:"Segoe UI","Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size:18px;
-    text-align:center;
 }
 
 

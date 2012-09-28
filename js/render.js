@@ -115,7 +115,7 @@ function countryPrefix(obj,location){
 function displayAllFiscal(obj){
   var renderE;
   var title = "Country";
-  var indicator = "Net general government debt as % of GDP (%)";
+  var indicator = "Government debt as % of GDP(%)";
   renderE = "<ul><li><span class='title'>"+title+"</span><span class = 'indicator'>"+indicator+"</span>";
   for(var i = 0; i<obj.length; i++){
     renderE+="<li class = 'conlist'><span class = 'Cname'>"+obj[i].getName(currentYear)+"</span><span class = 'value'>"+obj[i].getGG_debt_per_GDP(currentYear)+"</span></li>";

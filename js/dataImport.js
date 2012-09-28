@@ -2,7 +2,13 @@
 $(document).ready(function() {
 	var test = false;
 	var $description = $('li.Criteria p');
+	var $selectedCountry = $('.selectedCountry');
 	var isConSelected = false;
+	var imgSrc = "close_v2.png";
+	var globalCode;
+
+
+	$selectedCountry.hide();
 	$description.hide();
     $("li.selected p").show();
       $("ul.historical li.selected").prepend('<p class = "arrow">&#9654;</p>');
@@ -35,7 +41,12 @@ $(document).ready(function() {
         $("ul.historical li.selected").removeClass("rating fiscal economy external");
         $("ul.historical li.selected").addClass(myClass);
         setIndicator(myClass);
-        renderBy(myClass,EU);
+        if(!isConSelected){
+			renderBy(myClass,EU,currentYear);
+        }
+        else{
+			renderSelectedCon(EU,currentYear,myClass,globalCode);
+        }
         colorIndicator = updateColor(myClass);
         updateValue();
         updateC();
@@ -65,10 +76,21 @@ $(document).ready(function() {
         var remove = year.charAt(0);
         currentYear = year.replace(remove,"");
         setYear(currentYear);
-        renderBy(myClass,EU,currentYear);
+        if(!isConSelected){
+			renderBy(myClass,EU,currentYear);
+        }
+        else{
+			renderSelectedCon(EU,currentYear,myClass,globalCode);
+        }
         updateValue();
         updateC();
       });
+
+    $selectedCountry.click(function(){
+		renderBy(myClass,EU,currentYear);
+		$selectedCountry.remove();
+		isConSelected = false;
+    });
 
 	$.ajaxSetup({
 		async: false
@@ -158,10 +180,8 @@ $(document).ready(function() {
 				 }
 			}
 		}
+	displayAllEconomy(EU);
 
-	var dummyData = {"AT": 1,"BE": 2,"CY": 5,"DE": 1,"EE": 2,"ES": 5,"FI": 6,"FR": 9,"GR": 10,"IE": 3,"IT": 4,"LU": 1,"MT": 5,"NL": 1,"PT": 3,"SI": 5,"SK": 6};
-	console.log(myClass);
-	console.log(mapData[currentYear]["external"]);
 	$('#map').vectorMap({
 		map: 'europe_mill_en',
 			backgroundColor:'#808080',
@@ -186,9 +206,11 @@ $(document).ready(function() {
 			},
 			onRegionClick: function (event, code) {
 				if($.inArray(code, codeArray)!=-1){
+					globalCode = code;
+					isConSelected = true;
 					renderSelectedCon(EU,currentYear,myClass,code);
+					$selectedCountry.show().html(EU[findObj(EU,code)].getName()+"<img class = 'closebtn' src='img/"+imgSrc+"' alt=''>");
 				}
-
 			},
 			series:{
 				regions:[{
@@ -208,14 +230,12 @@ $(document).ready(function() {
 
 	function updateC(){
 		mapObject.series.regions[0].setScale(colorS[colorIndicator]);
+				jvm.min(mapData[currentYear][myClass]);
+		jvm.max(mapData[currentYear][myClass]);
 	};
 	function updateValue(){
-		console.log(myClass);
 		mapObject.series.regions[0].setValues(mapData[currentYear][myClass]);
 	};
-
-displayAllEconomy(EU);
-
 if(test){
 	var testName = 4;
 	var CountrySelect = 10;
@@ -226,9 +246,4 @@ if(test){
 	}
 	console.log(convert("N.A"));
 }
-
 });
-
-//,
-					//min: jvm.min(mapData[currentYear][indicator]),
-					//max: jvm.max(mapData[currentYear][indicator])
