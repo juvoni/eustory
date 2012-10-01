@@ -113,7 +113,7 @@ function countryPrefix(obj,location){
   return prefix;
 };
 
-function displayAllFiscal(obj){
+function displayAllFiscal(obj,year){
   var renderE;
   var title = "Country";
   var indicator = "Government debt as % of GDP(%)";
@@ -134,22 +134,13 @@ function displayAllExternal(obj,year){
   var indicator = "Net external liabilities(% of CARs)";
   renderE = "<ul><li><span class='title'>"+title+"</span><span class = 'indicator'>"+indicator+"</span>";
   for(var i = 0; i<obj.length; i++){
-    renderE+="<li class = 'conlist'><span class = 'Cname'>"+obj[i].getName(year)+"</span><span class = 'value'>"+obj[i].getELiabilities(year)+"</span></li>";
+    renderE+="<li class = 'conlist'><span class = 'Cname'>"+obj[i].getName(currentYear)+"</span><span class = 'value'>"+obj[i].getELiabilities(currentYear)+"</span></li>";
   }
   renderE+="</ul>";
   $('#CountryData').html(renderE);
 };
 
-function findObj(obj,code){
-  var location;
-  for(var i = 0; i<obj.length;i++){
-    if(obj[i].getCode() === code){
-      location = i;
-      break;
-    }
-  }
-  return location;
-};
+
 function displayAllEconomy(obj){
   var renderE;
   var title = "Country";
@@ -170,12 +161,23 @@ function displayAllRating(obj,year){
   var indicator = "Rating";
   renderE = "<ul><li><span class='title'>"+title+"</span><span class = 'indicator'>"+indicator+"</span>";
   for(var i = 0; i<obj.length; i++){
-    renderE+="<li class = 'conlist'><span class = 'Cname'>"+obj[i].getName(year)+"</span><span class = 'value'>"+obj[i].getRating(year)+"</span></li>";
+    renderE+="<li class = 'conlist'><span class = 'Cname'>"+obj[i].getName(currentYear)+"</span><span class = 'value'>"+obj[i].getRatingHistorical(currentYear)+"</span></li>";
   }
   renderE+="</ul>";
   $('#CountryData').html(renderE);
 };
-
+function renderSelectedCon(obj,year,ind,code){
+  var floc = findObj(obj,code);
+  switch(ind){
+    case "economy":displayE(obj,floc,year);
+    break;
+    case "external": displayEx(obj,floc,year);
+    break;
+    case "fiscal": displayF(obj,floc,year);
+    break;
+    default:
+  }
+};
 
 function renderBy(id,obj,year){
   switch(id){
@@ -186,9 +188,19 @@ function renderBy(id,obj,year){
     case "external": displayAllExternal(obj,year);
     break;
     case "rating": displayAllRating(obj,year);
+    break;
   }
 };
-
+function findObj(obj,code){
+  var location;
+  for(var i = 0; i<obj.length;i++){
+    if(obj[i].getCode() === code){
+      location = i;
+      break;
+    }
+  }
+  return location;
+};
 function updateColor(id){
   var val;
   switch(id){
@@ -203,16 +215,5 @@ function updateColor(id){
   }
   return val;
 };
-function renderSelectedCon(obj,year,ind,code){
-  var floc = findObj(obj,code);
-  switch(ind){
-    case "economy":displayE(obj,floc,year);
-    break;
-    case "external": displayEx(obj,floc,year);
-    break;
-    case "fiscal": displayF(obj,floc,year);
-    break;
-    default:
-  }
-};
+
 

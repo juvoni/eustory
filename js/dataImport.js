@@ -16,9 +16,9 @@ $(document).ready(function() {
       var myClass = "economy";
       var currentYear = "1999";
 	//---------------Blue------------------------Green---------------Red--------------/
-	var colorS = [['#f7f7f7','#1D578C'],['#f7f7f7','#007C44'],['#f7f7f7','#E3173E']];
+	var colorS = [['#ffffff','#1D578C'],['#ffffff','#007C44'],['#ffffff','#E3173E']];
 	var ratingScore =["AAA","AA+","AA-","AA","A+","A-","A","BBB+","BBB-","BBB","BB+","BB-","BB","B+","B-","B","CCC+","CCC-","CCC","CC"];
-	var colorIndicator ;
+	var colorIndicator;
 		colorIndicator= 2;
 	var codeArray = [];
 	var cCode;
@@ -77,6 +77,7 @@ $(document).ready(function() {
         var remove = year.charAt(0);
         currentYear = year.replace(remove,"");
         setYear(currentYear);
+        console.log(myClass);
         if(!isConSelected){
 			renderBy(myClass,EU,currentYear);
         }
@@ -184,7 +185,8 @@ $(document).ready(function() {
 			}
 		}
 	displayAllEconomy(EU);
-
+	console.log(mapData[2000]["rating"]);
+	console.log(mapData[2010]["rating"]);
 	$('#map').vectorMap({
 		map: 'europe_mill_en',
 			backgroundColor:'#808080',
