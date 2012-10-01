@@ -13,7 +13,6 @@ function convert(num){
   return result;
 };
 
-
 function displayE(obj,location,year){
   var renderE = "";
   var conPrefix = countryPrefix(obj,location);
