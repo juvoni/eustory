@@ -30,7 +30,7 @@ $(document).ready(function() {
 	var indicator;
 		indicator = "economy";
 
-    $(".data_overview ul li").click(function(e) {
+    $(".data_overview ul").delegate('li', 'click', function () {
         $(".data_overview li.selected").removeClass("selected");
         $(this).addClass("selected");
         $(".data_overview ul li p.arrow").remove();
@@ -66,7 +66,7 @@ $(document).ready(function() {
         $('span.indiValue').addClass(myClass);
     });
 
-    $("ul.historical li").click(function() {
+    $("ul.historical").delegate('li', 'click', function () {
         $("ul.historical li").removeClass("selected");
         $("ul.historical li p").remove();
         $(this).addClass("selected");
