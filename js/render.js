@@ -8,7 +8,8 @@ function setIndicator(ind){
   indic = ind;
 };
 function convert(num){
-  num = +num || 0;
+  num = +num || '';
+  num = (num<0)?0.5:num;
   result = num;
   return result;
 };
