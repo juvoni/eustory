@@ -105,7 +105,7 @@ $(document).ready(function() {
 			$.each(data, function(){
 				EU.push(new CountryObj(this['Entity Name'],this['ISO'],this['Data']['Long Term Currency Rating']));
 				for(var  i = startYear; i<=endYear; i++){
-					EU[n].addNomGDP(i,this['Data']['Nominal GDP (bil. $)'][i]),
+					EU[n].addNomGDP(i,this['Data']['Nominal GDP (bil. $)'][i])
 					EU[n].addPerCapita(i,this['Data']['Per capita GDP (US$)'][i]),
 					EU[n].addReal_GDP_G(i,this['Data']['Real GDP growth (%)'][i]),
 					EU[n].addGDP_per_capita(i,this['Data']['Real GDP per capita (% change)'][i]),
@@ -207,7 +207,9 @@ $(document).ready(function() {
 				}
 			},
 			onRegionLabelShow: function(event, label, code) {
-					label.text(label.text());
+				if($.inArray(code, codeArray)!=-1){
+					label.text(label.text()+" => " +EU[findObj(EU,code)].getRatingHistorical(currentYear));
+				}
 			},
 			onRegionClick: function (event, code) {
 				if($.inArray(code, codeArray)!=-1){
