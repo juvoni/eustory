@@ -95,8 +95,8 @@ $(document).ready(function() {
 		async: false
 	});
 	$('ul.control').delegate('.play','click',function(){
-		var len = $("ul.historical li").length;
-		var id = $histYearSel.index();
+		var len = $histYear.length;
+		var id = $("ul.historical li.selected").index();
 		var curPosition;
 		curPosition = id;
 		var looper;
