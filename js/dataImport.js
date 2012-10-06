@@ -6,12 +6,15 @@ $(document).ready(function() {
 	var isConSelected = false;
 	var imgSrc = "close_v2.png";
 	var globalCode;
+	var sliderSpeed = 1000;//Milliseconds
+	var $histYear = $("ul.historical li");
+	var $histYearSel = $("ul.historical li.selected");
 
 
 	$selectedCountry.hide();
 	$description.hide();
     $("li.selected p").show();
-      $("ul.historical li.selected").prepend('<p class = "arrow">&#9654;</p>');
+      $histYearSel.prepend('<p class = "arrow">&#9654;</p>');
       $(".data_overview li.selected").prepend('<p class = "arrow">&#9654;</p>');
       var myClass = "economy";
       var currentYear = "1999";
@@ -67,16 +70,8 @@ $(document).ready(function() {
     });
 
     $("ul.historical").delegate('li', 'click', function () {
-        $("ul.historical li").removeClass("selected");
-        $("ul.historical li p").remove();
-        $(this).addClass("selected");
-        $(this).prepend('<p class = "arrow">&#9654;</p>');
-        $("ul.historical li").removeClass("rating fiscal economy external");
-        $("ul.historical li.selected").addClass(myClass);
-        var year = $(this).text();
-        var remove = year.charAt(0);
-        currentYear = year.replace(remove,"");
-        setYear(currentYear);
+		var that = this;
+		updateHYear(that);
         console.log(myClass);
         if(!isConSelected){
 			renderBy(myClass,EU,currentYear);
@@ -99,13 +94,46 @@ $(document).ready(function() {
 	$.ajaxSetup({
 		async: false
 	});
+	$('ul.control').delegate('.play','click',function(){
+		var len = $("ul.historical li").length;
+		var id = $histYearSel.index();
+		var curPosition;
+		curPosition = id;
+		var looper;
+		var pause_status = false;
+		$('ul.control .pause').click(function(){
+			pause_status = true;
+		});
+		looper = setInterval(function(){
+					curPosition++;
+					if(curPosition >= len){
+						curPosition = 0;
+					}
+					console.log(curPosition);
+					var that = $histYear.eq(curPosition);
+					updateHYear(that);
+					if(!isConSelected){
+						renderBy(myClass,EU,currentYear);
+					}
+					else{
+						renderSelectedCon(EU,currentYear,myClass,globalCode);
+						$('span.indiValue').removeClass("rating fiscal economy external");
+						$('span.indiValue').addClass(myClass);
+					}
+					updateValue();
+					updateC();
+					if(curPosition == len-1 || pause_status){
+						clearInterval(looper,sliderSpeed);
+					}
+		},sliderSpeed);
+	});
 
 	$.getJSON('ajax/economic.json', function(data) {
 		var n = 0; //Country counter
 			$.each(data, function(){
 				EU.push(new CountryObj(this['Entity Name'],this['ISO'],this['Data']['Long Term Currency Rating']));
 				for(var  i = startYear; i<=endYear; i++){
-					EU[n].addNomGDP(i,this['Data']['Nominal GDP (bil. $)'][i])
+					EU[n].addNomGDP(i,this['Data']['Nominal GDP (bil. $)'][i]),
 					EU[n].addPerCapita(i,this['Data']['Per capita GDP (US$)'][i]),
 					EU[n].addReal_GDP_G(i,this['Data']['Real GDP growth (%)'][i]),
 					EU[n].addGDP_per_capita(i,this['Data']['Real GDP per capita (% change)'][i]),
@@ -185,8 +213,7 @@ $(document).ready(function() {
 			}
 		}
 	displayAllEconomy(EU);
-	console.log(mapData[2000]["rating"]);
-	console.log(mapData[2010]["rating"]);
+
 	$('#map').vectorMap({
 		map: 'europe_mill_en',
 			backgroundColor:'#808080',
@@ -197,7 +224,7 @@ $(document).ready(function() {
 				    "fill-opacity": 1,
 				    stroke: '#cccccc',
 				    "stroke-width": 0.5,
-				    "stroke-opacity": 1,
+				    "stroke-opacity": 1
 				},
 				hover:{
 					stroke: '#414042',
@@ -244,6 +271,18 @@ $(document).ready(function() {
 	};
 	function updateValue(){
 		mapObject.series.regions[0].setValues(mapData[currentYear][myClass]);
+	};
+	function updateHYear(that){
+		$("ul.historical li").removeClass("selected");
+        $("ul.historical li p").remove();
+        $(that).addClass("selected");
+        $(that).prepend('<p class = "arrow">&#9654;</p>');
+        $("ul.historical li").removeClass("rating fiscal economy external");
+        $("ul.historical li.selected").addClass(myClass);
+        var year = $(that).text();
+        var remove = year.charAt(0);
+        currentYear = year.replace(remove,"");
+        setYear(currentYear);
 	};
 if(test){
 	var testName = 4;
