@@ -203,7 +203,10 @@ $(document).ready(function() {
 					else if(valI == "rating"){
 						for(var k = 0; k<ratingScore.length;k++){
 							if(EU[j].getRatingHistorical(year) == ratingScore[k]){
-								mapData[year][valI][cCode] = k;
+								if(k == 0)
+									mapData[year][valI][cCode] = 1;
+								else
+									mapData[year][valI][cCode] = (k/2)+1;
 							}
 
 						}
@@ -268,7 +271,7 @@ $(document).ready(function() {
 				jvm.min(mapData[currentYear][myClass]);
 		jvm.max(mapData[currentYear][myClass]);
 	};
-	
+
 	function updateValue(){
 		mapObject.series.regions[0].setValues(mapData[currentYear][myClass]);
 	};
