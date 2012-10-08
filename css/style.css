@@ -83,9 +83,36 @@ div#map{
     float: right;
     padding: 0;
 }
-
+ul.grid_1.control{
+    list-style: none;
+    width: 100px;
+    height:80px;
+    padding:0px;
+    margin: 20px 0 0 0;
+}
+ul.control li{
+    display:inline;
+    width: 50px;
+    height:40px;
+    position: relative;
+    font-size: 22px;
+}
+ul.control li span.play{
+    font-size: 20px;
+    color:#E3173E; /*Redish*/
+    cursor:pointer;
+}
+ul.control li img.pause{
+    width: 24px;
+    height: 24px;
+    cursor:pointer;
+    padding:0;
+    bottom: 0;
+    top: 0;
+    float: right;
+}
 ul.historical{
-    width: 60px;
+    width: 100px;
     position: relative;
     list-style: none;
     display:block;

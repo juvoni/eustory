@@ -6,20 +6,23 @@ $(document).ready(function() {
 	var isConSelected = false;
 	var imgSrc = "close_v2.png";
 	var globalCode;
+	var sliderSpeed = 1000;//Milliseconds
+	var $histYear = $("ul.historical li");
+	var $histYearSel = $("ul.historical li.selected");
 
 
 	$selectedCountry.hide();
 	$description.hide();
     $("li.selected p").show();
-      $("ul.historical li.selected").prepend('<p class = "arrow">&#9654;</p>');
+      $histYearSel.prepend('<p class = "arrow">&#9654;</p>');
       $(".data_overview li.selected").prepend('<p class = "arrow">&#9654;</p>');
       var myClass = "economy";
       var currentYear = "1999";
 	//---------------Blue------------------------Green---------------Red--------------/
-	var colorS = [['#ffffff','#1D578C'],['#ffffff','#007C44'],['#ffffff','#E3173E']];
+	var colorS = [['#ffffff','#1D578C'],['#ffffff','#007C44'],['#ffffff','#E3173E'],['#E3173E','#ffffff']];
 	var ratingScore =["AAA","AA+","AA-","AA","A+","A-","A","BBB+","BBB-","BBB","BB+","BB-","BB","B+","B-","B","CCC+","CCC-","CCC","CC"];
 	var colorIndicator;
-		colorIndicator= 2;
+		colorIndicator = 3;
 	var codeArray = [];
 	var cCode;
 
@@ -30,7 +33,7 @@ $(document).ready(function() {
 	var indicator;
 		indicator = "economy";
 
-    $(".data_overview ul li").click(function(e) {
+    $(".data_overview ul").delegate('li', 'click', function () {
         $(".data_overview li.selected").removeClass("selected");
         $(this).addClass("selected");
         $(".data_overview ul li p.arrow").remove();
@@ -66,18 +69,9 @@ $(document).ready(function() {
         $('span.indiValue').addClass(myClass);
     });
 
-    $("ul.historical li").click(function() {
-        $("ul.historical li").removeClass("selected");
-        $("ul.historical li p").remove();
-        $(this).addClass("selected");
-        $(this).prepend('<p class = "arrow">&#9654;</p>');
-        $("ul.historical li").removeClass("rating fiscal economy external");
-        $("ul.historical li.selected").addClass(myClass);
-        var year = $(this).text();
-        var remove = year.charAt(0);
-        currentYear = year.replace(remove,"");
-        setYear(currentYear);
-        console.log(myClass);
+    $("ul.historical").delegate('li', 'click', function () {
+		var that = this;
+		updateHYear(that);
         if(!isConSelected){
 			renderBy(myClass,EU,currentYear);
         }
@@ -99,13 +93,46 @@ $(document).ready(function() {
 	$.ajaxSetup({
 		async: false
 	});
+	$('ul.control').delegate('.play','click',function(){
+		var len = $histYear.length;
+		var id = $("ul.historical li.selected").index();
+		var curPosition;
+		curPosition = id;
+		var looper;
+		var pause_status = false;
+		$('ul.control .pause').click(function(){
+			pause_status = true;
+		});
+		looper = setInterval(function(){
+					curPosition++;
+					if(curPosition >= len){
+						curPosition = 0;
+					}
+
+					var that = $histYear.eq(curPosition);
+					updateHYear(that);
+					if(!isConSelected){
+						renderBy(myClass,EU,currentYear);
+					}
+					else{
+						renderSelectedCon(EU,currentYear,myClass,globalCode);
+						$('span.indiValue').removeClass("rating fiscal economy external");
+						$('span.indiValue').addClass(myClass);
+					}
+					updateValue();
+					updateC();
+					if(curPosition == len-1 || pause_status){
+						clearInterval(looper,sliderSpeed);
+					}
+		},sliderSpeed);
+	});
 
 	$.getJSON('ajax/economic.json', function(data) {
 		var n = 0; //Country counter
 			$.each(data, function(){
 				EU.push(new CountryObj(this['Entity Name'],this['ISO'],this['Data']['Long Term Currency Rating']));
 				for(var  i = startYear; i<=endYear; i++){
-					EU[n].addNomGDP(i,this['Data']['Nominal GDP (bil. $)'][i])
+					EU[n].addNomGDP(i,this['Data']['Nominal GDP (bil. $)'][i]),
 					EU[n].addPerCapita(i,this['Data']['Per capita GDP (US$)'][i]),
 					EU[n].addReal_GDP_G(i,this['Data']['Real GDP growth (%)'][i]),
 					EU[n].addGDP_per_capita(i,this['Data']['Real GDP per capita (% change)'][i]),
@@ -185,8 +212,7 @@ $(document).ready(function() {
 			}
 		}
 	displayAllEconomy(EU);
-	console.log(mapData[2000]["rating"]);
-	console.log(mapData[2010]["rating"]);
+
 	$('#map').vectorMap({
 		map: 'europe_mill_en',
 			backgroundColor:'#808080',
@@ -197,7 +223,7 @@ $(document).ready(function() {
 				    "fill-opacity": 1,
 				    stroke: '#cccccc',
 				    "stroke-width": 0.5,
-				    "stroke-opacity": 1,
+				    "stroke-opacity": 1
 				},
 				hover:{
 					stroke: '#414042',
@@ -207,7 +233,9 @@ $(document).ready(function() {
 				}
 			},
 			onRegionLabelShow: function(event, label, code) {
-					label.text(label.text());
+				if($.inArray(code, codeArray)!=-1){
+					label.text(label.text()+" => " +EU[findObj(EU,code)].getRatingHistorical(currentYear));
+				}
 			},
 			onRegionClick: function (event, code) {
 				if($.inArray(code, codeArray)!=-1){
@@ -240,17 +268,21 @@ $(document).ready(function() {
 				jvm.min(mapData[currentYear][myClass]);
 		jvm.max(mapData[currentYear][myClass]);
 	};
+	
 	function updateValue(){
 		mapObject.series.regions[0].setValues(mapData[currentYear][myClass]);
 	};
-if(test){
-	var testName = 4;
-	var CountrySelect = 10;
-	//console.log(EU[testName].getName());
-	for(var i = startYear;i<=endYear;i++){
+	function updateHYear(that){
+		$("ul.historical li").removeClass("selected");
+        $("ul.historical li p").remove();
+        $(that).addClass("selected");
+        $(that).prepend('<p class = "arrow">&#9654;</p>');
+        $("ul.historical li").removeClass("rating fiscal economy external");
+        $("ul.historical li.selected").addClass(myClass);
+        var year = $(that).text();
+        var remove = year.charAt(0);
+        currentYear = year.replace(remove,"");
+        setYear(currentYear);
+	};
 
-		//console.log(i+"=>"+typeof(Number(EU[CountrySelect].getELiabilities(i))));
-	}
-	console.log(convert("N.A"));
-}
 });

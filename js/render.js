@@ -9,11 +9,30 @@ function setIndicator(ind){
 };
 function convert(num){
   num = +num || '';
-  num = (num<0)?0.5:num;
+  num = (num<0)?0.2:num;
   result = num;
   return result;
 };
+function convertSpecial(num){
+  num = +num || '';
+  if(num <=-4)
+    num = 0;
+  else if(num >=-3 && num <0){
+    num = 0.3;
+  }
+  else if(num >= 0 && num <1){
+    num = (num*num);
+  }
+  else if(num>=1 && num <3){
+    num = (num*num)+1;
+  }
+  else if(num >=3){
+    num = (num*num)+3;
+  }
 
+  result = num;
+  return result;
+};
 
 function displayE(obj,location,year){
   var renderE = "";
@@ -205,7 +224,6 @@ function findObj(obj,code){
 function updateColor(id){
   var val;
   switch(id){
-    case "economy": val = 2;
     break;
     case "fiscal": val = 0;
     break;

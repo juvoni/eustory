@@ -43,8 +43,8 @@ body {
 	display:inline;
 	float: left;
 	position: relative;
-	margin-left: 10px;
-	margin-right: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 
@@ -79,7 +79,7 @@ body {
 
 
 .container_10 .grid_1 {
-	width:100px;
+	width:110px;
 }
 
 .container_10 .grid_2 {
@@ -87,7 +87,7 @@ body {
 }
 
 .container_10 .grid_3 {
-	width:340px;
+	width:310px;
 }
 
 .container_10 .grid_4 {
