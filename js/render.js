@@ -224,6 +224,7 @@ function findObj(obj,code){
 function updateColor(id){
   var val;
   switch(id){
+    case "economy": val = 3;
     break;
     case "fiscal": val = 0;
     break;
