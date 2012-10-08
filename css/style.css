@@ -88,7 +88,8 @@ ul.grid_1.control{
     width: 100px;
     height:80px;
     padding:0px;
-    margin: 20px 0 0 0;
+    margin: 10px 0 0 0;
+    float: right;
 }
 ul.control li{
     display:inline;
