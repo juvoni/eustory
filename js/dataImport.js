@@ -19,10 +19,10 @@ $(document).ready(function() {
       var myClass = "economy";
       var currentYear = "1999";
 	//---------------Blue------------------------Green---------------Red--------------/
-	var colorS = [['#ffffff','#1D578C'],['#ffffff','#007C44'],['#ffffff','#E3173E']];
+	var colorS = [['#ffffff','#1D578C'],['#ffffff','#007C44'],['#ffffff','#E3173E'],['#E3173E','#ffffff']];
 	var ratingScore =["AAA","AA+","AA-","AA","A+","A-","A","BBB+","BBB-","BBB","BB+","BB-","BB","B+","B-","B","CCC+","CCC-","CCC","CC"];
 	var colorIndicator;
-		colorIndicator= 2;
+		colorIndicator = 3;
 	var codeArray = [];
 	var cCode;
 
@@ -72,7 +72,6 @@ $(document).ready(function() {
     $("ul.historical").delegate('li', 'click', function () {
 		var that = this;
 		updateHYear(that);
-        console.log(myClass);
         if(!isConSelected){
 			renderBy(myClass,EU,currentYear);
         }
@@ -109,7 +108,7 @@ $(document).ready(function() {
 					if(curPosition >= len){
 						curPosition = 0;
 					}
-					console.log(curPosition);
+
 					var that = $histYear.eq(curPosition);
 					updateHYear(that);
 					if(!isConSelected){
@@ -269,6 +268,7 @@ $(document).ready(function() {
 				jvm.min(mapData[currentYear][myClass]);
 		jvm.max(mapData[currentYear][myClass]);
 	};
+	
 	function updateValue(){
 		mapObject.series.regions[0].setValues(mapData[currentYear][myClass]);
 	};
@@ -284,14 +284,5 @@ $(document).ready(function() {
         currentYear = year.replace(remove,"");
         setYear(currentYear);
 	};
-if(test){
-	var testName = 4;
-	var CountrySelect = 10;
-	//console.log(EU[testName].getName());
-	for(var i = startYear;i<=endYear;i++){
 
-		//console.log(i+"=>"+typeof(Number(EU[CountrySelect].getELiabilities(i))));
-	}
-	console.log(convert("N.A"));
-}
 });
