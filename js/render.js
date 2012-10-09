@@ -9,24 +9,13 @@ function setIndicator(ind){
 };
 function convert(num){
   num = +num || '';
+  num = (num>0)?num+0.6:num;
   num = (num<0)?0.2:num;
+  num = (num==0)?0.4:num;
   result = num;
   return result;
 };
-function convertSpecial(num){
-  num = +num || '';
-  if(num <=-7)
-    num = 0.3;
-  else if(num >-7 && num <0)
-    num = 1;
-  else if(num >=0){
-    num = num+2;
-  }
 
-
-  result = num;
-  return result;
-};
 
 function displayE(obj,location,year){
   var renderE = "";
@@ -49,7 +38,7 @@ function displayE(obj,location,year){
       break;
       case 4:renderE+=obj[location].getBank_Claim_res(year);
       break;
-      case 5:renderE+=obj[location].getNFPE(year);
+      case 5:renderE+=(obj[location].getNFPE(year))?obj[location].getNFPE(year):"--";
       break;
     }
     renderE+="</span>";
@@ -245,4 +234,19 @@ function updateColor(id){
   return (((sign)?'':'-') + '$' + num);
 }
 
+  function formatCurrency(num) {
+    num = num.toString().replace(/\$|\,/g,'');
+    if(isNaN(num))
+    num = "0";
+    sign = (num == (num = Math.abs(num)));
+    num = Math.floor(num*100+0.50000000001);
+    cents = num%100;
+    num = Math.floor(num/100).toString();
+    if(cents<10)
+    cents = "0" + cents;
+    for (var i = 0; i < Math.floor((num.length-(1+i))/3); i++)
+    num = num.substring(0,num.length-(4*i+3))+','+
+    num.substring(num.length-(4*i+3));
+  return (((sign)?'':'-') + '$' + num);
+}
 
