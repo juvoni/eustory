@@ -15,20 +15,14 @@ function convert(num){
 };
 function convertSpecial(num){
   num = +num || '';
-  if(num <=-4)
-    num = 0;
-  else if(num >=-3 && num <0){
+  if(num <=-7)
     num = 0.3;
+  else if(num >-7 && num <0)
+    num = 1;
+  else if(num >=0){
+    num = num+2;
   }
-  else if(num >= 0 && num <1){
-    num = (num*num);
-  }
-  else if(num>=1 && num <3){
-    num = (num*num)+1;
-  }
-  else if(num >=3){
-    num = (num*num)+3;
-  }
+
 
   result = num;
   return result;
@@ -45,11 +39,11 @@ function displayE(obj,location,year){
   for(var i = 0; i<indC.length;i++){
     renderE+="<li class = 'dataSec'><span class='indiTitle'>"+indC[i]+"<br><span class = 'indiValue'>";
     switch(i){
-      case 0:renderE+=obj[location].getPerCapita(year);
+      case 0:renderE+=formatCurrency(obj[location].getPerCapita(year));
       break;
       case 1:renderE+=obj[location].getGDP_per_capita(year);
       break;
-      case 2:renderE+=obj[location].getNomGDP(year);
+      case 2:renderE+=formatCurrency(obj[location].getNomGDP(year))+"B";
       break;
       case 3:renderE+=obj[location].getReal_GDP_G(year);
       break;
@@ -235,5 +229,20 @@ function updateColor(id){
   }
   return val;
 };
+  function formatCurrency(num) {
+    num = num.toString().replace(/\$|\,/g,'');
+    if(isNaN(num))
+    num = "0";
+    sign = (num == (num = Math.abs(num)));
+    num = Math.floor(num*100+0.50000000001);
+    cents = num%100;
+    num = Math.floor(num/100).toString();
+    if(cents<10)
+    cents = "0" + cents;
+    for (var i = 0; i < Math.floor((num.length-(1+i))/3); i++)
+    num = num.substring(0,num.length-(4*i+3))+','+
+    num.substring(num.length-(4*i+3));
+  return (((sign)?'':'-') + '$' + num);
+}
 
 

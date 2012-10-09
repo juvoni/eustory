@@ -195,7 +195,7 @@ $(document).ready(function() {
 				for(var j = 0; j<17;j++){
 					cCode = EU[j].getCode();
 					if(valI == "economy")
-						mapData[year][valI][cCode] = convert(EU[j].getReal_GDP_G(year));
+						mapData[year][valI][cCode] = convertSpecial(EU[j].getReal_GDP_G(year));
 					else if(valI == "fiscal")
 						mapData[year][valI][cCode] = convert(EU[j].getGG_debt_per_GDP(year));
 					else if(valI == "external")
