@@ -15,20 +15,12 @@ function convert(num){
 };
 function convertSpecial(num){
   num = +num || '';
-  if(num <=-4)
-    num = 0;
-  else if(num >=-3 && num <0){
-    num = 0.3;
+  if(num <=-6)
+    num = 0.4;
+  else if(num >=0){
+    num = num*num+1;
   }
-  else if(num >= 0 && num <1){
-    num = (num*num);
-  }
-  else if(num>=1 && num <3){
-    num = (num*num)+1;
-  }
-  else if(num >=3){
-    num = (num*num)+3;
-  }
+
 
   result = num;
   return result;
