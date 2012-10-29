@@ -237,7 +237,7 @@ $(document).ready(function() {
 			},
 			onRegionLabelShow: function(event, label, code) {
 				if($.inArray(code, codeArray)!=-1){
-					label.text(label.text()+" => " +EU[findObj(EU,code)].getRatingHistorical(currentYear));
+					label.text(label.text()+": " +EU[findObj(EU,code)].getRatingHistorical(currentYear));
 				}
 			},
 			onRegionClick: function (event, code) {

@@ -31,7 +31,7 @@ a:hover{
     text-decoration: none;
 }
 .titleLogo{
-    margin: 0 0 0 0px;
+    margin: 0 0 0 10px;
     padding: 0;
     display:block;
 }
@@ -46,6 +46,7 @@ div.legend{
 }
 .legend h4{
     float: left;
+    margin-left: 20px;
 }
 .bar{
     width: 138px;
@@ -88,7 +89,6 @@ ul.grid_1.control{
     width: 100px;
     height:80px;
     padding:0px;
-    margin: 10px 0 0 0;
     float: right;
 }
 ul.control li{
@@ -99,18 +99,20 @@ ul.control li{
     font-size: 22px;
 }
 ul.control li span.play{
-    font-size: 20px;
+    font-size: 14px;
     color:#E3173E; /*Redish*/
     cursor:pointer;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 ul.control li img.pause{
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
     cursor:pointer;
     padding:0;
     bottom: 0;
-    top: 0;
-    float: right;
+}
+img.pause{
+    margin-top: 0px;
 }
 ul.historical{
     width: 100px;
