@@ -88,6 +88,11 @@ $(document).ready(function() {
 		renderBy(myClass,EU,currentYear);
 		isConSelected = false;
 		$('.selectedCountry').hide();
+		$('div#modal_Con').animate({
+			width: ['toggle', 'linear'],
+			height: ['toggle', 'linear'],
+			opacity: 'toggle'
+		},1000);
     });
 
 	$.ajaxSetup({
@@ -215,7 +220,13 @@ $(document).ready(function() {
 			}
 		}
 	displayAllEconomy(EU);
-
+	$('div#modal_Con').click(function(){
+		$(this).animate({
+						width: ['toggle', 'swing'],
+						height: ['toggle', 'swing'],
+						opacity: 'toggle'
+					},1000);
+	});
 	$('#map').vectorMap({
 		map: 'europe_mill_en',
 			backgroundColor:'#808080',
@@ -248,6 +259,14 @@ $(document).ready(function() {
 					$('.selectedCountry').show().html(EU[findObj(EU,code)].getName()+"<img class = 'closebtn' src='img/"+imgSrc+"' alt=''>");
 				    $('span.indiValue').removeClass("rating fiscal economy external");
 					$('span.indiValue').addClass(myClass);
+					$('div#modal_Con').html("<img src='Countries_PNG/"+code+".png'"+ "width = '580px' height = '600px'>");
+
+					$('div#modal_Con').animate({
+						width: ['toggle', 'swing'],
+						height: ['toggle', 'swing'],
+						opacity: 'toggle',
+					},1000);
+
 				}
 			},
 			series:{

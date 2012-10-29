@@ -84,18 +84,22 @@ div#map{
     float: right;
     padding: 0;
 }
+#modal_Con{
+    z-index: 999;
+    display: none;
+}
 ul.grid_1.control{
     list-style: none;
     width: 100px;
     height:80px;
     padding:0px;
+    margin-top: 10px;
     float: right;
 }
 ul.control li{
     display:inline;
     width: 50px;
     height:40px;
-    position: relative;
     font-size: 22px;
 }
 ul.control li span.play{
@@ -103,14 +107,15 @@ ul.control li span.play{
     color:#E3173E; /*Redish*/
     cursor:pointer;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    margin-top:-5px;
+    margin-left:12px;
 }
 ul.control li img.pause{
-    width: 18px;
-    height: 18px;
     cursor:pointer;
     padding:0;
     bottom: 0;
+    display:inline;
+    float: right;
+    opacity:0.6;
 }
 img.pause{
     margin-top: 0px;
@@ -145,6 +150,9 @@ ul.historical li {
     margin-bottom: 5px;
     cursor:pointer;
     color:#808080;
+    width: 60px;
+    margin-right: 0;
+    padding: 0;
 }
 ul.historical li.selected {
     color:#E3173E; /*Redish*/
@@ -255,7 +263,7 @@ ul.CountryInformation li.dataSec{
     margin-bottom: 8px;
 }
 .indiValue{
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
 }
 
@@ -441,4 +449,13 @@ header {
     -moz-border-radius-bottomleft: 0px;
     -moz-border-radius-topleft: 0px;
 }
-
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
