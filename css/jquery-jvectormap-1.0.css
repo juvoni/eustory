@@ -28,6 +28,7 @@
     cursor: pointer;
     line-height: 10px;
     text-align: center;
+    display:none;
 }
 
 .jvectormap-zoomin {
