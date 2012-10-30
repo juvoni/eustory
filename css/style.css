@@ -161,6 +161,8 @@ ul.historical li {
 }
 ul.historical li.selected {
     color:#E3173E; /*Redish*/
+    font-size: 24px;
+    margin-bottom: 5px;
 }
 ul.historical li.selected p.arrow{
     margin-left: -20px;

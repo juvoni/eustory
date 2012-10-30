@@ -9,6 +9,7 @@ $(document).ready(function() {
 	var sliderSpeed = 1000;//Milliseconds
 	var $histYear = $("ul.historical li");
 	var $histYearSel = $("ul.historical li.selected");
+	var ieMode = true;
 
 
 	$selectedCountry.hide();
@@ -33,6 +34,10 @@ $(document).ready(function() {
 	var indicator;
 		indicator = "economy";
 
+
+
+
+
     $(".data_overview ul").delegate('li', 'click', function () {
         $(".data_overview li.selected").removeClass("selected");
         $(this).addClass("selected");
@@ -44,15 +49,18 @@ $(document).ready(function() {
         $("ul.historical li.selected").removeClass("rating fiscal economy external");
         $("ul.historical li.selected").addClass(myClass);
         setIndicator(myClass);
-        if(!isConSelected){
-			renderBy(myClass,EU,currentYear);
+        if(!ieMode){
+	        if(!isConSelected){
+				renderBy(myClass,EU,currentYear);
+	        }
+	        else{
+				renderSelectedCon(EU,currentYear,myClass,globalCode);
+	        }
+	        colorIndicator = updateColor(myClass);
+	        updateValue();
+	        updateC();
         }
-        else{
-			renderSelectedCon(EU,currentYear,myClass,globalCode);
-        }
-        colorIndicator = updateColor(myClass);
-        updateValue();
-        updateC();
+
         var barPosition;
         switch(myClass){
 			case "economy": barPosition = '0px 0px';
@@ -80,8 +88,11 @@ $(document).ready(function() {
 			$('span.indiValue').removeClass("rating fiscal economy external");
 			$('span.indiValue').addClass(myClass);
         }
-        updateValue();
-        updateC();
+        if(!ieMode){
+			updateValue();
+			updateC();
+        }
+
       });
 
     $('.selectedCountry').click(function(){
@@ -124,8 +135,11 @@ $(document).ready(function() {
 						$('span.indiValue').removeClass("rating fiscal economy external");
 						$('span.indiValue').addClass(myClass);
 					}
-					updateValue();
-					updateC();
+					if(!ieMode){
+						updateValue();
+						updateC();
+					}
+
 					if(curPosition == len-1 || pause_status){
 						clearInterval(looper,sliderSpeed);
 					}
@@ -227,7 +241,8 @@ $(document).ready(function() {
 						opacity: 'toggle'
 					},500);
 	});
-	$('#map').vectorMap({
+	if(!ieMode){
+		$('#map').vectorMap({
 		map: 'europe_mill_en',
 			backgroundColor:'#808080',
 			regionsSelectable: false,
@@ -285,6 +300,22 @@ $(document).ready(function() {
 		    }
 	 });
 	var mapObject = $('#map').vectorMap('get', 'mapObject');
+	}
+	if(ieMode){
+		var renderO;
+        renderO = "<select id='standard-dropdown' name='standard-dropdown' class='custom-class1 custom-class2' style='width: 150px'>";
+        renderO+=  "<option value = '' class='test-class-1' selected='selected'>Select a Country</option>";
+        for(var x = 0; x<EU.length; x++){
+          renderO+="<option value='"+EU[x].getName()+"'>"+EU[x].getName()+"</option>";
+        }
+        renderO+="</select>";
+        $('.optSelect').html(renderO);
+		$("select").selectBox().change(function() {
+
+			globalCode = getCodeFromName($(this).val());
+			renderSelectedCon(EU,currentYear,myClass,globalCode);
+		 });
+	}
 
 	function updateC(){
 		mapObject.series.regions[0].setScale(colorS[colorIndicator]);
@@ -306,6 +337,15 @@ $(document).ready(function() {
         var remove = year.charAt(0);
         currentYear = year.replace(remove,"");
         setYear(currentYear);
+	};
+
+	function getCodeFromName(name){
+		for(var i = 0; i<EU.length; i++){
+			if(EU[i].getName() === name){
+				return EU[i].getCode();
+				break;
+			}
+		}
 	};
 
 });
