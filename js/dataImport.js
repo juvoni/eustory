@@ -324,7 +324,6 @@ $(document).ready(function() {
         $('.optSelect').html(renderO);
 		$("select").selectBox().change(function() {
 			if($(this).val() == ""){
-				console.log("empty");
 				isConSelected = false;
 				renderBy(myClass,EU,currentYear);
 			}
@@ -332,6 +331,8 @@ $(document).ready(function() {
 				isConSelected = true;
 				globalCode = getCodeFromName($(this).val());
 				renderSelectedCon(EU,currentYear,myClass,globalCode);
+				$('span.indiValue').removeClass("rating fiscal economy external");
+				$('span.indiValue').addClass(myClass);
 			}
 
 		 });
@@ -339,7 +340,7 @@ $(document).ready(function() {
 
 	function updateC(){
 		mapObject.series.regions[0].setScale(colorS[colorIndicator]);
-				jvm.min(mapData[currentYear][myClass]);
+		jvm.min(mapData[currentYear][myClass]);
 		jvm.max(mapData[currentYear][myClass]);
 	};
 
