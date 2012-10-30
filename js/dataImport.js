@@ -35,8 +35,9 @@ $(document).ready(function() {
 		indicator = "economy";
 
 
-
-
+	if(ieMode){
+		updateImage();
+	}
 
     $(".data_overview ul").delegate('li', 'click', function () {
         $(".data_overview li.selected").removeClass("selected");
@@ -49,7 +50,7 @@ $(document).ready(function() {
         $("ul.historical li.selected").removeClass("rating fiscal economy external");
         $("ul.historical li.selected").addClass(myClass);
         setIndicator(myClass);
-        if(!ieMode){
+
 	        if(!isConSelected){
 				renderBy(myClass,EU,currentYear);
 	        }
@@ -57,9 +58,13 @@ $(document).ready(function() {
 				renderSelectedCon(EU,currentYear,myClass,globalCode);
 	        }
 	        colorIndicator = updateColor(myClass);
-	        updateValue();
-	        updateC();
-        }
+	        if(!ieMode){
+				updateValue();
+				updateC();
+			}
+			else{
+				updateImage();
+			}
 
         var barPosition;
         switch(myClass){
@@ -91,6 +96,9 @@ $(document).ready(function() {
         if(!ieMode){
 			updateValue();
 			updateC();
+        }
+        else{
+			updateImage();
         }
 
       });
@@ -138,6 +146,9 @@ $(document).ready(function() {
 					if(!ieMode){
 						updateValue();
 						updateC();
+					}
+					else{
+						updateImage();
 					}
 
 					if(curPosition == len-1 || pause_status){
@@ -234,14 +245,15 @@ $(document).ready(function() {
 			}
 		}
 	displayAllEconomy(EU);
-	$('div#modal_Con').click(function(){
+
+	if(!ieMode){
+			$('div#modal_Con').click(function(){
 		$(this).animate({
 						width: ['toggle', 'linear'],
 						height: ['toggle', 'linear'],
 						opacity: 'toggle'
 					},500);
 	});
-	if(!ieMode){
 		$('#map').vectorMap({
 		map: 'europe_mill_en',
 			backgroundColor:'#808080',
@@ -311,9 +323,17 @@ $(document).ready(function() {
         renderO+="</select>";
         $('.optSelect').html(renderO);
 		$("select").selectBox().change(function() {
+			if($(this).val() == ""){
+				console.log("empty");
+				isConSelected = false;
+				renderBy(myClass,EU,currentYear);
+			}
+			else if($(this).val()){
+				isConSelected = true;
+				globalCode = getCodeFromName($(this).val());
+				renderSelectedCon(EU,currentYear,myClass,globalCode);
+			}
 
-			globalCode = getCodeFromName($(this).val());
-			renderSelectedCon(EU,currentYear,myClass,globalCode);
 		 });
 	}
 
@@ -347,5 +367,12 @@ $(document).ready(function() {
 			}
 		}
 	};
+
+	function updateImage(){
+		//$('#modal_Con').html("<img src='img/SP_Vector_Snapshots/"+myClass+"_"+currentYear+".png'"+ "width = '560px' height = '495px'>").css("display","block");
+		var str = 'url(img/SP_Vector_Snapshots/'+myClass+'_'+currentYear+'.png)';
+		$('#modal_Con').css('background-image',str);
+		$('#modal_Con').css("display","block");
+	}
 
 });

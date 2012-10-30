@@ -58,6 +58,12 @@ div.legend{
     background-position: 0 0;
     float: left;
 }
+.optSelect{
+    display:inline;
+    float:right;
+    margin-top: -30px;
+    margin-left: -10px;
+}
 .selectedCountry{
     position: relative;
     display: inline;
@@ -90,7 +96,6 @@ div#map{
     width: 560px;
     height: 495px;
     z-index: 999;
-    background-position: 0 0;
     display: none;
 }
 ul.grid_1.control{
