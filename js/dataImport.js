@@ -21,7 +21,7 @@ $(document).ready(function() {
       var currentYear = "1999";
 	//---------------Blue------------------------Green---------------Red--------------/
 	var colorS = [['#ffffff','#1D578C'],['#ffffff','#007C44'],['#ffffff','#E3173E'],['#E3173E','#ffffff']];
-	var ratingScore =["AAA","AA+","AA-","AA","A+","A-","A","BBB+","BBB-","BBB","BB+","BB-","BB","B+","B-","B","CCC+","CCC-","CCC","CC"];
+	var ratingScore = ["AAA","AA+","AA-","AA","A+","A-","A","BBB+","BBB-","BBB","BB+","BB-","BB","B+","B-","B","CCC+","CCC-","CCC","CC"];
 	var colorIndicator;
 		colorIndicator = 3;
 	var codeArray = [];
@@ -37,6 +37,14 @@ $(document).ready(function() {
 
 	if(ieMode){
 		updateImage();
+		$('.alert').html("<button type='button' class='close ' data-dismiss='alert'>×</button>"+
+			"<strong>Warning!</strong> Versions of Internet Explorer 8 and below are not fully supported.<br>"+
+			"For a full interactice experience please use a recent version of any of the following browsers"+
+			"<a href='http://windows.microsoft.com/en-US/internet-explorer/download-ie' target='_blank'><img src='img/browser/Internet_Explorer_9.png' alt='Internet Explorer 9+' width = '24px' height = '24px'>"+
+			"&nbsp;<a href='https://www.google.com/intl/en/chrome/browser/' target='_blank'><img src='img/browser/Google-Chrome-icon.png' alt='Google Chrome' width = '24px' height = '24px'>"+
+			"&nbsp;<a href='http://www.mozilla.org/en-US/firefox/new/' target='_blank'><img src='img/browser/firefox-64.png' alt='Firefox' width = '24px' height = '24px'>"
+			);
+		$(".alert").alert();
 	}
 
     $(".data_overview ul").delegate('li', 'click', function () {
