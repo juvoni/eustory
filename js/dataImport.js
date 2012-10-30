@@ -9,7 +9,15 @@ $(document).ready(function() {
 	var sliderSpeed = 1000;//Milliseconds
 	var $histYear = $("ul.historical li");
 	var $histYearSel = $("ul.historical li.selected");
-	var ieMode = true;
+	var ieMode;
+	var ieVer = getInternetExplorerVersion();
+
+	if(ieVer >=7 && ieVer<9){
+		ieMode = true;
+	}
+	else{
+		ieMode = false;
+	}
 
 
 	$selectedCountry.hide();
@@ -38,13 +46,16 @@ $(document).ready(function() {
 	if(ieMode){
 		updateImage();
 		$('.alert').html("<button type='button' class='close ' data-dismiss='alert'>×</button>"+
-			"<strong>Warning!</strong> Versions of Internet Explorer 8 and below are not fully supported.<br>"+
+			"<strong>Warning!</strong> Versions of Internet Explorer 8 and below are not fully supported."+
 			"For a full interactice experience please use a recent version of any of the following browsers"+
 			"<a href='http://windows.microsoft.com/en-US/internet-explorer/download-ie' target='_blank'><img src='img/browser/Internet_Explorer_9.png' alt='Internet Explorer 9+' width = '24px' height = '24px'>"+
 			"&nbsp;<a href='https://www.google.com/intl/en/chrome/browser/' target='_blank'><img src='img/browser/Google-Chrome-icon.png' alt='Google Chrome' width = '24px' height = '24px'>"+
 			"&nbsp;<a href='http://www.mozilla.org/en-US/firefox/new/' target='_blank'><img src='img/browser/firefox-64.png' alt='Firefox' width = '24px' height = '24px'>"
 			);
 		$(".alert").alert();
+	}
+	else{
+		$('.alert').css("display","none");
 	}
 
     $(".data_overview ul").delegate('li', 'click', function () {
@@ -255,7 +266,7 @@ $(document).ready(function() {
 	displayAllEconomy(EU);
 
 	if(!ieMode){
-			$('div#modal_Con').click(function(){
+		$('div#modal_Con').click(function(){
 		$(this).animate({
 						width: ['toggle', 'linear'],
 						height: ['toggle', 'linear'],
@@ -299,7 +310,7 @@ $(document).ready(function() {
 					$('div#modal_Con').animate({
 						width: ['toggle', 'linear'],
 						height: ['toggle', 'linear'],
-						opacity: 'toggle',
+						opacity: 'toggle'
 					},500);
 
 

@@ -463,10 +463,10 @@ header {
     background: #000;
     display: none;
 }
-.alert a img:hover{
-    width:32px;
-    height:32px;
+.alert a img{
+    border:none;
 }
+
 .close{float:right;font-size:20px;font-weight:bold;line-height:20px;color:#000000;text-shadow:0 1px 0 #ffffff;opacity:0.2;filter:alpha(opacity=20);}.close:hover{color:#000000;text-decoration:none;cursor:pointer;opacity:0.4;filter:alpha(opacity=40);}
 button.close{padding:0;cursor:pointer;background:transparent;border:0;-webkit-appearance:none;}
 .fade{opacity:0;-webkit-transition:opacity 0.65s linear;-moz-transition:opacity 0.65s linear;-o-transition:opacity 0.65s linear;transition:opacity 0.65s linear;}.fade.in{opacity:1;}
