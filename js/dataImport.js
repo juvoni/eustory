@@ -333,12 +333,17 @@ $(document).ready(function() {
 	var mapObject = $('#map').vectorMap('get', 'mapObject');
 	}
 	if(ieMode){
+		var filter=[];
 		var renderO;
         renderO = "<select id='standard-dropdown' name='standard-dropdown' class='custom-class1 custom-class2' style='width: 150px'>";
         renderO+=  "<option value = '' class='test-class-1' selected='selected'>Select a Country</option>";
+        for(var x = 0; x<EU.length; x++)
+			filter[x] = EU[x].getName();
+		filter.sort();
         for(var x = 0; x<EU.length; x++){
-          renderO+="<option value='"+EU[x].getName()+"'>"+EU[x].getName()+"</option>";
+          renderO+="<option value='"+filter[x]+"'>"+filter[x]+"</option>";
         }
+
         renderO+="</select>";
         $('.optSelect').html(renderO);
 		$("select").selectBox().change(function() {
