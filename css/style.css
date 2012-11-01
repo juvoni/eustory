@@ -48,6 +48,11 @@ div.legend{
     float: left;
     margin-left: 20px;
 }
+.ie7 .legend h4{
+    float: left;
+    margin-left: 0px;
+    margin-top: 10px;
+}
 .bar{
     width: 138px;
     height: 10px;
@@ -98,6 +103,14 @@ div#map{
     z-index: 999;
     display: none;
 }
+
+.ie7 #modal_Con{
+    width: 560px;
+    height: 495px;
+    z-index: 999;
+    display: none;
+    margin-left: -200px;
+}
 ul.grid_1.control{
     list-style: none;
     width: 100px;
@@ -127,6 +140,14 @@ ul.control li img.pause{
     float: right;
     opacity:0.6;
 }
+.ie7 ul.control li img.pause{
+    cursor:pointer;
+    display:inline;
+    float: right;
+    opacity:0.6;
+    margin-top: -25px;
+
+}
 img.pause{
     margin-top: 0px;
 }
@@ -137,7 +158,15 @@ ul.historical{
     display:block;
     margin-top: 18px;
 }
-
+.ie7 ul.historical{
+    width: 100px;
+    position: relative;
+    list-style: none;
+    display:block;
+    margin-top: 18px;
+    margin-left: 6px;
+    padding:5px;
+}
 .fiscal, .indiValue.fiscal{
     color: #1D578C;/*Blueish*/
 }
@@ -164,6 +193,17 @@ ul.historical li {
     margin-right: 0;
     padding: 0;
 }
+.ie7 ul.historical li {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    cursor:pointer;
+    color:#808080;
+    width: 90px;
+    margin-right: 0;
+    padding: 0;
+    float: right;
+}
 ul.historical li.selected {
     color:#E3173E; /*Redish*/
     font-size: 24px;
@@ -175,6 +215,11 @@ ul.historical li.selected p.arrow{
 div.data_overview ul{
     margin-left: 0;
     list-style: none;
+}
+.ie7 div.data_overview ul{
+    margin-left: 5px;
+    list-style: none;
+    margin-top: 20px;
 }
 div.data_overview ul li.Criteria {
     color:#808080;
