@@ -264,12 +264,13 @@ $(document).ready(function() {
 			}
 		}
 	displayAllEconomy(EU);
-
+	var factor =2;
 	if(!ieMode){
 		$('div#modal_Con').click(function(){
 		$(this).animate({
-						width: ['toggle', 'linear'],
-						height: ['toggle', 'linear'],
+						 top: '-=' + $(this).height(), // factor,
+	left: '-=' + $(this).width() / factor,
+        width: $(this).width() * factor,
 						opacity: 'toggle'
 					},500);
 	});
@@ -308,8 +309,9 @@ $(document).ready(function() {
 					$('div#modal_Con').html("<img src='Countries_PNG/"+code+".png'"+ "width = '560px' height = '495px'>");
 
 					$('div#modal_Con').animate({
-						width: ['toggle', 'linear'],
-						height: ['toggle', 'linear'],
+						 top: '-=' + $(this).height(), // factor,
+        left: '-=' + $(this).width(), // factor,
+        width: $(this).width() * factor,
 						opacity: 'toggle'
 					},500);
 
