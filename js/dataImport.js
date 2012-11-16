@@ -122,16 +122,32 @@ $(document).ready(function() {
 
       });
 
-    $('.selectedCountry').click(function(){
-		renderBy(myClass,EU,currentYear);
+
+    $(document).click(function(event) { 
+    if(event.target.nodeName != 'path' && event.target.nodeName != 'svg' && event.target.nodeName != 'IMG' && event.target.nodeName != 'LI' && event.target.nodeName !='SPAN') {
+renderBy(myClass,EU,currentYear);
 		isConSelected = false;
-		$('.selectedCountry').hide();
 		$('div#modal_Con').animate({
 			width: ['hide', 'linear'],
 			height: ['hide', 'linear'],
 			opacity: 'hide'
 		},500);
-    });
+		console.log(event.target.nodeName);
+    }        
+});
+
+
+  //   $('body').click(function(){
+		// renderBy(myClass,EU,currentYear);
+		// isConSelected = false;
+		// $('.selectedCountry').hide();
+		// $('div#modal_Con').animate({
+		//	width: ['hide', 'linear'],
+		//	height: ['hide', 'linear'],
+		//	opacity: 'hide'
+		// },500);
+		// console.log("clicked");
+  //   });
 
 	$.ajaxSetup({
 		async: false
@@ -264,12 +280,12 @@ $(document).ready(function() {
 			}
 		}
 	displayAllEconomy(EU);
-	var factor =2;
+	var factor = 5;
 	if(!ieMode){
 		$('div#modal_Con').click(function(){
 		$(this).animate({
 						 top: '-=' + $(this).height(), // factor,
-	left: '-=' + $(this).width() / factor,
+	left: '-=' + $(this).width(), // factor,
         width: $(this).width() * factor,
 						opacity: 'toggle'
 					},500);
@@ -303,15 +319,15 @@ $(document).ready(function() {
 					globalCode = code;
 					isConSelected = true;
 					renderSelectedCon(EU,currentYear,myClass,code);
-					$('.selectedCountry').show().html(EU[findObj(EU,code)].getName()+"<img class = 'closebtn' src='img/"+imgSrc+"' alt=''>");
+					//$('.selectedCountry').show().html(EU[findObj(EU,code)].getName()+"<img class = 'closebtn' src='img/"+imgSrc+"' alt=''>");
 				    $('span.indiValue').removeClass("rating fiscal economy external");
 					$('span.indiValue').addClass(myClass);
 					$('div#modal_Con').html("<img src='Countries_PNG/"+code+".png'"+ "width = '560px' height = '495px'>");
 
 					$('div#modal_Con').animate({
-						 top: '-=' + $(this).height(), // factor,
-        left: '-=' + $(this).width(), // factor,
-        width: $(this).width() * factor,
+						top: '-=' + $(this).height(), // factor,
+						left: '-=' + $(this).width(), // factor,
+						width: 0,
 						opacity: 'toggle'
 					},500);
 
