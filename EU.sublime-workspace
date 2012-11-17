@@ -1,0 +1,1414 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"dat",
+				"data_overview"
+			],
+			[
+				"hi",
+				"historical"
+			],
+			[
+				"sel",
+				"selectedCountry"
+			],
+			[
+				"fil",
+				"filter"
+			],
+			[
+				"ie",
+				"ieMode"
+			],
+			[
+				"pa",
+				"padding"
+			],
+			[
+				"In",
+				"Internet"
+			],
+			[
+				"upd",
+				"updateImage"
+			],
+			[
+				"cu",
+				"currentYear"
+			],
+			[
+				"opt",
+				"optSelect"
+			],
+			[
+				"getC",
+				"getCodeFromName"
+			],
+			[
+				"get",
+				"getCode"
+			],
+			[
+				"fade",
+				"fadeToggle  (function)"
+			],
+			[
+				"opa",
+				"opacity"
+			],
+			[
+				"vi",
+				"visibility"
+			],
+			[
+				"mo",
+				"modal_Con"
+			],
+			[
+				"for",
+				"formatCurrency"
+			],
+			[
+				"hist",
+				"histYear"
+			],
+			[
+				"colo",
+				"colorIndicator"
+			],
+			[
+				"up",
+				"updateHYear"
+			],
+			[
+				"pau",
+				"pause_statue"
+			],
+			[
+				"cur",
+				"curPosition"
+			],
+			[
+				"star",
+				"startPosition"
+			],
+			[
+				"sele",
+				"selected"
+			],
+			[
+				"selec",
+				"selected"
+			],
+			[
+				"getc",
+				"getCurYear"
+			],
+			[
+				"tem",
+				"tempYr"
+			],
+			[
+				"min",
+				"minValue"
+			],
+			[
+				"max",
+				"maxValue"
+			],
+			[
+				"xM",
+				"xMax"
+			],
+			[
+				"ac",
+				"activity"
+			],
+			[
+				"ma",
+				"margin"
+			],
+			[
+				"ini",
+				"indiTitle"
+			],
+			[
+				"in",
+				"indiValue"
+			],
+			[
+				"add",
+				"addClass"
+			],
+			[
+				"indi",
+				"indiValue"
+			],
+			[
+				"bo",
+				"border-top"
+			],
+			[
+				"gri",
+				"grid_5"
+			],
+			[
+				"con",
+				"container_10"
+			],
+			[
+				"title",
+				"titleLogo"
+			],
+			[
+				"is",
+				"isConSelected"
+			],
+			[
+				"dis",
+				"displayAllEconomy"
+			],
+			[
+				"img",
+				"imgSrc"
+			],
+			[
+				"border-co",
+				"border-color"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"ind",
+				"indC"
+			],
+			[
+				"find",
+				"findObj"
+			],
+			[
+				"rend",
+				"renderSelectedCon"
+			],
+			[
+				"fin",
+				"findObj"
+			],
+			[
+				"obj",
+				"obj,location,year"
+			],
+			[
+				"ec",
+				"economy"
+			],
+			[
+				"getR",
+				"getRating"
+			],
+			[
+				"getGG",
+				"getGG_debt_per_GDP"
+			],
+			[
+				"getN",
+				"getNarrowExToCar"
+			],
+			[
+				"getB",
+				"getBank_Claim_res"
+			],
+			[
+				"coun",
+				"countryName"
+			],
+			[
+				"class",
+				"class='title"
+			],
+			[
+				"country",
+				"countryPrefix"
+			],
+			[
+				"lo",
+				"location"
+			],
+			[
+				"pre",
+				"prefix"
+			],
+			[
+				"ren",
+				"renderE"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"addGG_",
+				"addGG_interest_exp_per_revenue"
+			],
+			[
+				"addC",
+				"addChange_GG_debt_per_GDPt"
+			],
+			[
+				"Real",
+				"Real_GDP_per_capita"
+			],
+			[
+				"map",
+				"mapData"
+			],
+			[
+				"code",
+				"codeArray"
+			],
+			[
+				"le",
+				"left"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"test",
+				"testName"
+			],
+			[
+				"key",
+				"key,val"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"bar",
+				"barPosition"
+			],
+			[
+				"co",
+				"colorIndicator"
+			],
+			[
+				"Colo",
+				"colorS"
+			],
+			[
+				"def",
+				"default"
+			],
+			[
+				"fff",
+				"ffffff"
+			],
+			[
+				"color",
+				"colorS"
+			],
+			[
+				"EU",
+				"EUdata"
+			],
+			[
+				"getDe",
+				"getDebtToGDP"
+			],
+			[
+				"he",
+				"height"
+			],
+			[
+				"inner",
+				"innerHTML"
+			],
+			[
+				"displ",
+				"display"
+			],
+			[
+				"show",
+				"showHide"
+			],
+			[
+				"Coun",
+				"CountryData"
+			],
+			[
+				"value",
+				"values"
+			],
+			[
+				"res",
+				"result"
+			],
+			[
+				"num",
+				"numCheck"
+			],
+			[
+				"econo",
+				"economy"
+			],
+			[
+				"econ",
+				"economy"
+			],
+			[
+				"eco",
+				"economy"
+			],
+			[
+				"tex",
+				"text-decoration"
+			],
+			[
+				"ext",
+				"external"
+			],
+			[
+				"bl",
+				"black"
+			],
+			[
+				"go",
+				"getGov_Rev"
+			],
+			[
+				"getIn",
+				"getInterestPay"
+			],
+			[
+				"end",
+				"endYear"
+			],
+			[
+				"stat",
+				"startYear"
+			],
+			[
+				"addGo",
+				"addGov_Rev"
+			],
+			[
+				"addG",
+				"addGov_P_Bal"
+			],
+			[
+				"addGov",
+				"addGov_Bal"
+			],
+			[
+				"addDe",
+				"addDepositToGDP"
+			],
+			[
+				"fisc",
+				"fiscal"
+			],
+			[
+				"data",
+				"dataReady"
+			],
+			[
+				"prot",
+				"prototype"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"Country",
+				"CountryData"
+			],
+			[
+				"countryNu",
+				"countryNumber"
+			],
+			[
+				"rel",
+				"relative"
+			],
+			[
+				"addR",
+				"addReal_GDP_G"
+			],
+			[
+				"Un",
+				"Unemployment_rate"
+			],
+			[
+				"Ban",
+				"Bank_claims_on_resident_non_govt_sectors"
+			],
+			[
+				"O",
+				"Oth_DC_claims_on_private_NFPEs"
+			],
+			[
+				"Real_",
+				"Real_investment"
+			],
+			[
+				"Gro",
+				"Gross_domestic_investment"
+			],
+			[
+				"start",
+				"startYear"
+			],
+			[
+				"gdp",
+				"gdpData"
+			],
+			[
+				"gdpc",
+				"gdpCapita"
+			],
+			[
+				"E",
+				"Economic"
+			],
+			[
+				"Exter",
+				"external"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"ove",
+				"overflow"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"border",
+				"border-width"
+			],
+			[
+				"border-c",
+				"border-color"
+			],
+			[
+				"rad",
+				"radValu"
+			],
+			[
+				"val",
+				"valuToString"
+			],
+			[
+				"can",
+				"canvas"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 5331,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/dataImport.js",
+			"settings":
+			{
+				"buffer_size": 14059,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/render.js",
+			"settings":
+			{
+				"buffer_size": 9297,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "css/jquery-jvectormap-1.0.css",
+			"settings":
+			{
+				"buffer_size": 774,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "css/jquery.selectBox.css",
+			"settings":
+			{
+				"buffer_size": 3280,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Austria\nBelgium\nCyprus\nEstonia\nFinland\nFrance\nGermany\nGreece\nIreland\nItaly\nLuxembourg\nMalta\nNetherlands\nPortugal\nSlovak Republic\nSlovenia\nSpain\n",
+			"settings":
+			{
+				"buffer_size": 144,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/CountryObj.js",
+			"settings":
+			{
+				"buffer_size": 3702,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "css/style.css",
+			"settings":
+			{
+				"buffer_size": 11675,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 85.0,
+		"selected_items":
+		[
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"js",
+				"Set Syntax: JSON"
+			],
+			[
+				"jso",
+				"Set Syntax: JSON"
+			],
+			[
+				"tra",
+				"Trailing Spaces: Delete Trailing Spaces"
+			],
+			[
+				"tr",
+				"Trailing Spaces: Delete Trailing Spaces"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"git",
+				"Git: Gui"
+			],
+			[
+				"stat",
+				"Git: Status"
+			],
+			[
+				"comm",
+				"Git: Commit"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"up",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"di",
+				"Package Control: Disable Package"
+			],
+			[
+				"dis",
+				"Package Control: Disable Package"
+			],
+			[
+				"ja",
+				"Set Syntax: Java"
+			],
+			[
+				"java",
+				"Set Syntax: Java"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"syb",
+				"Set Syntax: LaTeX Beamer"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"ht",
+				"Set Syntax: HTML5"
+			],
+			[
+				"mov",
+				"Package Control: Remove Package"
+			],
+			[
+				"",
+				"Package Control: Remove Package"
+			],
+			[
+				"package",
+				"Package Control: Disable Package"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"toggl",
+				"Trailing Spaces: Toggle Trailing Spaces"
+			],
+			[
+				"toggle ",
+				"Trailing Spaces: Toggle Trailing Spaces"
+			],
+			[
+				"toggle",
+				"WordHighlight: Toggle Enabled"
+			],
+			[
+				"togg",
+				"Trailing Spaces: Toggle Trailing Spaces"
+			],
+			[
+				"spa",
+				"Trailing Spaces: Toggle Trailing Spaces"
+			],
+			[
+				"ci",
+				"SublimeCodeIntel: Disable Live Autocompletion for Current Language"
+			],
+			[
+				"intel",
+				"SublimeCodeIntel: Reset"
+			],
+			[
+				"set ja",
+				"Set Syntax: Java"
+			],
+			[
+				"space",
+				"Trailing Spaces: Toggle Trailing Spaces"
+			],
+			[
+				"inte",
+				"SublimeCodeIntel: Enable Plugin"
+			],
+			[
+				"lan",
+				"SublimeCodeIntel: Disable Plugin"
+			],
+			[
+				"htm",
+				"Set Syntax: HTML5"
+			],
+			[
+				"int",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 698.0
+	},
+	"console":
+	{
+		"height": 197.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/wamp/www/SP_EU/css/jquery-ui-1.9.1.custom.min.css",
+		"/C/wamp/www/SP_EU/css/grid.css",
+		"/C/Users/JB/AppData/Local/Temp/Rar$DIa0.217/bootstrap.min.css",
+		"/C/Users/JB/AppData/Local/Temp/Rar$DIa0.215/bootstrap.css",
+		"/C/wamp/www/SP_EU/js/bootstrap.min.js",
+		"/C/wamp/www/SP_EU/js/jquery-ui-1.9.1.custom.js",
+		"/C/wamp/www/SP_EU/js/jquery.leanModal.min.js",
+		"/C/Users/JB/AppData/Local/Temp/Rar$DIa0.154/bootstrap.min.css",
+		"/C/Users/JB/AppData/Local/Temp/Rar$DIa0.776/bootstrap.js",
+		"/C/Users/JB/AppData/Local/Temp/Rar$DIa0.831/bootstrap.css",
+		"/C/wamp/bin/apache/Apache2.2.21/conf/httpd.conf",
+		"/C/wamp/apps/phpmyadmin3.4.10.1/config.inc.php",
+		"/C/wamp/www/SP_EU/css/style.css",
+		"/C/wamp/www/SP_EU/css/jquery-jvectormap-1.0.css",
+		"/C/Users/JB/Dropbox/RandomWalk/Board.java",
+		"/C/Users/JB/Dropbox/RandomWalk/RandomWalk.java",
+		"/C/Users/JB/Dropbox/RandomWalk/Particle.java",
+		"/C/wamp/www/SP_EU/js/render.js.REMOTE.6260.js",
+		"/C/wamp/www/SP_EU/ajax/Ratings.json",
+		"/C/Users/JB/Downloads/jquery-jvectormap-1.0 (2)/jquery-jvectormap-1.0.min.js",
+		"/C/wamp/www/SP_EU/js/CountryObj.js",
+		"/C/wamp/www/SP_EU/css/1140.css",
+		"/C/wamp/www/SP_EU/ajax/economic.json",
+		"/C/Users/JB/Dropbox/S&P/rating_to_number.csv",
+		"/C/wamp/www/SP_EU/js/render.js",
+		"/C/wamp/www/SP_EU/ajax/external.json",
+		"/C/wamp/www/SP_EU/ajax/fiscal.json",
+		"/C/wamp/www/SP_EU/ajax/economic_data.json",
+		"/C/Users/JB/Dropbox/S&P/SP_EU_Story/fiscal_v2.csv",
+		"/C/wamp/www/SP_EU/ajax/fiscal_data.json",
+		"/C/Users/JB/Dropbox/S&P/SP_EU_Story/external_v2.csv",
+		"/C/Users/JB/Dropbox/S&P/SP_EU_Story/economic_v2.csv",
+		"/C/Users/JB/Downloads/1140_CssGrid_2/js/css3-mediaqueries.js",
+		"/C/wamp/www/SP_EU/css/ie.css",
+		"/C/Users/JB/Downloads/1140_CssGrid_2/css/styles.css",
+		"/C/Users/JB/Downloads/1140_CssGrid_2/index.html",
+		"/C/wamp/www/SP_EU/ajax/ratings.csv",
+		"/C/wamp/www/SP_EU/css/bootstrap.css",
+		"/C/wamp/www/SP_EU/js/jquery-jvectormap-1.0.js",
+		"/C/Users/JB/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/JB/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/wamp/www/SP_EU/index.html",
+		"/C/wamp/www/SP_EU/js/bootstrap.js",
+		"/C/Users/JB/AppData/Local/Temp/Rar$DIa0.286/jquery-jvectormap.js",
+		"/C/wamp/www/SP_EU/js/jvmSlider.js",
+		"/C/Users/JB/Dropbox/S&P/SP_EU_Story/external.csv",
+		"/C/Users/JB/Dropbox/S&P/SP_EU_Story/fiscal.csv",
+		"/C/wamp/www/SP_EU/js/Country.js",
+		"/C/wamp/www/SP_EU/css/bootstrap.min.css",
+		"/C/Users/JB/Dropbox/S&P/SP_EU_Story/Eurozone_Sovereign_Risk_Indicators.csv",
+		"/C/Users/JB/Dropbox/S&P/SP_EU_Story/economic.csv",
+		"/C/wamp/www/SP_EU/js/jquery-jvectormap-1.0.css",
+		"/C/Users/JB/Downloads/Highcharts-2.2.5/examples/bar-stacked/index.htm",
+		"/C/Users/JB/AppData/Roaming/Sublime Text 2/Packages/User/Git.sublime-settings",
+		"/C/wamp/www/SP_EU/ajax/GDP_per_capita.json",
+		"/C/wamp/www/SP/robots.txt",
+		"/C/Users/JB/AppData/Roaming/Sublime Text 2/Packages/Git/Git.sublime-settings",
+		"/C/wamp/www/SP_EU/ajax/SOV_DATA_EU.json",
+		"/C/wamp/www/SP_EU/ajax/SOV_DATA_EU.csv",
+		"/C/Users/JB/Dropbox/S&P/GDP per capita.csv",
+		"/C/Users/JB/Dropbox/S&P/GDP_debt_ratio.csv",
+		"/C/Users/JB/Dropbox/S&P/GDP_per_capita.csv",
+		"/C/wamp/www/SP_A/index.php",
+		"/C/wamp/www/SP_A/Yht876/application/views/welcome_message.php",
+		"/C/wamp/www/CodeIgniter_2.1.2/index.php",
+		"/C/wamp/www/SP/css/custom-theme/jquery-ui-1.8.22.custom.css",
+		"/C/wamp/www/SP/js/main.js",
+		"/C/wamp/www/SP/css/style.css",
+		"/C/wamp/www/SP/ajax/World_Data_GDP.json",
+		"/C/wamp/www/SP/ajax/Data.json",
+		"/C/Users/JB/Downloads/yuicompressor-2.4.7/yuicompressor-2.4.7/doc/README",
+		"/C/Users/JB/Downloads/excanvas_r3 (1)/excanvas.compiled.js",
+		"/C/wamp/www/SP/css/ui.slider.extras.css",
+		"/C/Users/JB/Downloads/jquery-ui-1.8.22.custom/css/ui-darkness/jquery-ui-1.8.22.custom.css",
+		"/C/wamp/www/SP/index.html.orig",
+		"/C/wamp/www/SP/js/3dSov.js",
+		"/C/wamp/www/SP/index.html",
+		"/C/wamp/www/SP/js/bootstrap-button.js",
+		"/C/wamp/www/SP/js/jvmSlider.js",
+		"/C/wamp/www/SP/js/selectToUISlider.jQuery.js",
+		"/C/wamp/www/SP/js/jquery-jvectormap.js",
+		"/C/wamp/www/SP/js/3dSov.min.js",
+		"/C/wamp/www/SP/js/jvmSlider.min.js",
+		"/C/wamp/www/SP/js/bootstrap-button.min.js",
+		"/C/wamp/www/SP/css/style.min.css",
+		"/C/wamp/www/SP/css/jquery-ui-1.8.21.custom.min.css",
+		"/C/wamp/www/SP/js/lib/RGraph.common.dynamic.min.js",
+		"/C/wamp/www/SP/js/lib/RGraph.common.effects.min.js",
+		"/C/wamp/www/SP/js/lib/RGraph.common.tooltips.min.js",
+		"/C/wamp/www/SP/js/lib/RGraph.radar.min.js",
+		"/C/wamp/www/SP/js/lib/RGraph.radar.js",
+		"/C/wamp/www/SP/js/lib/RGraph.common.tooltips.js",
+		"/C/wamp/www/SP/js/lib/RGraph.common.effects.js",
+		"/C/wamp/www/SP/js/lib/RGraph.common.dynamic.js",
+		"/C/wamp/www/SP/css/jquery-ui-1.8.21.custom.css",
+		"/C/wamp/www/SP/js/selectToUISlider.jQuery.min.js",
+		"/C/wamp/www/SP/js/jquery.reject.min.js",
+		"/C/wamp/www/SP/js/jquery.reject.js",
+		"/C/wamp/www/SP/js/Country.min.js",
+		"/C/wamp/www/SP/js/lib/RGraph.common.core.min.js",
+		"/C/wamp/www/SP/js/lib/RGraph.common.core.js",
+		"/C/wamp/www/SP/js/Country.js",
+		"/C/wamp/www/SP/ajax/index.html",
+		"/C/Users/JB/Downloads/RGraph2_2012-07-26-stable/RGraph/demos/radar02.html",
+		"/C/Users/JB/Downloads/bootstrap/js/bootstrap.js",
+		"/C/Users/JB/Downloads/prototype.flotr-0.2.0-alpha/flotr-0.2.0-alpha/flotr/flotr.debug-0.2.0-alpha.js",
+		"/C/Users/JB/Downloads/bootstrap/css/bootstrap.min.css",
+		"/C/Users/JB/Downloads/prototype.flotr-0.2.0-alpha/flotr-0.2.0-alpha/flotr/flotr-0.2.0-alpha.js",
+		"/C/Users/JB/AppData/Roaming/Sublime Text 2/Packages/S&P.sublime-project",
+		"/C/wamp/www/S&P/debug.html",
+		"/C/wamp/www/S&P/ajax/World_Data_GDP.JSON",
+		"/C/wamp/www/S&P/js/Country.js",
+		"/C/wamp/www/S&P/css/style.css",
+		"/C/apache-tomcat-7.0.29/webapps/SP/ajax/index.html",
+		"/C/wamp/www/S&P/index.html",
+		"/C/wamp/www/S&P/js/jvmSlider.js",
+		"/C/apache-tomcat-7.0.29/webapps/SP/js/jvmSlider.js",
+		"/C/wamp/www/S&P/ajax/World_Data_GDP_Per_Gov_Debt.JSON",
+		"/C/Users/JB/Dropbox/Processing/Sov_Pde/Sov_Pde.pde",
+		"/C/Users/JB/Documents/Processing/sketch_may24a/application.windows/source/sketch_may24a.java",
+		"/C/Users/JB/Dropbox/Processing/Sov_Pde/data/debtPeriod.java",
+		"/C/Users/JB/Dropbox/Processing/Sov_Pde/DataImport.pde",
+		"/C/Users/JB/Dropbox/Processing/Sov_Pde/Debt.pde",
+		"/C/Users/JB/Dropbox/Processing/Sov/DataImport.java",
+		"/C/Users/JB/Dropbox/Processing/Sov/Sov.java",
+		"/C/Users/JB/Dropbox/Processing/Sov/data/debtPeriod.java",
+		"/C/Users/JB/Dropbox/Processing/Sov/Debt.java",
+		"/C/Users/JB/Dropbox/Processing/Sov/Country.java"
+	],
+	"find":
+	{
+		"height": 32.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"img/",
+			"ui-bg_flat_75_ffffff_40x100",
+			"flat",
+			"images",
+			"globalCode",
+			",",
+			"this",
+			"EU[x].getName()",
+			"&nbs;",
+			"32",
+			"0.",
+			".in",
+			"#modal_Con",
+			"renderE",
+			"i",
+			"ale",
+			"dataImport.js:320",
+			"url",
+			"toggle",
+			"swing",
+			"modal_Con",
+			"img",
+			"'0",
+			"()",
+			"linear",
+			"fadein",
+			"24px",
+			"pause.png",
+			"'linear']",
+			"linear",
+			"<script src=\"js/render.js\"></script>",
+			"swing",
+			"close",
+			"directory",
+			">>>>>>>",
+			"130",
+			"console",
+			"]),\n",
+			"this",
+			"year",
+			"normalize(",
+			")",
+			"apply",
+			"break;",
+			"140",
+			"cursor",
+			"f7f7f7",
+			"</a>",
+			"<a href=\"#\">",
+			"indival",
+			"histor",
+			"logo",
+			"    $('#CountryData').html(renderE);\n",
+			",",
+			"break;",
+			");\n",
+			"break",
+			"EU",
+			"||",
+			"location",
+			"EU",
+			"codeArray",
+			"boot",
+			"indicator",
+			"$('#map').vectorMap('get', 'mapObject')",
+			"indicator",
+			"Indicator",
+			"indicator",
+			"Indicator",
+			"indicator",
+			"mapObject",
+			"ffffff",
+			"updateValue",
+			"Indicator",
+			"indicator",
+			"Indicator",
+			"indicator",
+			"indicators",
+			":",
+			",",
+			":",
+			"\",",
+			"]",
+			"[",
+			"$yearSelected",
+			"$yearTick",
+			"$(\"ul.historical li\")",
+			"$(\"li.selected p\")",
+			"$(\"ul.historical li.selected\")",
+			"$('ul.historical li.selected')",
+			"$('li.Criteria p')",
+			"obj",
+			"\"   }",
+			" \"{",
+			"\"\"",
+			"}\",",
+			",",
+			": ",
+			"\"   ",
+			" \"{",
+			"\"\"",
+			"}\",",
+			"}\"",
+			",",
+			":",
+			"\"   ",
+			"\"{",
+			"\"\"",
+			"}\",",
+			",",
+			": ",
+			":",
+			"\"\"",
+			"\"1999\"",
+			"AAA\"",
+			"1999",
+			"\"1999\"",
+			"}",
+			"2010",
+			"2009",
+			"2008",
+			"2007",
+			"2006",
+			"2011",
+			"2005",
+			"2012",
+			"2004",
+			"2003"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 7,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 5331,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								778,
+								778
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_confidence": 1.0,
+							"encoding_helper_encoding": "UTF-8",
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/dataImport.js",
+					"settings":
+					{
+						"buffer_size": 14059,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4629,
+								4629
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_confidence": 0.0,
+							"encoding_helper_encoding": "Unknown",
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1751.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "js/render.js",
+					"settings":
+					{
+						"buffer_size": 9297,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9297,
+								9297
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_confidence": 1.0,
+							"encoding_helper_encoding": "UTF-8",
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "css/jquery-jvectormap-1.0.css",
+					"settings":
+					{
+						"buffer_size": 774,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								324,
+								324
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_confidence": 1.0,
+							"encoding_helper_encoding": "UTF-8",
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "css/jquery.selectBox.css",
+					"settings":
+					{
+						"buffer_size": 3280,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1605,
+								1605
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_confidence": 1.0,
+							"encoding_helper_encoding": "UTF-8",
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 714.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"settings":
+					{
+						"buffer_size": 144,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								45,
+								45
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "js/CountryObj.js",
+					"settings":
+					{
+						"buffer_size": 3702,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								307,
+								307
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_confidence": 1.0,
+							"encoding_helper_encoding": "UTF-8",
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "css/style.css",
+					"settings":
+					{
+						"buffer_size": 11675,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2192,
+								2192
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_confidence": 1.0,
+							"encoding_helper_encoding": "UTF-8",
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1683.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 32.0
+	},
+	"input":
+	{
+		"height": 29.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.clang":
+	{
+		"height": 96.0
+	},
+	"output.exec":
+	{
+		"height": 92.0
+	},
+	"output.git":
+	{
+		"height": 96.0
+	},
+	"replace":
+	{
+		"height": 60.0
+	},
+	"save_all_on_build": false,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/C/Users/JB/AppData/Roaming/Sublime Text 2/Packages/S&P.sublime-project"
+			],
+			[
+				"ru",
+				"/C/Users/JB/Dropbox/Ruby/Ruby.sublime-project"
+			],
+			[
+				"d3",
+				"/C/wamp/www/d3_test/d3_project.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 383.0,
+	"status_bar_visible": true
+}
