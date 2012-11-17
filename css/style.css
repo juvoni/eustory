@@ -31,9 +31,22 @@ a:hover{
     text-decoration: none;
 }
 .titleLogo{
-    margin: 0 0 0 10px;
+    margin: 0 0 0 -5px;
     padding: 0;
     display:block;
+}
+.ui-widget{
+    padding:0;
+    position: relative;
+    margin-left: 35px;
+    font-size: 12px;
+}
+
+.ie7 .ui-widget{
+    display:none;
+}
+.ie8 .ui-widget{
+    display:none;
 }
 div.legend{
     font-size: 12px;
@@ -42,11 +55,10 @@ div.legend{
     height:60px;
     position: relative;
     display:inline;
-    margin-left: 30px;
+    margin-left: -25px;
 }
 .legend h4{
     float: left;
-    margin-left: 20px;
 }
 .ie7 .legend h4{
     float: left;
@@ -91,15 +103,16 @@ div.legend{
 div#map{
     width: 560px;
     height: 495px;
-    margin-left: 190px;
     display:inline;
     position:relative;
     float: right;
     padding: 0;
 }
 #modal_Con{
-    width: 560px;
-    height: 495px;
+    top:0;
+    left:0;
+    width: 0px;
+    height: 0px;
     z-index: 999;
     display: none;
     background: #fff;
@@ -117,7 +130,7 @@ ul.grid_1.control{
     width: 100px;
     height:80px;
     padding:0px;
-    margin-top: 10px;
+    margin: 10px 0 0 0;
     float: right;
 }
 ul.control li{
@@ -125,6 +138,7 @@ ul.control li{
     width: 50px;
     height:40px;
     font-size: 22px;
+    padding:0;
 }
 ul.control li span.play{
     font-size: 14px;
@@ -158,6 +172,7 @@ ul.historical{
     list-style: none;
     display:block;
     margin-top: 18px;
+    margin-right: -20px;
 }
 .ie7 ul.historical{
     width: 100px;
@@ -215,6 +230,7 @@ ul.historical li.selected p.arrow{
 }
 div.data_overview ul{
     margin-left: 0;
+    margin-top: 20px;
     list-style: none;
 }
 .ie7 div.data_overview ul{
@@ -242,6 +258,9 @@ div.data_overview ul  li.economy.selected ,div.data_overview ul li.rating.select
 }
 div.data_overview ul li.selected {
     font-size: 18px;
+}
+.data_overview{
+    margin-top: -35px;
 }
 ul.Criteria{
     margin-top: -15px;

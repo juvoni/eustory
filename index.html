@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<!--[if lte IE 7]> <html class="ie7"> <![endif]--> 
+<!--[if lte IE 7]> <html class="ie7"> <![endif]-->
+<!--[if lte IE 8]> <html class="ie8"> <![endif]-->
 <html lang="en">
   <head>
 
@@ -14,9 +15,12 @@
     <!-- Le styles -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/jquery-jvectormap-1.0.css" rel="stylesheet">
+    <link href="css/jquery-ui-1.9.1.custom.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="css/grid.css" type="text/css" media="screen" />
   <link href="css/jquery.selectbox.css" rel="stylesheet" type="text/css" />
+
+
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -40,6 +44,7 @@
     <script src="js/jquery-jvectormap-europe-mill-en.js"></script>
     <script src="js/jquery.selectbox.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui-1.9.1.custom.min.js"></script>
   </head>
 
   <body>
@@ -72,6 +77,7 @@
     </div>
       <div class="grid_5">
                 <div class="titleLogo"><img src="img/eustory.png" alt="eustory" width = "234px" height = "37px"></div>
+
                 <div class="optSelect"></div>
         <!-- Dyanmic labels for period and totals -->
         <div id="map">
@@ -91,6 +97,10 @@
       </div>
 
       <div class="grid_3 data_overview">
+                        <div class="ui-widget">
+    <label for="tags">Quick Find</label>
+    <input id="tags" />
+</div>
         <ul class = "Criteria ">
           <li class = "Criteria rating">Sovereign Ratings
           <p class="info">

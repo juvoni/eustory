@@ -123,31 +123,21 @@ $(document).ready(function() {
       });
 
 
-    $(document).click(function(event) { 
-    if(event.target.nodeName != 'path' && event.target.nodeName != 'svg' && event.target.nodeName != 'IMG' && event.target.nodeName != 'LI' && event.target.nodeName !='SPAN') {
-renderBy(myClass,EU,currentYear);
+    $(document).click(function(event) {
+    if(event.target.nodeName != 'path' && event.target.nodeName != 'svg' && event.target.nodeName != 'IMG' 
+	&& event.target.nodeName != 'LI' && event.target.nodeName !='SPAN' && event.target.nodeName != 'A'
+	&& event.target.nodeName != 'INPUT' && event.target.nodeName !='P') {
+	renderBy(myClass,EU,currentYear);
 		isConSelected = false;
 		$('div#modal_Con').animate({
-			width: ['hide', 'linear'],
-			height: ['hide', 'linear'],
+			top: '-=' + $(this).height(), // factor,
+			left: '-=' + $(this).width(), // factor,
+			width: $(this).width(),
 			opacity: 'hide'
 		},500);
-		console.log(event.target.nodeName);
-    }        
+		//console.log(event.target.nodeName);
+    }
 });
-
-
-  //   $('body').click(function(){
-		// renderBy(myClass,EU,currentYear);
-		// isConSelected = false;
-		// $('.selectedCountry').hide();
-		// $('div#modal_Con').animate({
-		//	width: ['hide', 'linear'],
-		//	height: ['hide', 'linear'],
-		//	opacity: 'hide'
-		// },500);
-		// console.log("clicked");
-  //   });
 
 	$.ajaxSetup({
 		async: false
@@ -284,10 +274,10 @@ renderBy(myClass,EU,currentYear);
 	if(!ieMode){
 		$('div#modal_Con').click(function(){
 		$(this).animate({
-						 top: '-=' + $(this).height(), // factor,
-	left: '-=' + $(this).width(), // factor,
-        width: $(this).width() * factor,
-						opacity: 'toggle'
+			top: '-=' + $(this).height(), // factor,
+			left: '-=' + $(this).width(), // factor,
+			width: $(this).width(),
+			opacity: 'toggle'
 					},500);
 	});
 		$('#map').vectorMap({
@@ -327,11 +317,10 @@ renderBy(myClass,EU,currentYear);
 					$('div#modal_Con').animate({
 						top: '-=' + $(this).height(), // factor,
 						left: '-=' + $(this).width(), // factor,
-						width: 0,
+						width: $(this).width(),
+						height: $(this).height(),
 						opacity: 'toggle'
 					},500);
-
-
 				}
 			},
 			series:{
@@ -379,7 +368,36 @@ renderBy(myClass,EU,currentYear);
 
 		 });
 	}
+ var availableTags =  ["Finland","Austria",
+ "France","Estonia","Slovenia","Malta","Ireland",
+ "Italy","Cyprus","Portugal","Germany","Luxembourg",
+ "Greece","Slovak Republic","Belgium","Netherlands","Spain"];
 
+
+    $( "#tags" ).autocomplete({
+        source: function( request, response ) {
+                var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+                response( $.grep( availableTags, function( item ){
+                    return matcher.test( item );
+                }) );
+            },
+        select: function( event, ui ) {
+               // console.log(ui.item.value);
+				isConSelected = true;
+				globalCode = getCodeFromName(ui.item.value);
+				renderSelectedCon(EU,currentYear,myClass,globalCode);
+				$('span.indiValue').removeClass("rating fiscal economy external");
+				$('span.indiValue').addClass(myClass);
+				$('div#modal_Con').html("<img src='Countries_PNG/"+globalCode+".png'"+ "width = '560px' height = '495px'>");
+				$('div#modal_Con').animate({
+					top: '-=' + $(this).height(), // factor,
+					left: '-=' + $(this).width(), // factor,
+					width: $(this).width()*factor,
+					opacity: 'toggle'
+				},500);
+
+        }
+    });
 	function updateC(){
 		mapObject.series.regions[0].setScale(colorS[colorIndicator]);
 		jvm.min(mapData[currentYear][myClass]);
