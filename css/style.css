@@ -108,6 +108,10 @@ div#map{
     float: right;
     padding: 0;
 }
+div.conMeta{
+    z-index: 900;
+    position:absolute;
+}
 #modal_Con{
     top:0;
     left:0;

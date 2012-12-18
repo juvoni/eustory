@@ -106,11 +106,13 @@ $(document).ready(function() {
 		updateHYear(that);
         if(!isConSelected){
 			renderBy(myClass,EU,currentYear);
+			$('p.ratinginfo').text(EU[findObj(EU,globalCode)].getRatingHistorical(currentYear));
         }
         else{
 			renderSelectedCon(EU,currentYear,myClass,globalCode);
 			$('span.indiValue').removeClass("rating fiscal economy external");
 			$('span.indiValue').addClass(myClass);
+			$('p.ratinginfo').text(EU[findObj(EU,globalCode)].getRatingHistorical(currentYear));
         }
         if(!ieMode){
 			updateValue();
@@ -134,7 +136,6 @@ $(document).ready(function() {
 			width: $(this).width(),
 			opacity: 'hide'
 		},500);
-		//console.log(event.target.nodeName);
     }
 });
 
@@ -166,6 +167,7 @@ $(document).ready(function() {
 						renderSelectedCon(EU,currentYear,myClass,globalCode);
 						$('span.indiValue').removeClass("rating fiscal economy external");
 						$('span.indiValue').addClass(myClass);
+						$('p.ratinginfo').text(EU[findObj(EU,globalCode)].getRatingHistorical(currentYear));
 					}
 					if(!ieMode){
 						updateValue();
@@ -311,8 +313,7 @@ $(document).ready(function() {
 					//$('.selectedCountry').show().html(EU[findObj(EU,code)].getName()+"<img class = 'closebtn' src='img/"+imgSrc+"' alt=''>");
 				    $('span.indiValue').removeClass("rating fiscal economy external");
 					$('span.indiValue').addClass(myClass);
-					$('div#modal_Con').html("<img src='Countries_PNG/"+code+".png'"+ "width = '560px' height = '495px'>");
-
+					$('div#modal_Con').html("<div class ='conMeta'><p class ='"+code+"txt'>"+EU[findObj(EU,code)].getName()+"</p><p class ='"+code+"rating ratinginfo'>"+EU[findObj(EU,code)].getRatingHistorical(currentYear)+"</p></div><img src='Countries_PNG/"+code+"_wo.png'"+ "width = '560px' height = '495px'>");
 					$('div#modal_Con').animate({
 						top: '-=' + $(this).height(), // factor,
 						left: '-=' + $(this).width(), // factor,
