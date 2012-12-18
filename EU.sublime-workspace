@@ -523,7 +523,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 5331,
+				"buffer_size": 5326,
 				"line_ending": "Windows"
 			}
 		},
@@ -531,7 +531,7 @@
 			"file": "js/dataImport.js",
 			"settings":
 			{
-				"buffer_size": 14059,
+				"buffer_size": 14082,
 				"line_ending": "Windows"
 			}
 		},
@@ -552,34 +552,10 @@
 			}
 		},
 		{
-			"file": "css/jquery.selectBox.css",
-			"settings":
-			{
-				"buffer_size": 3280,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Austria\nBelgium\nCyprus\nEstonia\nFinland\nFrance\nGermany\nGreece\nIreland\nItaly\nLuxembourg\nMalta\nNetherlands\nPortugal\nSlovak Republic\nSlovenia\nSpain\n",
-			"settings":
-			{
-				"buffer_size": 144,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/CountryObj.js",
-			"settings":
-			{
-				"buffer_size": 3702,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "css/style.css",
 			"settings":
 			{
-				"buffer_size": 11675,
+				"buffer_size": 11694,
 				"line_ending": "Windows"
 			}
 		}
@@ -587,7 +563,7 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 85.0,
+		"height": 375.0,
 		"selected_items":
 		[
 			[
@@ -792,6 +768,8 @@
 	},
 	"file_history":
 	[
+		"/C/wamp/www/SP_EU/css/jquery.selectBox.css",
+		"/C/wamp/www/SP_EU/js/CountryObj.js",
 		"/C/wamp/www/SP_EU/css/jquery-ui-1.9.1.custom.min.css",
 		"/C/wamp/www/SP_EU/css/grid.css",
 		"/C/Users/JB/AppData/Local/Temp/Rar$DIa0.217/bootstrap.min.css",
@@ -812,7 +790,6 @@
 		"/C/wamp/www/SP_EU/js/render.js.REMOTE.6260.js",
 		"/C/wamp/www/SP_EU/ajax/Ratings.json",
 		"/C/Users/JB/Downloads/jquery-jvectormap-1.0 (2)/jquery-jvectormap-1.0.min.js",
-		"/C/wamp/www/SP_EU/js/CountryObj.js",
 		"/C/wamp/www/SP_EU/css/1140.css",
 		"/C/wamp/www/SP_EU/ajax/economic.json",
 		"/C/Users/JB/Dropbox/S&P/rating_to_number.csv",
@@ -918,8 +895,7 @@
 		"/C/Users/JB/Dropbox/Processing/Sov/DataImport.java",
 		"/C/Users/JB/Dropbox/Processing/Sov/Sov.java",
 		"/C/Users/JB/Dropbox/Processing/Sov/data/debtPeriod.java",
-		"/C/Users/JB/Dropbox/Processing/Sov/Debt.java",
-		"/C/Users/JB/Dropbox/Processing/Sov/Country.java"
+		"/C/Users/JB/Dropbox/Processing/Sov/Debt.java"
 	],
 	"find":
 	{
@@ -1082,7 +1058,7 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1090,15 +1066,15 @@
 					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 5331,
+						"buffer_size": 5326,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								778,
-								778
+								1709,
+								1709
 							]
 						],
 						"settings":
@@ -1111,7 +1087,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 378.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1121,15 +1097,15 @@
 					"file": "js/dataImport.js",
 					"settings":
 					{
-						"buffer_size": 14059,
+						"buffer_size": 14082,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4629,
-								4629
+								4057,
+								4057
 							]
 						],
 						"settings":
@@ -1142,7 +1118,7 @@
 							"word_wrap": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1751.0,
+						"translation.y": 1959.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1211,104 +1187,18 @@
 				},
 				{
 					"buffer": 4,
-					"file": "css/jquery.selectBox.css",
-					"settings":
-					{
-						"buffer_size": 3280,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1605,
-								1605
-							]
-						],
-						"settings":
-						{
-							"encoding_helper_confidence": 1.0,
-							"encoding_helper_encoding": "UTF-8",
-							"encoding_helper_encoding_sublime": "UTF-8",
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 714.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"settings":
-					{
-						"buffer_size": 144,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								45,
-								45
-							]
-						],
-						"settings":
-						{
-							"encoding_helper_encoding_sublime": "UTF-8",
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "js/CountryObj.js",
-					"settings":
-					{
-						"buffer_size": 3702,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								307,
-								307
-							]
-						],
-						"settings":
-						{
-							"encoding_helper_confidence": 1.0,
-							"encoding_helper_encoding": "UTF-8",
-							"encoding_helper_encoding_sublime": "UTF-8",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
 					"file": "css/style.css",
 					"settings":
 					{
-						"buffer_size": 11675,
+						"buffer_size": 11694,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2192,
-								2192
+								1911,
+								1911
 							]
 						],
 						"settings":
@@ -1392,7 +1282,7 @@
 		[
 			[
 				"",
-				"/C/Users/JB/AppData/Roaming/Sublime Text 2/Packages/S&P.sublime-project"
+				"/C/Users/JB/Dropbox/Projects/reit.sublime-project"
 			],
 			[
 				"ru",
@@ -1409,6 +1299,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 383.0,
+	"side_bar_width": 194.0,
 	"status_bar_visible": true
 }

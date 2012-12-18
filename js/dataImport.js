@@ -119,12 +119,11 @@ $(document).ready(function() {
         else{
 			updateImage();
         }
-
       });
 
 
     $(document).click(function(event) {
-    if(event.target.nodeName != 'path' && event.target.nodeName != 'svg' && event.target.nodeName != 'IMG' 
+    if(event.target.nodeName != 'path' && event.target.nodeName != 'svg' && event.target.nodeName != 'IMG'
 	&& event.target.nodeName != 'LI' && event.target.nodeName !='SPAN' && event.target.nodeName != 'A'
 	&& event.target.nodeName != 'INPUT' && event.target.nodeName !='P') {
 	renderBy(myClass,EU,currentYear);
