@@ -108,7 +108,7 @@ div#map{
     float: right;
     padding: 0;
 }
-div.conMeta{
+div.conMeta p{
     z-index: 900;
     position:absolute;
 }
@@ -342,6 +342,37 @@ fieldset {
     border:0;
     display:inline;
 }
+
+div.conMeta p.ATtxt{top:160px;left:350px;}div.conMeta p.BEtxt{top:170px;left:170px;}div.conMeta p.CYtxt{top:370px;left:360px;}div.conMeta p.DEtxt{top:200px;left:220px;}
+div.conMeta p.EEtxt{top:220px;left:280px;}div.conMeta p.EStxt{top:290px;left:200px;}div.conMeta p.FItxt{top:200px;left:240px;}div.conMeta p.FRtxt{top:200px;left:250px;}div.conMeta p.GRtxt{top:280px;left:270px;}
+div.conMeta p.IEtxt{top:70px;left:80px;}div.conMeta p.ITtxt{top:250px;left:270px;}div.conMeta p.LUtxt{top:180px;left:260px;}div.conMeta p.MTtxt{top:370px;left:40px;}div.conMeta p.NLtxt{top:60px;left:130px;}div.conMeta p.PTtxt{top:300px;left:50px;}
+div.conMeta p.SItxt{top:160px;left:340px;}div.conMeta p.SKtxt{top:170px;left:350px;}
+
+div.conMeta p.ATrating{top:180px;left:350px;}div.conMeta p.BErating{top:190px;left:200px;}div.conMeta p.CYrating{top:390px;left:370px;}
+div.conMeta p.DErating{top:220px;left:240px;}div.conMeta p.EErating{top:240px;left:300px;}div.conMeta p.ESrating{top:310px;left:220px;}div.conMeta p.FIrating{top:220px;left:260px;}
+div.conMeta p.FRrating{top:220px;left:270px;}div.conMeta p.GRrating{top:300px;left:290px;}div.conMeta p.IErating{top:90px;left:80px;}div.conMeta p.ITrating{top:270px;left:290px;}
+div.conMeta p.LUrating{top:200px;left:280px;}div.conMeta p.MTrating{top:390px;left:60px;}div.conMeta p.NLrating{top:80px;left:150px;}div.conMeta p.PTrating{top:320px;left:70px;}
+div.conMeta p.SIrating{top:180px;left:360px;}div.conMeta p.SKrating{top:190px;left:370px;}
+
+
+/*.AT
+.BE
+.CY
+.DE
+.EE
+.ES
+.FI
+.FR
+.GR
+.IE
+.IT
+.LU
+.MT
+.NL
+.PT
+.SI
+.SK*/
+
 /*
 footer{
     margin:0 auto;
