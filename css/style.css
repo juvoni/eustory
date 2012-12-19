@@ -344,6 +344,8 @@ div.conMeta p{
     position:absolute;
     font-size: 24px;
     color: #414042;
+    text-shadow: 1px 2px 12px #242424;
+        filter: dropshadow(color=#242424, offx=1, offy=2);
 }
 div.conMeta p.ratinginfo{
     color:#E3173E; /*Redish*/
@@ -360,38 +362,6 @@ div.conMeta p.LUrating{top:200px;left:280px;}div.conMeta p.MTrating{top:390px;le
 div.conMeta p.SIrating{top:180px;left:360px;}div.conMeta p.SKrating{top:190px;left:370px;}
 
 
-/*.AT
-.BE
-.CY
-.DE
-.EE
-.ES
-.FI
-.FR
-.GR
-.IE
-.IT
-.LU
-.MT
-.NL
-.PT
-.SI
-.SK*/
-
-/*
-footer{
-    margin:0 auto;
-    position:absolute;
-    bottom:0px;
-    height:12px;
-    font-size: 10px;
-    font-weight: bold;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    color: #cccccc;
-    text-align: center;
-}
-*/
 form{
     display:inline;
     padding: 0px;
